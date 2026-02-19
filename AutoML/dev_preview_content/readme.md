@@ -213,6 +213,16 @@ After the run has completed successfully:
 
 For exact artifact paths and layout, see the pipeline reference below.
 
+### 9.9. Predictor Notebook
+TODO
+
+### 9.10. Model Registry
+TODO
+
+
+### 9.11. Model Deployment
+TODO
+
 ---
 
 ## 10. References
