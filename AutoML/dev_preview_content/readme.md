@@ -43,9 +43,9 @@ You can register and serve the models AutoML produces using RHOAI Model Registry
 
 ## 2. What you need to provide
 
-To run AutoML, you provide where your data is and what to predict:
+To run AutoML, you provide where your data is and what to predict.
 
-### 2.1. Required
+### Required input parameters
 
 | Parameter | Description |
 |-----------|-------------|
@@ -54,7 +54,7 @@ To run AutoML, you provide where your data is and what to predict:
 | **Task type** | `binary` or `multiclass` for classification, or `regression` for regression. |
 
 
-### 2.2. Optional
+### Optional input parameters
 
 | Parameter | Default | Description |
 |-----------|--------|-------------|
