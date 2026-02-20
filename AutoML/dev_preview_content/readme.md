@@ -139,7 +139,7 @@ Use this connection when configuring the Pipeline Server (e.g., in **Pipeline ru
 
 1. Open your project and go to the **Workbenches** tab.
 2. For the workbench you created, use the action menu (⋮) and choose **Edit** (or the equivalent option to modify the workbench).
-3. In the workbench configuration, attach the **results** S3 connection you created in 9.2 so the workbench can access the same bucket (for example, to download leaderboard or artifacts later).
+3. In the workbench configuration, attach the **results** S3 connection you created in 7.2 so the workbench can access the same bucket (for example, to download leaderboard or artifacts later).
 4. Save and, if prompted, restart the workbench so the connection is applied.
 
 ### 7.4. Create an S3 connection for training data
@@ -157,7 +157,7 @@ Note the connection **name** (resource name); you will use it as `train_data_sec
 ### 7.5. Upload the training dataset to S3
 
 1. Download the Customer Churn dataset: [WA_FnUseC_TelcoCustomerChurn.csv](https://github.com/IBM/watsonx-ai-samples/blob/master/cloud/data/customer_churn/WA_FnUseC_TelcoCustomerChurn.csv) (from the IBM watsonx AI samples repository).
-2. Upload the file to the S3 bucket configured in the **training data** connection (9.4). Place it in a path you will use as the object key (for example, `data/WA_FnUseC_TelcoCustomerChurn.csv` or just `WA_FnUseC_TelcoCustomerChurn.csv`).
+2. Upload the file to the S3 bucket configured in the **training data** connection (7.4). Place it in a path you will use as the object key (for example, `data/WA_FnUseC_TelcoCustomerChurn.csv` or just `WA_FnUseC_TelcoCustomerChurn.csv`).
 3. Note the **bucket name** and the **object key** (path) of the file; you will need them for `train_data_bucket_name` and `train_data_file_key` in the pipeline run.
 
 ### 7.6. Add the AutoML pipeline as a Pipeline Definition
@@ -173,8 +173,8 @@ Note the connection **name** (resource name); you will use it as `train_data_sec
 
    | Parameter | Value |
    |-----------|--------|
-   | **train_data_secret_name** | The connection (resource) name you created for training data in step 9.4 |
-   | **train_data_bucket_name** | The bucket name where you uploaded the CSV in step 9.5 |
+   | **train_data_secret_name** | The connection (resource) name you created for training data in step 7.4 |
+   | **train_data_bucket_name** | The bucket name where you uploaded the CSV in step 7.5 |
    | **train_data_file_key** | The object key (path) of the file, e.g. `data/WA_FnUseC_TelcoCustomerChurn.csv` or `WA_FnUseC_TelcoCustomerChurn.csv` |
    | **label_column** | `Churn` |
    | **task_type** | `binary` |
@@ -182,7 +182,7 @@ Note the connection **name** (resource name); you will use it as `train_data_sec
 
    If the UI asks for an experiment or run name (e.g. “Customer Churn”, “Customer Churn Prediction”), set them as run metadata; AutoML uses the parameters in the table above.
 
-3. Ensure the Pipeline Server is configured with the results S3 connection from 9.2 so artifacts are stored in the expected bucket.
+3. Ensure the Pipeline Server is configured with the results S3 connection from 7.2 so artifacts are stored in the expected bucket.
 4. Start the run and wait for it to complete.
 
 ### 7.8. View the leaderboard
