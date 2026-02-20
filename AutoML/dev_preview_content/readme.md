@@ -22,12 +22,6 @@ You run AutoML programmatically via the pipelines API or using AI Pipelines UI; 
 
 In this preview, AutoML supports **classification** (binary and multiclass) and **regression** for tabular data. You specify the task type and the label column; AutoML handles the rest.
 
-### 1.3. How it works under the hood
-
-AutoML runs as a pipeline on Red Hat OpenShift AI, powered by AutoGluon and orchestrated by Kubeflow Pipelines. Your data is accessed securely via RHOAI Connections (S3 credentials stored as Kubernetes secrets). Model Registry and KServe are not part of the run; you use them separately to register or serve the models AutoML produces. For implementation details and the pipeline source, see [References](#10-references).
-
-### 1.3. Supported features (Technology Preview)
-
 | Area | Support |
 |------|--------|
 | **Data format** | CSV (tabular) |
@@ -38,6 +32,11 @@ AutoML runs as a pipeline on Red Hat OpenShift AI, powered by AutoGluon and orch
 | **How you run it** | AI Pipelines UI, API (programmatic) |
 
 You can register and serve the models AutoML produces using RHOAI Model Registry and KServe separately. **Not in scope:** Non-tabular data (e.g., images, text), traditional hyperparameter tuning as the primary method, unsupervised learning.
+
+
+### 1.3. How it works under the hood
+
+AutoML runs as a pipeline on Red Hat OpenShift AI, powered by AutoGluon and orchestrated by Kubeflow Pipelines. Your data is accessed securely via RHOAI Connections (S3 credentials stored as Kubernetes secrets). Model Registry and KServe are not part of the run; you use them separately to register or serve the models AutoML produces. For implementation details and the pipeline source, see [References](#10-references).
 
 ---
 
