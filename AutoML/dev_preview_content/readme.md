@@ -217,9 +217,20 @@ Once the image is available in a registry or on cluster (from Path A or Path B),
 
 #### Path A: Build image locally and push to a container registry
 
+**Prerequisite: KServe repository**
+
+To build the image you need the repository that contains the Dockerfile and the directories copied into the image (`kserve`, `storage`, `autogluonserver`, `third_party`, and related files). Clone the repository:
+
+```bash
+git clone https://github.com/LukaszCmielowski/kserve
+cd kserve
+```
+
+The Dockerfile is located at `python/autogluon.Dockerfile`; the build must be run from the **repository root** so that the `COPY` instructions can find the `kserve`, `storage`, `autogluonserver`, and `third_party` directories.
+
 **Dockerfile reference**
 
-Build the image from a Dockerfile like the following (adjust paths if your layout differs). It uses Python 3.11, installs KServe and storage dependencies, then the Autogluon server. Save it (e.g. as `python/autogluon.Dockerfile`) and use it in the build command in step 1.
+Build the image from a Dockerfile like the following (it is available in the cloned repo as `python/autogluon.Dockerfile`). It uses Python 3.11, installs KServe and storage dependencies, then the Autogluon server. Use it in the build command in step 1.
 
 ```dockerfile
 ARG PYTHON_VERSION=3.11
@@ -293,7 +304,7 @@ ENV PYTHONPATH=/autogluonserver
 ENTRYPOINT ["python", "-m", "autogluonserver"]
 ```
 
-1. **Build the Docker image** from the repository root (where the Dockerfile and the `kserve`, `storage`, and `autogluonserver` directories exist). Use `-t` with the full image URL so you can push without a separate tag step. Run:
+1. **Build the Docker image** from the root of the cloned [KServe repository](https://github.com/LukaszCmielowski/kserve) (where `python/autogluon.Dockerfile` and the `kserve`, `storage`, and `autogluonserver` directories exist). Use `-t` with the full image URL so you can push without a separate tag step. Run:
 
    ```bash
    nerdctl -n k8s.io build -f python/autogluon.Dockerfile -t quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest .
@@ -407,6 +418,7 @@ After the deployment is created, you can use the deployed endpoint for inference
 
 ## References
 
+- [KServe (LukaszCmielowski/kserve)](https://github.com/LukaszCmielowski/kserve) — repository containing the Dockerfile (`python/autogluon.Dockerfile`) and directories (`kserve`, `storage`, `autogluonserver`, `third_party`) required to build the Autogluon serving image for Model Deployment (Section 7.11)
 - [AutoGluon](https://github.com/autogluon/autogluon) — AutoML engine used for training and ensembling
 - [Deploying models on the single-model serving platform (Red Hat OpenShift AI)](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform) — register and serve models after AutoML
 - [AutoGluon tabular training pipeline (pipelines-components, branch rhoai_automl)](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_automl/pipelines/training/automl/autogluon_tabular_training_pipeline) — implementation reference (pipeline source, parameters, KFP version)
