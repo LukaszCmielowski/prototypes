@@ -356,11 +356,11 @@ When you build the image on the cluster instead of pulling it from external cont
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: autogluonkserveimagev1
+  name: <image_stream_name>
   namespace: <your-namespace>
 ```
 
-Replace `<your-namespace>` with your OpenShift project/namespace (e.g. `automl-project`).
+Replace `<your-namespace>` with your OpenShift project/namespace (e.g. `automl-project`). Replace `<image_stream_name>` with a name of your choice (e.g. `autogluonkserveimagev1`). **The same name must be used for the ImageStream and the BuildConfig** (see step 2 below).
 
 **2. Create BuildConfig**
 
@@ -371,7 +371,7 @@ Replace `<your-namespace>` with your OpenShift project/namespace (e.g. `automl-p
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: autogluonkserveimagev1
+  name: <image_stream_name>
   namespace: <your-namespace>
 spec:
   source:
@@ -387,14 +387,14 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: autogluonkserveimagev1:latest
+      name: <image_stream_name>:latest
   triggers:
     - type: ConfigChange
 ```
 
-Use the same `<your-namespace>` as for the ImageStream above.
+Use the same `<your-namespace>` and `<image_stream_name>` as for the ImageStream above. **The image stream name must be identical in both resources.**
 
-OpenShift will start a build. Wait for the build to complete (e.g. in **Builds** → **Builds**) and ensure the build status is **Complete**. The image will be available in the internal registry as `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use your project namespace, e.g. `automl-project`).
+OpenShift will start a build. Wait for the build to complete (e.g. in **Builds** → **Builds**) and ensure the build status is **Complete**. The image will be available in the internal registry as `image-registry.openshift-image-registry.svc:5000/<namespace>/<image_stream_name>:latest` (use your project namespace and the same image stream name you chose, e.g. `automl-project` and `autogluonkserveimagev1`).
 
 After the image is built, follow the **Common steps** below; for Path B use the **Serving Runtime YAML for cluster-built image** and you can skip adding image-pull credentials for that image.
 
@@ -409,7 +409,7 @@ The following steps apply whether the image was built locally (Path A) or on Ope
 Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` according to how you obtained the image. In the container args you can provide your model name, e.g. `--model_name=autogluon`.
 
 - **Path A (Quay):** `quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest`
-- **Path B (build on cluster):** `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use the same namespace as above)
+- **Path B (build on cluster):** `image-registry.openshift-image-registry.svc:5000/<namespace>/<image_stream_name>:latest` (use the same namespace and image stream name as in the ImageStream and BuildConfig above)
 
 Use one of these values for `{SERVING_IMAGE}` in the YAML below.
 
