@@ -384,7 +384,7 @@ The following steps apply whether the image was built locally (Path A) or on Ope
 
 ##### Prepare ServingRuntime YAML
 
-Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` according to how you obtained the image:
+Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` according to how you obtained the image. In the container args you can provide your model name, e.g. `--model_name=autogluon`.
 
 - **Path A (Quay):** `quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest`
 - **Path B (build on cluster):** `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use the same namespace as above)
@@ -411,7 +411,7 @@ spec:
     - name: kserve-container
       image: {SERVING_IMAGE}
       args:
-        - --model_name=autogluon
+        - --model_name={MODEL_NAME}
         - --model_dir=/mnt/models
         - --http_port=8080
       securityContext:
@@ -430,7 +430,7 @@ spec:
           memory: 2Gi
 ```
 
-Replace `{SERVING_IMAGE}` and, if needed, `automl-project` with the values for your scenario (see list above).
+Replace `{SERVING_IMAGE}` and `{MODEL_NAME}` with the values for your scenario; set `automl-project` to your namespace if needed. For `{MODEL_NAME}` you can use e.g. `autogluon`.
 
 ##### Create the Serving Runtime on OpenShift
 
