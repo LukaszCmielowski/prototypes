@@ -443,7 +443,8 @@ Replace `{SERVING_IMAGE}` and, if needed, `automl-project` with the values for y
 
 ##### Add credentials so the cluster can pull the image
 
-*If you used Path B (image built on the cluster in the same project), the image is in the internal registry and you can skip this step.*
+> [!NOTE]
+> If you used Path B (image built on the cluster in the same project), the image is in the internal registry and you can skip this step and go directly to **Create the deployment with your Autogluon ensemble**.
 
 1. Log in to the Red Hat OpenShift Console.
 2. Go to **Workloads** → **Secrets** → **Create** → **Image pull secret**.
