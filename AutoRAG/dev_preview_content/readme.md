@@ -60,7 +60,72 @@ In this preview, AutoRAG is exposed as a **workbench notebook** that uses IBM ai
 
 ### How it works under the hood
 
-The notebook runs in your **workbench** and uses **RHOAI Connections** to read documents and test data from S3. It calls the **Llama-stack RAG server** (deployed as a prerequisite in your project; see [Llama stack setup](../../llamastack/SETUP.md)) for embeddings, retrieval, and LLM responses. The flow follows patterns similar to [IBM ai4rag](https://github.com/IBM/ai4rag): ingest documents, run queries from test data, and evaluate results. Implementation details depend on the notebook and the RAG stack configuration (see [References](#references)).
+The notebook runs in your **workbench** and uses **RHOAI Connections** to read documents and test data from S3. It calls the **Llama-stack RAG server** (deployed as a prerequisite in your project; see [Llama stack setup](../../llamastack/SETUP.md)) for embeddings, retrieval, and LLM responses. The flow follows patterns: ingest documents, run queries from test data, and evaluate results.
+
+
+**RAG interaction pattern** — User question → retrieve context from grounding documents → LLM generates answer with that context.
+
+```mermaid
+flowchart LR
+    User[User question] --> Retrieve[Retrieve relevant context<br/>from grounding documents]
+    Retrieve --> LLM[LLM generates answer<br/>using retrieved context]
+    LLM --> Answer[Answer with relevant<br/>information]
+```
+
+**2. Documents RAG optimization pipeline** — Kubeflow pipeline steps from the [documents RAG optimization pipeline](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_autorag/pipelines/training/autorag/documents_rag_optimization_pipeline): load test data and input documents, sample and extract text, prepare the search space, run RAG templates optimization (HPO), then evaluate patterns on a leaderboard.
+
+```mermaid
+flowchart TB
+    subgraph data["Data loading & preparation"]
+        TDL[Test data loader]
+        DS[Documents sampling]
+        TE[Text extraction]
+        TDL --> DS
+        DS --> TE
+    end
+
+    subgraph search["Search space"]
+        SSP[Search space preparation]
+    end
+
+    subgraph optimization["Optimization & evaluation"]
+        RTO[RAG templates optimization]
+        LB[Leaderboard evaluation]
+        RTO --> LB
+    end
+
+    TDL --> SSP
+    TE --> SSP
+    TE --> RTO
+    TDL --> RTO
+    SSP --> RTO
+```
+
+**RAG configuration optimization** — The optimizer chooses which subset of the configuration search space to evaluate (e.g. 16 candidate patterns); it ranks evaluated patterns and tags the top performers (e.g. top 3) as best, and skips the rest to avoid full grid search.
+
+```mermaid
+flowchart LR
+    subgraph space["Configuration search space"]
+        P1[Config 1]
+        P2[Config 2]
+        P3[Config 3]
+        Pn[Config N...]
+    end
+
+    subgraph evaluated["Evaluated by algorithm"]
+        E1[Pattern 1]
+        E2[Pattern 2]
+        E3[Pattern 3]
+    end
+
+    subgraph skipped["Not evaluated"]
+        S[Others skipped]
+    end
+
+    space --> evaluated
+    space --> skipped
+    evaluated --> Best[Best performing<br/>configurations]
+```
 
 ### Sample notebook and experiment flow (ai4rag)
 
