@@ -91,6 +91,7 @@ To try this yourself, follow the [Tutorial: Predict the Customer Churn](#9-tutor
 
 ## 5. Prerequisites
 
+- **Llama stack** set up — See [Llama stack setup](../../llamastack/SETUP.md) for installation and configuration.
 - Red Hat OpenShift AI installed and accessible, with Kubeflow Pipelines available (see [References](#10-references) for version).
 - A **data science project** and a **Pipeline Server** configured with object storage for runs and artifacts.
 - An **S3 connection** (RHOAI Connections) for your training data so AutoML can read your CSV.
