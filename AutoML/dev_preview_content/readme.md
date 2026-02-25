@@ -406,12 +406,12 @@ The following steps apply whether the image was built locally (Path A) or on Ope
 
 ##### Prepare ServingRuntime YAML
 
-Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` according to how you obtained the image. In the container args you can provide your model name, e.g. `--model_name=autogluon`.
+Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` according to how you obtained the image. 
 
 - **Path A (Quay):** `quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest`
 - **Path B (build on cluster):** `image-registry.openshift-image-registry.svc:5000/<namespace>/<image_stream_name>:latest` (use the same namespace and image stream name as in the ImageStream and BuildConfig above)
 
-Use one of these values for `{SERVING_IMAGE}` in the YAML below, and set `{MODEL_NAME}` to your model name (e.g. `autogluon`).
+Use one of these values for `{SERVING_IMAGE}` in the YAML below.
 
 ```yaml
 apiVersion: serving.kserve.io/v1alpha1
@@ -435,7 +435,7 @@ spec:
     - name: kserve-container
       image: {SERVING_IMAGE}
       args:
-        - --model_name={MODEL_NAME}
+        - --model_name={{.Name}}
         - --model_dir=/mnt/models
         - --http_port=8080
       securityContext:
@@ -454,7 +454,7 @@ spec:
           memory: 2Gi
 ```
 
-Replace `{SERVING_IMAGE}` and `{MODEL_NAME}` with the values for your scenario; set `automl-project` to your namespace if needed. For `{MODEL_NAME}` you can use e.g. `autogluon`.
+Replace `{SERVING_IMAGE}` with the value for your scenario; set `automl-project` to your namespace if needed. The model name is now provided during deployment in **Model deployment name**.
 
 ##### Create the Serving Runtime on OpenShift
 
@@ -491,9 +491,10 @@ This assumes your Autogluon model (e.g. from an AutoML run) is stored in S3.
 4. Fill in all required fields (bucket, path, etc.).
 5. For **Model type**, choose **Predictive model**.
 6. Click **Next**.
-7. Under **Model framework**, select **autogluon - 1**.
-8. Under **Serving runtime**, choose **Select from list…** → **kserve-autogluonserver**.
-9. Click **Next** → **Deploy model**.
+7. In **Model deployment name**, enter the model name under which the model should be available for inference.
+8. Under **Model framework**, select **autogluon - 1**.
+9. Under **Serving runtime**, choose **Select from list…** → **kserve-autogluonserver**.
+10. Click **Next** → **Deploy model**.
 
 After the deployment is created, you can use the deployed endpoint for inference. For more on serving and APIs, see [Deploying models on the single-model serving platform](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform).
 
