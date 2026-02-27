@@ -30,7 +30,7 @@
   - [View the leaderboard](#view-the-leaderboard)
   - [Predictor Notebook](#predictor-notebook)
   - [Model Registry](#model-registry)
-  - [Model Deployment (KServe — Autogluon ensemble on Red Hat OpenShift AI)](#model-deployment-kserve--autogluon-ensemble-on-red-hat-openshift-ai)
+  - [Model Deployment (KServe — AutoGluon ensemble on Red Hat OpenShift AI)](#model-deployment-kserve--autogluon-ensemble-on-red-hat-openshift-ai)
     - [Build image directly on Red Hat OpenShift AI](#build-image-directly-on-red-hat-openshift-ai)
     - [Common steps (after the image is built on cluster)](#common-steps-after-the-image-is-built-on-cluster)
 - [References](#references)
@@ -190,7 +190,7 @@ Create a second connection that points to the bucket where you will store the **
 | Step | Action |
 |------|--------|
 | **①** | Download the Customer Churn dataset: [WA_FnUseC_TelcoCustomerChurn.csv](https://github.com/IBM/watsonx-ai-samples/blob/master/cloud/data/customer_churn/WA_FnUseC_TelcoCustomerChurn.csv) (from the IBM watsonx AI samples repository). |
-| **②** | Upload the file to the S3 bucket configured in the **training data** connection (7.4). Place it in a path you will use as the object key (for example, `data/WA_FnUseC_TelcoCustomerChurn.csv` or just `WA_FnUseC_TelcoCustomerChurn.csv`). |
+| **②** | Upload the file to the S3 bucket configured in the **training data** connection. Place it in a path you will use as the object key (for example, `data/WA_FnUseC_TelcoCustomerChurn.csv` or just `WA_FnUseC_TelcoCustomerChurn.csv`). |
 | **③** | Note the **bucket name** and the **object key** (path) of the file; you will need them for `train_data_bucket_name` and `train_data_file_key` in the pipeline run. |
 
 ### 📋 Add the AutoML pipeline as a Pipeline Definition
@@ -206,7 +206,7 @@ Create a second connection that points to the bucket where you will store the **
 | Step | Action |
 |------|--------|
 | **①** | From **Pipelines**, create a new **Pipeline Run** for the AutoML pipeline you added. |
-| **②** | Set the run parameters (see Section 4 for what each means): **train_data_secret_name** (connection name from 7.4), **train_data_bucket_name** (bucket from 7.5), **train_data_file_key** (e.g. `data/WA_FnUseC_TelcoCustomerChurn.csv`), **label_column** `Churn`, **task_type** `binary`, **top_n** `3` (or another positive integer). If the UI asks for an experiment or run name, set them as run metadata. |
+| **②** | Set the run parameters (see Section 4 for what each means): **train_data_secret_name** (connection name from **Create an S3 connection for training data - ②**), **train_data_bucket_name** (bucket from **Create an S3 connection for training data - ③**), **train_data_file_key** (e.g. `data/WA_FnUseC_TelcoCustomerChurn.csv`), **label_column** `Churn`, **task_type** `binary`, **top_n** `3` (or another positive integer). If the UI asks for an experiment or run name, set them as run metadata. |
 
 | **③** | Ensure the Pipeline Server is configured with the results S3 connection from 7.2 so artifacts are stored in the expected bucket. |
 | **④** | Start the run and wait for it to complete. |
@@ -271,14 +271,14 @@ The refit stage writes each top-N model to the pipeline workspace/artifact store
 For the pipeline definition and artifact layout, see the [autogluon_tabular_training_pipeline](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_automl/pipelines/training/automl/autogluon_tabular_training_pipeline) (pipeline name: `autogluon-tabular-training-pipeline`). For more on working with model registries, see [Working with model registries](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.22/html/working_with_model_registries/working-with-model-registries_model-registry).
 
 
-### 🚀 Model Deployment (KServe — Autogluon ensemble on Red Hat OpenShift AI)
+### 🚀 Model Deployment (KServe — AutoGluon ensemble on Red Hat OpenShift AI)
 
-This section describes how to deploy an Autogluon ensemble on the cluster using KServe. Build the serving image directly on the cluster using OpenShift ImageStream and BuildConfig, then create a **Serving Runtime** and deploy the model.
+This section describes how to deploy an AutoGluon ensemble on the cluster using KServe. Build the serving image directly on the cluster using OpenShift ImageStream and BuildConfig, then create a **Serving Runtime** and deploy the model.
 
 **Flow overview**
 
 1. **Build the image** on the cluster using OpenShift ImageStream and BuildConfig. *(Steps described below.)*
-2. **Prepare ServingRuntime YAML** → **create Serving Runtime on the cluster** → **create a deployment** with your Autogluon model (e.g. from S3). The image is in the internal registry, so you do not need to add image-pull credentials.
+2. **Prepare ServingRuntime YAML** → **create Serving Runtime on the cluster** → **create a deployment** with your AutoGluon model (e.g. from S3). The image is in the internal registry, so you do not need to add image-pull credentials.
 
 ---
 
@@ -329,14 +329,6 @@ spec:
 
 OpenShift will start a build. Wait for the build to complete (e.g. in **Builds** → **Builds**). The image will be available in the internal registry as `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use your project namespace, e.g. `automl-project`).
 
-After the image is built, follow the **Common steps** below. You can skip adding image-pull credentials because the image is in the internal registry.
-
----
-
-#### Common steps (after the image is built on cluster)
-
-The following steps apply after building the image on OpenShift. Start with **Prepare ServingRuntime YAML**.
-
 ##### Prepare ServingRuntime YAML
 
 Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` to the cluster-built image:
@@ -367,7 +359,7 @@ spec:
     - name: kserve-container
       image: {SERVING_IMAGE}
       args:
-        - --model_name=autogluon
+        - --model_name={{.Name}}
         - --model_dir=/mnt/models
         - --http_port=8080
       securityContext:
@@ -397,24 +389,9 @@ Replace `{SERVING_IMAGE}` with the image URL above and `{NAMESPACE}` with your p
 5. In **Select the model types this runtime supports**, select **Predictive model**.
 6. Click **Create**.
 
-##### Add credentials so the cluster can pull the image
+##### Create the deployment with your AutoGluon ensemble
 
-*The image is built on the cluster (see above), so it is in the internal registry and you can skip this step.*
-
-1. Log in to the Red Hat OpenShift Console.
-2. Go to **Workloads** → **Secrets** → **Create** → **Image pull secret**.
-3. Enter a secret name and copy it for the next step.
-4. Ensure you are logged in to your image registry (e.g. Quay) so the secret can be used to pull the image.
-
-Then attach the secret to the service account used by the runtime:
-
-1. In the console: **User Management** → **ServiceAccounts** (choose the correct namespace).
-2. Open the **builder** service account → **YAML**.
-3. Under `imagePullSecrets`, add an entry with the secret name you created (e.g. `name: your-image-pull-secret-name`).
-
-##### Create the deployment with your Autogluon ensemble
-
-This assumes your Autogluon model (e.g. from an AutoML run) is stored in S3.
+This assumes your AutoGluon model (e.g. from an AutoML run) is stored in S3.
 
 1. In the left menu: **AI hub** → **Deployments** → **Deploy model**.
 2. Under **Model location**, choose **S3 object storage**.
@@ -422,17 +399,69 @@ This assumes your Autogluon model (e.g. from an AutoML run) is stored in S3.
 4. Fill in all required fields (bucket, path, etc.).
 5. For **Model type**, choose **Predictive model**.
 6. Click **Next**.
-7. Under **Model framework**, select **autogluon - 1**.
-8. Under **Serving runtime**, choose **Select from list…** → **kserve-autogluonserver**.
-9. Click **Next** → **Deploy model**.
+7. In **Model deployment name**, enter the model name under which the model should be available for inference.
+8. Under **Model framework**, select **autogluon - 1**.
+9. Under **Serving runtime**, choose **Select from list…** → **AutoGluon ServingRuntime for KServe**.
+10. Click **Next** → **Deploy model**.
 
 After the deployment is created, you can use the deployed endpoint for inference. For more on serving and APIs, see [Deploying models on the single-model serving platform](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform).
 
+
+##### Make the deployment available for inference from outside the cluster
+
+To call the model from outside OpenShift (e.g. from your laptop or another service), expose it via an external route and use the external inference URL.
+
+> **Note:** The deployment must be **stopped** before you can edit it. After saving your changes, **start the deployment** again.
+
+1. In the OpenShift console: **AI hub** → **Deployments**.
+2. Stop the deployment if it is running, then find your deployment, open the **⋮** (three-dot) menu on the right → **Edit**.
+3. Go to **Advanced settings** and enable **Make model deployment available through an external route**.
+4. Optionally enable or disable **Require token authentication** depending on whether you want token-based access.
+5. Click **Next** → **Update deployment**.
+6. Start the deployment again, then return to **AI hub** → **Deployments** and open your deployment.
+7. When the deployment is running, under **Inference endpoint** you will see **Internal** and **External**. Click the external endpoint to copy the external URL and use it for inference from outside the cluster.
+8. Test the deployed model with a request using the URL copied in the previous step. In the command below, replace:
+    - **`PASTE_EXTERNAL_URL_COPIED_IN_STEP_7`** — The external inference URL you copied in step 7 (base URL only; the path `/v1/models/<model_name>:predict` is appended in the sample).
+    - **`model_name`** — The resource name of the deployment (used in Kubernetes). Find it in **Deployment details** → **Model deployment** → **Resource name**. It is generated from the name you gave the deployment.
+    - **`YOUR_TOKEN`** — The service account token, only if you enabled **Require token authentication** in step 4. If you disabled it, remove the `-H "Authorization: Bearer <YOUR_TOKEN>"` line from the command. 
+   ```bash
+   curl -X POST \
+   "<PASTE_EXTERNAL_URL_COPIED_IN_STEP_7>/v1/models/<model_name>:predict" \
+   -H "Content-Type: application/json" \
+   -H "Authorization: Bearer <YOUR_TOKEN>" \
+   -d '{
+     "instances": [
+       {
+         "gender": [1],
+         "SeniorCitizen": [0],
+         "Partner": [1],
+         "Dependents": [0],
+         "tenure": [12],
+         "PhoneService": [1],
+         "MultipleLines": ["No"],
+         "InternetService": ["Fiber optic"],
+         "OnlineSecurity": ["No"],
+         "OnlineBackup": ["Yes"],
+         "DeviceProtection": ["No"],
+         "TechSupport": ["No"],
+         "StreamingTV": ["Yes"],
+         "StreamingMovies": ["No"],
+         "Contract": ["Month-to-month"],
+         "PaperlessBilling": [1],
+         "PaymentMethod": ["Electronic check"],
+         "MonthlyCharges": [70.35],
+         "TotalCharges": [800.40]
+       }
+     ]
+   }'
+   ```
+
+   Reference for more info about v1 protocol: [KServe V1 Protocol](https://kserve.github.io/website/docs/concepts/architecture/data-plane/v1-protocol)
 ---
 
 ## References
 
-- [KServe (LukaszCmielowski/kserve)](https://github.com/LukaszCmielowski/kserve) — repository containing the Dockerfile (`python/autogluon.Dockerfile`) and directories (`kserve`, `storage`, `autogluonserver`, `third_party`) required to build the Autogluon serving image for Model Deployment (Section 7.11)
+- [KServe (LukaszCmielowski/kserve)](https://github.com/LukaszCmielowski/kserve) — repository containing the Dockerfile (`python/autogluon.Dockerfile`) and directories (`kserve`, `storage`, `autogluonserver`, `third_party`) required to build the AutoGluon serving image for Model Deployment (Section 7.11)
 - [AutoGluon](https://github.com/autogluon/autogluon) — AutoML engine used for training and ensembling
 - [Deploying models on the single-model serving platform (Red Hat OpenShift AI)](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform) — register and serve models after AutoML
 - [AutoGluon tabular training pipeline (pipelines-components, branch rhoai_automl)](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_automl/pipelines/training/automl/autogluon_tabular_training_pipeline) — implementation reference (pipeline source, parameters, KFP version)
