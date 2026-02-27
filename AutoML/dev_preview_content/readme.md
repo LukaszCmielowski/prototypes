@@ -21,18 +21,18 @@
 - [Running AutoML](#running-automl)
 - [Tutorial: Predict the Customer Churn](#tutorial-predict-the-customer-churn)
   - [Create a new project and workbench](#%EF%B8%8F-create-a-new-project-and-workbench)
-  - [Create the S3 connection for results storage](#create-the-s3-connection-for-results-storage)
-  - [Attach the connection to the workbench](#attach-the-connection-to-the-workbench)
-  - [Create an S3 connection for training data](#create-an-s3-connection-for-training-data)
-  - [Upload the training dataset to S3](#upload-the-training-dataset-to-s3)
-  - [Add the AutoML pipeline as a Pipeline Definition](#add-the-automl-pipeline-as-a-pipeline-definition)
-  - [Run AutoML with the required inputs](#run-automl-with-the-required-inputs)
-  - [View the leaderboard](#view-the-leaderboard)
-  - [Predictor Notebook](#predictor-notebook)
-  - [Model Registry](#model-registry)
-  - [AutoGluon ServingRuntime with KServe preparation](#autogluon-servingruntime-with-kserve-preparation)
-  - [Model Deployment](#model-deployment)
-  - [Deployment Scoring](#deployment-scoring)
+  - [Create the S3 connection for results storage](#-create-the-s3-connection-for-results-storage)
+  - [Attach the connection to the workbench](#-attach-the-connection-to-the-workbench)
+  - [Create an S3 connection for training data](#-create-an-s3-connection-for-training-data)
+  - [Upload the training dataset to S3](#%EF%B8%8F-upload-the-training-dataset-to-s3)
+  - [Add the AutoML pipeline as a Pipeline Definition](#-add-the-automl-pipeline-as-a-pipeline-definition)
+  - [Run AutoML with the required inputs](#%EF%B8%8F-run-automl-with-the-required-inputs)
+  - [View the leaderboard](#-view-the-leaderboard)
+  - [Predictor Notebook](#-predictor-notebook)
+  - [Model Registry](#-model-registry)
+  - [AutoGluon ServingRuntime with KServe preparation](#-autogluon-servingruntime-with-kserve-preparation)
+  - [Model Deployment](#-model-deployment)
+  - [Deployment Scoring](#-deployment-scoring)
 - [References](#references)
 
 ---
@@ -271,7 +271,7 @@ The refit stage writes each top-N model to the pipeline workspace/artifact store
 For the pipeline definition and artifact layout, see the [autogluon_tabular_training_pipeline](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_automl/pipelines/training/automl/autogluon_tabular_training_pipeline) (pipeline name: `autogluon-tabular-training-pipeline`). For more on working with model registries, see [Working with model registries](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2.22/html/working_with_model_registries/working-with-model-registries_model-registry).
 
 
-### 🚀 AutoGluon ServingRuntime with KServe preparation
+### ⚙️ AutoGluon ServingRuntime with KServe preparation
 
 This section describes how to prepare the AutoGluon serving image and **Serving Runtime** on the cluster using KServe. Build the serving image directly on the cluster using OpenShift ImageStream and BuildConfig, then create the Serving Runtime so it is available when you deploy a model.
 
@@ -408,11 +408,11 @@ After the [AutoGluon ServingRuntime](#autogluon-servingruntime-with-kserve-prepa
 
 For more on serving and APIs, see [Deploying models on the single-model serving platform](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform).
 
-### 🚀 Deployment Scoring
+### 🎯 Deployment Scoring
 
 To score the deployed model from outside the cluster, use the **external** inference URL (ensure **Make model deployment available through an external route** is enabled in the deployment’s Advanced settings). In the deployment details, under **Inference endpoint**, copy the external URL and use it in your requests.
 
-Example request (replace the placeholders and send a POST to your deployment’s predict endpoint):
+Example request (replace the placeholders and send a POST to your deployment’s inference (predict) endpoint):
 
 - **`DEPLOYMENT_URL`** — The inference URL from the deployment details (base URL only; the path `/v1/models/<MODEL_NAME>:predict` is appended in the sample).
 - **`MODEL_NAME`** — The resource name of the deployment (used in Kubernetes). Find it in **Deployment details** → **Model deployment** → **Resource name**.
