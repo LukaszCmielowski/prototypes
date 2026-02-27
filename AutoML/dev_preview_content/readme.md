@@ -31,9 +31,8 @@
   - [Predictor Notebook](#predictor-notebook)
   - [Model Registry](#model-registry)
   - [Model Deployment (KServe — Autogluon ensemble on Red Hat OpenShift AI)](#model-deployment-kserve--autogluon-ensemble-on-red-hat-openshift-ai)
-    - [Path A: Build image locally and push to a container registry](#path-a-build-image-locally-and-push-to-a-container-registry)
-    - [Path B: Build image directly on Red Hat OpenShift AI](#path-b-build-image-directly-on-red-hat-openshift-ai)
-    - [Common steps (after the image is in a registry or built on cluster)](#common-steps-after-the-image-is-in-a-registry-or-built-on-cluster)
+    - [Build image directly on Red Hat OpenShift AI](#build-image-directly-on-red-hat-openshift-ai)
+    - [Common steps (after the image is built on cluster)](#common-steps-after-the-image-is-built-on-cluster)
 - [References](#references)
 
 ---
@@ -101,7 +100,7 @@ When an AutoML run completes, you get:
 - **Trained models** — One artifact per top-N model, refitted on the full dataset and ready to use or deploy.
 - **Notebooks** — A generated notebook to load and use the best predictor (predictions, evaluation, etc.).
 
-Artifacts are stored in the artifact store configured for your run (e.g., S3 via your Pipeline Server). For exact artifact paths and layout, see the [pipeline reference](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_automl/pipelines/training/automl/autogluon_tabular_training_pipeline).
+Artifacts are stored in the artifact store configured for your run (e.g., S3 via your Pipeline Server).
 
 ---
 
@@ -263,7 +262,7 @@ The refit stage writes each top-N model to the pipeline workspace/artifact store
 
 | Step | Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **①** | From the OpenShift AI dashboard, go to **Models** → **Model registry** and select your model registry.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **①** | From the OpenShift AI dashboard, go to **AI Hub** → **Registry** → **Model registry** and select your model registry.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | **②** | Click **Register model**. In the **Register model** dialog, under **Model location**, select **Object storage** (S3-compatible).                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **③** | Enter the S3 details for your pipeline artifact store: **Endpoint**, **Bucket**, **Region**, and **Path** to the **model root folder** of one refitted predictor (e.g. the folder `predictor` containing the `_FULL` model files for `LightGBM_BAG_L1_FULL/predictor` or `WeightedEnsemble_L3_FULL/predictor` from your run). You can get the path from the run’s **Artifacts** (inspect the refit task output) or from your artifact store layout. Alternatively, click **Autofill from connection** if you have a connection that can access that bucket and path. |
 | **④** | Enter **Model name** and optional **Description**. Enter **Version name** and set **Source model format** (e.g. custom or the format your registry uses for AutoGluon).                                                                                                                                                                                                                                                                                                                                                                          |
@@ -274,126 +273,18 @@ For the pipeline definition and artifact layout, see the [autogluon_tabular_trai
 
 ### 🚀 Model Deployment (KServe — Autogluon ensemble on Red Hat OpenShift AI)
 
-This section describes how to deploy an Autogluon ensemble on the cluster using KServe. You can obtain the serving image in one of two ways; both paths then converge to creating a **Serving Runtime** and deploying the model.
+This section describes how to deploy an Autogluon ensemble on the cluster using KServe. Build the serving image directly on the cluster using OpenShift ImageStream and BuildConfig, then create a **Serving Runtime** and deploy the model.
 
 **Flow overview**
 
-- **Path A:** Build the Docker image locally and push it to a container registry (e.g. Quay). *(Steps described below.)*
-- **Path B:** Build the image directly on the cluster using OpenShift ImageStream and BuildConfig. *(Steps described below.)*
-
-Once the image is available in a registry or on cluster (from Path A or Path B), the steps are the same: **Prepare ServingRuntime YAML** (use the Quay variant or the cluster-built variant) → **create Serving Runtime on the cluster** → **add image-pull credentials** (skip for Path B) → **create a deployment** with your Autogluon model (e.g. from S3).
+1. **Build the image** on the cluster using OpenShift ImageStream and BuildConfig. *(Steps described below.)*
+2. **Prepare ServingRuntime YAML** → **create Serving Runtime on the cluster** → **create a deployment** with your Autogluon model (e.g. from S3). The image is in the internal registry, so you do not need to add image-pull credentials.
 
 ---
 
-#### Path A: Build image locally and push to a container registry
+#### Build image directly on Red Hat OpenShift AI
 
-**Prerequisite: KServe repository**
-
-To build the image you need the repository that contains the Dockerfile and the directories copied into the image (`kserve`, `storage`, `autogluonserver`, `third_party`, and related files). Clone the repository:
-
-```bash
-git clone https://github.com/LukaszCmielowski/kserve
-cd kserve
-```
-
-The Dockerfile is located at `python/autogluon.Dockerfile`; the build must be run from the **repository root** so that the `COPY` instructions can find the `kserve`, `storage`, `autogluonserver`, and `third_party` directories.
-
-**Dockerfile reference**
-
-Build the image from a Dockerfile like the following (it is available in the cloned repo as `python/autogluon.Dockerfile`). It uses Python 3.11, installs KServe and storage dependencies, then the Autogluon server. Use it in the build command in step 1.
-
-```dockerfile
-ARG PYTHON_VERSION=3.12
-ARG BASE_IMAGE=python:${PYTHON_VERSION}-slim
-ARG VENV_PATH=/prod_venv
-
-FROM ${BASE_IMAGE} AS builder
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends python3-dev curl build-essential && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install uv
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-    ln -s /root/.local/bin/uv /usr/local/bin/uv
-
-# Create virtual environment
-ARG VENV_PATH
-ENV VIRTUAL_ENV=${VENV_PATH}
-RUN uv venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-# ========== Install kserve dependencies ==========
-COPY kserve/pyproject.toml kserve/uv.lock kserve/
-RUN cd kserve && uv sync --active --no-cache
-
-COPY kserve kserve
-RUN cd kserve && uv sync --active --no-cache
-
-# ========== Install kserve storage dependencies ==========
-COPY storage/pyproject.toml storage/uv.lock storage/
-RUN cd storage && uv sync --active --no-cache
-
-COPY storage storage
-RUN cd storage && uv pip install . --no-cache
-
-# ========== Install autogluonserver dependencies ==========
-COPY autogluonserver autogluonserver
-RUN cd autogluonserver && uv sync --active --no-cache
-
-# Generate third-party licenses
-COPY pyproject.toml pyproject.toml
-COPY third_party/pip-licenses.py pip-licenses.py
-
-RUN pip install --no-cache-dir tomli
-RUN mkdir -p third_party/library && python3 pip-licenses.py
-
-# =================== Final stage ===================
-FROM ${BASE_IMAGE} AS prod
-
-# Runtime deps for AutoGluon backends (LightGBM, XGBoost, etc.) that use OpenMP
-RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-COPY third_party third_party
-
-# Activate virtual env
-ARG VENV_PATH
-ENV VIRTUAL_ENV=${VENV_PATH}
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-RUN useradd kserve -m -u 1000 -d /home/kserve
-
-COPY --from=builder --chown=kserve:kserve third_party third_party
-COPY --from=builder --chown=kserve:kserve $VIRTUAL_ENV $VIRTUAL_ENV
-COPY --from=builder kserve kserve
-COPY --from=builder storage storage
-COPY --from=builder autogluonserver autogluonserver
-
-USER 1000
-ENV PYTHONPATH=/autogluonserver
-ENTRYPOINT ["python", "-m", "autogluonserver"]
-```
-
-1. **Build the Docker image** from the root of the cloned [KServe repository](https://github.com/LukaszCmielowski/kserve) (where `python/autogluon.Dockerfile` and the `kserve`, `storage`, and `autogluonserver` directories exist). Use `-t` with the full image URL so you can push without a separate tag step. Run:
-
-   ```bash
-   nerdctl -n k8s.io build --platform linux/amd64 -f python/autogluon.Dockerfile -t quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest .
-   ```
-
-   Replace `quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest` with your registry and image name. Alternatively, use `docker build` with the same `-f` and `-t` values.
-
-2. **Push the image** to your container registry:
-
-   ```bash
-   nerdctl -n k8s.io push quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest
-   ```
-
-   Use the same image URL in the ServingRuntime YAML in the next section (`PATH_TO_YOUR_QUAY_IMAGE`).
-
-#### Path B: Build image directly on Red Hat OpenShift AI
-
-When you build the image on the cluster instead of pulling it from Quay, use the OpenShift Builds flow and then a Serving Runtime that points to the internal image registry. Use the same project/namespace for the build and for the Serving Runtime (e.g. `automl-project`).
+Use the OpenShift Builds flow to build the image on the cluster, then a Serving Runtime that points to the internal image registry. Use the same project/namespace for the build and for the Serving Runtime (e.g. `automl-project`).
 
 **1. Create ImageStream**
 
@@ -438,20 +329,19 @@ spec:
 
 OpenShift will start a build. Wait for the build to complete (e.g. in **Builds** → **Builds**). The image will be available in the internal registry as `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use your project namespace, e.g. `automl-project`).
 
-After the image is built, follow the **Common steps** below; for Path B use the **Serving Runtime YAML for cluster-built image** and you can skip adding image-pull credentials for that image.
+After the image is built, follow the **Common steps** below. You can skip adding image-pull credentials because the image is in the internal registry.
 
 ---
 
-#### Common steps (after the image is in a registry or built on cluster)
+#### Common steps (after the image is built on cluster)
 
-The following steps apply whether the image was built locally (Path A) or on OpenShift (Path B). Start with **Prepare ServingRuntime YAML**.
+The following steps apply after building the image on OpenShift. Start with **Prepare ServingRuntime YAML**.
 
 ##### Prepare ServingRuntime YAML
 
-Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` according to how you obtained the image:
+Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` to the cluster-built image:
 
-- **Path A (Quay):** `quay.io/<YOUR_QUAY_USERNAME>/kserve-autogluonserver:latest`
-- **Path B (build on cluster):** `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use the same namespace as above)
+- `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use the same namespace as where you built the image, e.g. `automl-project`)
 
 ```yaml
 apiVersion: serving.kserve.io/v1alpha1
@@ -496,7 +386,7 @@ spec:
           memory: 2Gi
 ```
 
-Replace `{SERVING_IMAGE}` and `{NAMESPACE}` with the values for your scenario (see list above).
+Replace `{SERVING_IMAGE}` with the image URL above and `{NAMESPACE}` with your project namespace.
 
 ##### Create the Serving Runtime on OpenShift
 
@@ -509,7 +399,7 @@ Replace `{SERVING_IMAGE}` and `{NAMESPACE}` with the values for your scenario (s
 
 ##### Add credentials so the cluster can pull the image
 
-*If you used Path B (image built on the cluster in the same project), the image is in the internal registry and you can skip this step.*
+*The image is built on the cluster (see above), so it is in the internal registry and you can skip this step.*
 
 1. Log in to the Red Hat OpenShift Console.
 2. Go to **Workloads** → **Secrets** → **Create** → **Image pull secret**.
