@@ -231,7 +231,7 @@ The notebook is saved under `model_artifact.path` / `model_name_FULL` / `noteboo
 
 | Step | Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **①** | After the AutoML run completes, open the run details and go to **Artifacts** (same as in [View the leaderboard](#view-the-leaderboard)). Locate the **autogluon-models-full-refit** output for the task that produced the model you want. Under that task’s `model_artifact` path, open the folder named with the refitted model (e.g. `LightGBM_BAG_L1_FULL` or `WeightedEnsemble_L3_FULL`), then the **notebooks** subfolder, and find the generated notebook (e.g. `automl_predictor_notebook.ipynb`). |
+| **①** | After the AutoML run completes, open the run details and go to **Artifacts** (same as in [View the leaderboard](#-view-the-leaderboard)). Locate the **autogluon-models-full-refit** output for the task that produced the model you want. Under that task’s `model_artifact` path, open the folder named with the refitted model (e.g. `LightGBM_BAG_L1_FULL` or `WeightedEnsemble_L3_FULL`), then the **notebooks** subfolder, and find the generated notebook (e.g. `automl_predictor_notebook.ipynb`). |
 | **②** | **Download** the notebook to your local machine: use the **Download** action in the Pipelines UI for that artifact, or download it from the artifact store (S3) if you have access (e.g. via the workbench S3 connection from 7.2 and 7.3). The notebook is under a path like `...<run_id>/autogluon-models-full-refit/<task_id>/model_artifact/<model_name_FULL>/notebooks/automl_predictor_notebook.ipynb` (see the [autogluon_models_full_refit component](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_automl/components/training/automl/autogluon_models_full_refit) for the exact layout). |
 | **③** | Open your **workbench** (the notebook environment you created in 7.1). In JupyterLab, click the **Upload** button (upload icon) in the File Browser sidebar, select the downloaded `.ipynb` file, and upload it. The notebook appears in your workbench file tree.                                                                                                                                                                                                                                                                                                     |
 | **④** | Open the notebook and **run** it cell by cell. Ensure the workbench has access to the same S3 bucket (or the path configured in the notebook) so it can load the AutoGluon predictor and any data the notebook expects. Attach the results S3 connection to the workbench if you have not already (see 7.3).                                                                                                                                                                                                                                                           |
@@ -278,7 +278,7 @@ This section describes how to prepare the AutoGluon serving image and **Serving 
 **Flow overview**
 
 1. **Build the image** on the cluster using OpenShift ImageStream and BuildConfig. *(Steps described below.)*
-2. **Prepare ServingRuntime YAML** and **create the Serving Runtime** on the cluster. The image is in the internal registry, so you do not need to add image-pull credentials. After this, the runtime is ready for [Model Deployment](#model-deployment).
+2. **Prepare ServingRuntime YAML** and **create the Serving Runtime** on the cluster. The image is in the internal registry, so you do not need to add image-pull credentials. After this, the runtime is ready for [Model Deployment](#-model-deployment).
 
 ---
 
@@ -391,7 +391,7 @@ Replace `{SERVING_IMAGE}` with the image URL above and `{NAMESPACE}` with your p
 
 ### 🚀 Model Deployment
 
-After the [AutoGluon ServingRuntime](#autogluon-servingruntime-with-kserve-preparation) is created, deploy your AutoGluon model (e.g. from an AutoML run) so it is available for inference. This assumes the model is stored in S3.
+After the [AutoGluon ServingRuntime](#%EF%B8%8F-autogluon-servingruntime-with-kserve-preparation) is created, deploy your AutoGluon model (e.g. from an AutoML run) so it is available for inference. This assumes the model is stored in S3.
 
 1. In the left menu: **AI hub** → **Deployments** → **Deploy model**.
 2. Under **Model location**, choose **S3 object storage**.
@@ -404,7 +404,7 @@ After the [AutoGluon ServingRuntime](#autogluon-servingruntime-with-kserve-prepa
 9. Under **Serving runtime**, choose **Select from list…** → **AutoGluon ServingRuntime for KServe**.
 10. Click **Next** → **Deploy model**.
 
-> **Note:** When creating or editing the deployment, you can configure **Advanced settings** to control access and reachability—for example, **Require token authentication** for secured access, or **Make model deployment available through an external route** so you can call the model from outside the cluster (e.g. for scoring from your laptop or another service). After the deployment is running, use the inference endpoint URL from the deployment details. See [Deployment Scoring](#deployment-scoring) for an example request.
+> **Note:** When creating or editing the deployment, you can configure **Advanced settings** to control access and reachability—for example, **Require token authentication** for secured access, or **Make model deployment available through an external route** so you can call the model from outside the cluster (e.g. for scoring from your laptop or another service). After the deployment is running, use the inference endpoint URL from the deployment details. See [Deployment Scoring](#-deployment-scoring) for an example request.
 
 For more on serving and APIs, see [Deploying models on the single-model serving platform](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform).
 
