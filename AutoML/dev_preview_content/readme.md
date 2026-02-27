@@ -20,7 +20,7 @@
 - [Prerequisites](#prerequisites)
 - [Running AutoML](#running-automl)
 - [Tutorial: Predict the Customer Churn](#tutorial-predict-the-customer-churn)
-  - [Create a new project and workbench](#create-a-new-project-and-workbench)
+  - [Create a new project and workbench](#%EF%B8%8F-create-a-new-project-and-workbench)
   - [Create the S3 connection for results storage](#create-the-s3-connection-for-results-storage)
   - [Attach the connection to the workbench](#attach-the-connection-to-the-workbench)
   - [Create an S3 connection for training data](#create-an-s3-connection-for-training-data)
