@@ -30,7 +30,7 @@
   - [View the leaderboard](#-view-the-leaderboard)
   - [Predictor Notebook](#-predictor-notebook)
   - [Model Registry](#-model-registry)
-  - [AutoGluon ServingRuntime with KServe preparation](#-autogluon-servingruntime-with-kserve-preparation)
+  - [AutoGluon ServingRuntime with KServe preparation](#%EF%B8%8F-autogluon-servingruntime-with-kserve-preparation)
   - [Model Deployment](#-model-deployment)
   - [Deployment Scoring](#-deployment-scoring)
 - [References](#references)
@@ -329,7 +329,7 @@ spec:
 
 OpenShift will start a build. Wait for the build to complete (e.g. in **Builds** → **Builds**). The image will be available in the internal registry as `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use your project namespace, e.g. `automl-project`).
 
-##### Prepare ServingRuntime YAML
+#### Prepare ServingRuntime YAML
 
 Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` to the cluster-built image:
 
@@ -380,7 +380,7 @@ spec:
 
 Replace `{SERVING_IMAGE}` with the image URL above and `{NAMESPACE}` with your project namespace.
 
-##### Create the Serving Runtime on OpenShift
+#### Create the Serving Runtime on OpenShift
 
 1. Log in to the Red Hat OpenShift AI cluster.
 2. In the left menu: **Settings** → **Model resources and operations** → **Serving runtimes** → **Add serving runtime** → **Upload files**.
