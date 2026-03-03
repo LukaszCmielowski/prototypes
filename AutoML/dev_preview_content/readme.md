@@ -333,9 +333,11 @@ OpenShift will start a build. Wait for the build to complete (e.g. in **Builds**
 
 #### Prepare ServingRuntime YAML
 
-Create a YAML file for the KServe Serving Runtime. Set `metadata.namespace` to your project (e.g. `automl-project`). Set `image` to the cluster-built image:
-
-- `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use the same namespace as where you built the image, e.g. `automl-project`)
+Create a YAML file for the KServe Serving Runtime. Set:
+- `metadata.namespace` to your project name (e.g. `automl-project`),
+- `spec.containers[0].image` to the cluster-built image: `image-registry.openshift-image-registry.svc:5000/<namespace>/autogluonkserveimagev1:latest` (use the same namespace as where you built the image, e.g. `automl-project`).
+You can also change:
+- `metadata.annotations.openshift.io/display-name` to make name on UI more distinguishable
 
 ```yaml
 apiVersion: serving.kserve.io/v1alpha1
@@ -395,7 +397,7 @@ Replace `{SERVING_IMAGE}` with the image URL above and `{NAMESPACE}` with your p
 
 After the [AutoGluon ServingRuntime](#%EF%B8%8F-autogluon-servingruntime-with-kserve-preparation) is created, deploy your AutoGluon model (e.g. from an AutoML run) so it is available for inference. This assumes the model is stored in S3.
 
-1. In the left menu: **AI hub** → **Deployments** → **Deploy model**.
+1. In the left menu: **Projects** → ***Your Project*** → **Deployments** → **Deploy model**.
 2. Under **Model location**, choose **S3 object storage**.
 3. Create a new connection or use an existing one and fill in the S3 credentials and path to the model.
 4. Fill in all required fields (bucket, path, etc.).
@@ -404,21 +406,23 @@ After the [AutoGluon ServingRuntime](#%EF%B8%8F-autogluon-servingruntime-with-ks
 7. In **Model deployment name**, enter the model name under which the model should be available for inference.
 8. Under **Model framework**, select **autogluon - 1**.
 9. Under **Serving runtime**, choose **Select from list…** → **AutoGluon ServingRuntime for KServe**.
-10. Click **Next** → **Deploy model**.
+10. Click **Next**.
+11. You can configure **Advanced settings** to control access and reachability—for example, **Require token authentication** for secured access, or **Make model deployment available through an external route**, so you can call the model from outside the cluster (e.g. for scoring from your laptop or another service).
+12. Click **Next**.
+13. Review configuration and click **Deploy model**.
+14. After the deployment is running, use the inference endpoint URL from the deployment details. See [Deployment Scoring](#-deployment-scoring) for an example request.
 
-> **Note:** When creating or editing the deployment, you can configure **Advanced settings** to control access and reachability—for example, **Require token authentication** for secured access, or **Make model deployment available through an external route** so you can call the model from outside the cluster (e.g. for scoring from your laptop or another service). After the deployment is running, use the inference endpoint URL from the deployment details. See [Deployment Scoring](#-deployment-scoring) for an example request.
-
-For more on serving and APIs, see [Deploying models on the single-model serving platform](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform).
+For more on serving and APIs, see [Deploying models on the model serving platform](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.2/html/deploying_models/deploying_models#deploying-models-on-the-model-serving-platform_rhoai-user).
 
 ### 🎯 Deployment Scoring
 
-To score the deployed model from outside the cluster, use the **external** inference URL (ensure **Make model deployment available through an external route** is enabled in the deployment’s Advanced settings). In the deployment details, under **Inference endpoint**, copy the external URL and use it in your requests.
+To score the deployed model from outside the cluster, use the **External** inference URL (ensure **Make model deployment available through an external route** is enabled in the deployment’s Advanced settings). In the deployment details, under **Inference endpoint**, copy the external URL and use it in your requests.
 
 Example request (replace the placeholders and send a POST to your deployment’s inference (predict) endpoint):
 
 - **`DEPLOYMENT_URL`** — The inference URL from the deployment details (base URL only; the path `/v1/models/<MODEL_NAME>:predict` is appended in the sample).
 - **`MODEL_NAME`** — The resource name of the deployment (used in Kubernetes). Find it in **Deployment details** → **Model deployment** → **Resource name**.
-- **`YOUR_TOKEN`** — The service account token, only if you enabled **Require token authentication** in Advanced settings. If you did not, remove the `-H "Authorization: Bearer <YOUR_TOKEN>"` line from the command. 
+- **`YOUR_TOKEN`** — The service account token, only if you enabled **Require token authentication** in Advanced settings. You can retrieve it, by going to **Projects** → ***Your Project*** → **Deployments**, then expanding your deployment and getting value of `Token secret` for available token. If you did not enable authentication, remove the `-H "Authorization: Bearer <YOUR_TOKEN>"` line from the command.
    ```bash
    curl -X POST \
    "<DEPLOYMENT_URL>/v1/models/<MODEL_NAME>:predict" \
@@ -451,13 +455,13 @@ Example request (replace the placeholders and send a POST to your deployment’s
    }'
    ```
 
-   Reference for more info about v1 protocol: [KServe V1 Protocol](https://kserve.github.io/website/docs/concepts/architecture/data-plane/v1-protocol)
+  Reference for more info about v1 protocol: [KServe V1 Protocol](https://kserve.github.io/website/docs/concepts/architecture/data-plane/v1-protocol)
 ---
 
 ## References
 
-- [KServe (LukaszCmielowski/kserve)](https://github.com/LukaszCmielowski/kserve) — repository containing the Dockerfile (`python/autogluon.Dockerfile`) and directories (`kserve`, `storage`, `autogluonserver`, `third_party`) required to build the AutoGluon serving image for Model Deployment (Section 7.11)
+- [KServe (LukaszCmielowski/kserve)](https://github.com/LukaszCmielowski/kserve) — repository containing the Dockerfile (`python/autogluon.Dockerfile`) and directories (`kserve`, `storage`, `autogluonserver`, `third_party`) required to build the AutoGluon serving image for Model Deployment
 - [AutoGluon](https://github.com/autogluon/autogluon) — AutoML engine used for training and ensembling
-- [Deploying models on the single-model serving platform (Red Hat OpenShift AI)](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_cloud_service/1/html/deploying_models/deploying_models_on_the_single_model_serving_platform) — register and serve models after AutoML
+- [Deploying models on the model serving platform](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.2/html/deploying_models/deploying_models#deploying-models-on-the-model-serving-platform_rhoai-user) — register and serve models after AutoML
 - [AutoGluon tabular training pipeline (pipelines-components, branch rhoai_automl)](https://github.com/LukaszCmielowski/pipelines-components/tree/rhoai_automl/pipelines/training/automl/autogluon_tabular_training_pipeline) — implementation reference (pipeline source, parameters, KFP version)
 - [KServe V1 Protocol](https://kserve.github.io/website/docs/concepts/architecture/data-plane/v1-protocol) — request/response format and endpoints for `/v1/models/{model_name}:predict`
