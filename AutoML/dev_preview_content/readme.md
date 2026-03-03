@@ -313,7 +313,7 @@ spec:
     type: Git
     git:
       uri: https://github.com/LukaszCmielowski/kserve
-      ref: dev-autogluon-server
+      ref: dev-autogluon-server-rhoai
     contextDir: python
   strategy:
     type: Docker
