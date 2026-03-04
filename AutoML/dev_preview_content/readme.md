@@ -1,8 +1,8 @@
-# AutoML (Developer Preview)
+# AutoML
 
 **AutoML** on Red Hat OpenShift AI automates building and comparing machine learning models for **tabular data**. You can provide a dataset and the target you want to predict; AutoML trains many model types, ranks them, and gives you a leaderboard so you can choose a model and optionally register or deploy it without writing training code. See [Example scenarios](#example-scenarios) for typical use cases and a step-by-step tutorial.
 
-**Status:** Developer Preview — This feature is not yet supported with Red Hat production service level agreements (SLAs) and may change. It provides early access for testing and feedback.
+**Status:** [Developer Preview](https://access.redhat.com/support/offerings/devpreview) — This feature is not yet supported with Red Hat production service level agreements (SLAs) and may change. It provides early access for testing and feedback.
 
 ---
 
