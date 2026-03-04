@@ -209,7 +209,6 @@ Create a second connection that points to the bucket where you will store the **
 |------|--------|
 | **①** | From **Pipelines**, create a new pipeline run using **Pipeline definitions → ⋮ → Create run** for the AutoML pipeline you added. |
 | **②** | Set the **Name** of the pipeline run and run parameters (see section **What you need to provide** for what each means): **train_data_secret_name** (connection name from **Create an S3 connection for training data - ②**), **train_data_bucket_name** (bucket from **Create an S3 connection for training data - ③**), **train_data_file_key** (e.g. `data/WA_FnUseC_TelcoCustomerChurn.csv`), **label_column** `Churn`, **task_type** `binary`, **top_n** `3` (or another positive integer). If the UI asks for an experiment or run name, set them as run metadata. |
-
 | **③** | Ensure the Pipeline Server is configured with the results S3 connection from section **Create S3 connection for results storage**, so artifacts are stored in the expected bucket. |
 | **④** | Start the run via **Create run** and wait for it to complete. |
 
