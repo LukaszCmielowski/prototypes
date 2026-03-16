@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReAct agent — DSPy mock UI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html" class="active">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Agent with tools (ReAct)</h1>
+      <p class="muted">Define tools; the model reasons and calls tools until it returns a final answer.</p>
+
+      <div class="card">
+        <h3>ReAct block</h3>
+        <label>Signature</label>
+        <input type="text" value="task -> answer" style="max-width:280px; margin-bottom:1rem;">
+        <label>Max iterations</label>
+        <input type="text" value="10" style="max-width:80px; margin-bottom:1rem;">
+        <p class="muted" style="font-size:13px;">Model: RHOAI (from Connection).</p>
+      </div>
+
+      <div class="card">
+        <h3>Tools</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Add tools the agent can call. Optional: register from MCP server or OpenAPI.</p>
+        <div class="tool-row">
+          <input type="text" placeholder="Tool name" value="search">
+          <input type="text" placeholder="Description" value="Search the web for information">
+          <button class="btn btn-secondary">Remove</button>
+        </div>
+        <div class="tool-row">
+          <input type="text" placeholder="Tool name" value="calculator">
+          <input type="text" placeholder="Description" value="Evaluate a math expression">
+          <button class="btn btn-secondary">Remove</button>
+        </div>
+        <button class="btn btn-secondary" style="margin-top:0.5rem;">+ Add tool</button>
+        <button class="btn btn-secondary" style="margin-top:0.5rem; margin-left:0.5rem;">Import from MCP</button>
+      </div>
+
+      <div class="card">
+        <h3>Data & run</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Eval set: (task, gold_answer). Metric: final answer match.</p>
+        <button class="btn btn-secondary">Upload eval set</button>
+        <button class="btn btn-primary" style="margin-left:0.5rem;">Run baseline vs optimized</button>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — Agent with tools (section 4.4).</p>
+    </main>
+  </div>
+</body>
+</html>

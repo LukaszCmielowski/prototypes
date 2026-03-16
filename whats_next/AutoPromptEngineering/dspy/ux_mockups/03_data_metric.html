@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data & metric — DSPy prompt optimization (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html" class="active">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Training & dev data, metric, optimizer</h1>
+      <p class="muted">Training set = for compile; dev set = for leaderboard (DSPy: ~20% train / ~80% dev). Choose metric and optimizer.</p>
+
+      <div class="stepper">
+        <span class="step done">Connection</span>
+        <span class="step done">Task type</span>
+        <span class="step current">Data & metric</span>
+        <span class="step">Run & leaderboard</span>
+        <span class="step">Export</span>
+      </div>
+
+      <div class="card">
+        <h3>Training set (for compile)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Used by optimizer. Recommended: ~20% of data, min ~30 examples. Columns depend on task type (e.g. QA: question, answer; RAG: context, question, answer; Summarization: document, summary; Sentiment: sentence, sentiment).</p>
+        <p class="muted" style="margin-bottom:0.75rem;">Preview — 3 rows (Simple QA). Upload CSV/JSON or paste.</p>
+        <table>
+          <thead>
+            <tr><th>#</th><th>question</th><th>answer</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>What is 2 + 2?</td><td>4</td></tr>
+            <tr><td>2</td><td>What is the capital of Italy?</td><td>Rome</td></tr>
+            <tr><td>3</td><td>How many continents are there?</td><td>7</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:0.75rem;">
+          <button class="btn btn-secondary">Upload file</button>
+          <button class="btn btn-secondary">Validate data</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Dev set (for leaderboard)</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Used to evaluate baseline vs optimized. ~80% of data. Option: Use same set as training (POC).</p>
+        <label><input type="checkbox" checked> Use same set as training for POC</label>
+      </div>
+
+      <div class="card">
+        <h3>Optimizer</h3>
+        <label>Compiler</label>
+        <select style="max-width:280px; margin-bottom:0.5rem;">
+          <option>BootstrapFewShot</option>
+          <option>MIPRO</option>
+        </select>
+        <p class="muted" style="font-size:13px;">Optional: max_bootstrapped_demos, max_labeled_demos (advanced).</p>
+      </div>
+
+      <div class="card">
+        <h3>Metric</h3>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer;">
+          <input type="radio" name="metric" checked style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Exact match (case-insensitive)</strong><br>
+            <span class="muted">Score 1 if predicted answer equals gold answer, else 0.</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; margin-top:0.75rem;">
+          <input type="radio" name="metric" style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Contains gold answer</strong><br>
+            <span class="muted">Score 1 if prediction contains the gold answer. (Future)</span>
+          </div>
+        </label>
+        <div style="margin-top:1.25rem;">
+          <button class="btn btn-primary">Next → Run optimization</button>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

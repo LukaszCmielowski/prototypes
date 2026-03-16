@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run & trace — AutoGluon ReAct agent (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoML ReAct agent</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_select_model.html">Select model</a>
+      <a href="02_agent_config.html">Agent config</a>
+      <a href="03_chat.html">Chat</a>
+      <a href="04_tools_mcp.html">Tools (MCP)</a>
+      <a href="05_run_trace.html" class="active">Run & trace</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Run & trace</h1>
+      <p class="muted">Inspect the ReAct trace: thought → tool call → observation → next step. Linked from Chat.</p>
+
+      <div class="card">
+        <h3>Trace</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">ReAct steps: thought → action (tool + args) → observation.</p>
+        <div style="border:1px solid var(--border); border-radius:6px; overflow:hidden;">
+          <div style="padding:0.75rem 1rem; background:#f3f4f6; border-bottom:1px solid var(--border);">
+            <strong>Step 1 — Thought</strong>
+          </div>
+          <div style="padding:1rem;" class="mono">
+            I need the leaderboard first, then I can get the top model and run a prediction for customer 42.
+          </div>
+          <div style="padding:0.75rem 1rem; background:#f3f4f6; border-bottom:1px solid var(--border);">
+            <strong>Step 2 — Action</strong>
+          </div>
+          <div style="padding:1rem;" class="mono">
+            get_leaderboard(experiment_id="churn_classifier")
+          </div>
+          <div style="padding:0.75rem 1rem; background:#f3f4f6; border-bottom:1px solid var(--border);">
+            <strong>Observation</strong>
+          </div>
+          <div style="padding:1rem;" class="mono">
+            #1 WeightedEnsemble_L2 94.0% | #2 LightGBM_BAG_L1 92.7%
+          </div>
+          <div style="padding:0.75rem 1rem; background:#f3f4f6; border-bottom:1px solid var(--border);">
+            <strong>Step 3 — Thought</strong>
+          </div>
+          <div style="padding:1rem;" class="mono">
+            Fetching prediction for customer 42 using predict_churn.
+          </div>
+          <div style="padding:0.75rem 1rem; background:#f3f4f6; border-bottom:1px solid var(--border);">
+            <strong>Step 4 — Action</strong>
+          </div>
+          <div style="padding:1rem;" class="mono">
+            predict_churn(features={"id": 42, "tenure": 24, ...})
+          </div>
+          <div style="padding:0.75rem 1rem; background:#f3f4f6;">
+            <strong>Observation</strong>
+          </div>
+          <div style="padding:1rem;" class="mono">
+            {"prediction": "churn", "probability": 0.82}
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Final answer</h3>
+        <div style="padding:1rem; background:var(--bg); border-radius:6px;">
+          For customer 42, the churn model predicts <strong>churn</strong> with probability 0.82. The top model on the churn_classifier leaderboard is WeightedEnsemble_L2 (94.0%).
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <a href="03_chat.html" class="btn btn-secondary">Back to chat</a>
+      </div>
+
+      <p class="muted" style="font-size:12px; margin-top:1rem;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

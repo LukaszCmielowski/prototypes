@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoGluon ReAct agent (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .screens { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .screens a { display: block; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); }
+    .screens a:hover { border-color: var(--primary); background: #eff6ff; }
+    .screens a strong { display: block; margin-bottom: 0.25rem; }
+    .screens a span { font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoML ReAct agent</h2>
+      <a href="index.html" class="active">All screens</a>
+      <a href="01_select_model.html">Select model</a>
+      <a href="02_agent_config.html">Agent config</a>
+      <a href="03_chat.html">Chat</a>
+      <a href="04_tools_mcp.html">Tools (MCP)</a>
+      <a href="05_run_trace.html">Run & trace</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">AutoGluon ReAct agent</h1>
+      <p class="muted">Mock UI for a <strong>ReAct-style agent</strong> that uses <strong>AutoGluon models as predictor tools</strong>: select model(s) from experiments → configure LLM and tools → chat. Optional: Tools (MCP) and Run & trace.</p>
+
+      <div class="card">
+        <h3>Main flow</h3>
+        <div class="screens">
+          <a href="01_select_model.html"><strong>1. Select model</strong><span>Pick AutoGluon model(s) from experiments as tools</span></a>
+          <a href="02_agent_config.html"><strong>2. Agent config</strong><span>LLM connection, predictor tools table, max steps</span></a>
+          <a href="03_chat.html"><strong>3. Chat</strong><span>Ask questions; agent calls tools when needed</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Additional screens</h3>
+        <div class="screens">
+          <a href="04_tools_mcp.html"><strong>4. Tools (MCP)</strong><span>Tool list, descriptions, input schema</span></a>
+          <a href="05_run_trace.html"><strong>5. Run & trace</strong><span>Thought → tool → observation</span></a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">See <a href="README.md">README.md</a> for context. Design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

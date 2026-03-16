@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProgramOfThought — DSPy mock UI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html" class="active">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Code reasoning (ProgramOfThought)</h1>
+      <p class="muted">Model writes and runs Python code to answer the question; optional retries on error.</p>
+
+      <div class="card">
+        <h3>ProgramOfThought block</h3>
+        <label>Interpreter</label>
+        <select style="max-width:280px; margin-bottom:1rem;">
+          <option>Sandboxed Python (default)</option>
+          <option>Custom interpreter</option>
+        </select>
+        <label>Max retries on error</label>
+        <input type="text" value="3" style="max-width:80px; margin-bottom:1rem;">
+        <p class="muted" style="font-size:13px;">Internal steps: generate code → execute → (regenerate on error) → answer.</p>
+      </div>
+
+      <div class="card">
+        <h3>Data & run</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Eval set: (question, gold_answer). Metric: answer match.</p>
+        <button class="btn btn-secondary">Upload eval set</button>
+        <button class="btn btn-primary" style="margin-left:0.5rem;">Run baseline vs optimized</button>
+      </div>
+
+      <div class="card">
+        <h3>Last run (example)</h3>
+        <p class="section-label">Generated code</p>
+        <pre class="mono" style="display:block; padding:0.75rem; white-space:pre-wrap; font-size:11px;">def solve():
+    return 2 + 2
+print(solve())</pre>
+        <p class="section-label" style="margin-top:0.75rem;">Execution result</p>
+        <div class="mono" style="display:block; padding:0.75rem;">4</div>
+        <p class="section-label" style="margin-top:0.75rem;">Answer</p>
+        <div class="mono" style="display:block; padding:0.75rem;">4</div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — Code reasoning (section 4.5).</p>
+    </main>
+  </div>
+</body>
+</html>

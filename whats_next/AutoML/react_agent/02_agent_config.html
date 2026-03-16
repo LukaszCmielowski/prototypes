@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent config — AutoGluon ReAct agent (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoML ReAct agent</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_select_model.html">Select model</a>
+      <a href="02_agent_config.html" class="active">Agent config</a>
+      <a href="03_chat.html">Chat</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">ReAct agent config</h1>
+      <p class="muted">Configure the LLM and predictor tools. The agent will reason over the user's question and call the right AutoGluon model(s) when it needs a prediction — you can register multiple models from different experiments.</p>
+
+      <div class="stepper">
+        <span class="step done">Select model</span>
+        <span class="step current">Agent config</span>
+        <span class="step">Chat</span>
+      </div>
+
+      <div class="card">
+        <h3>LLM connection</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Model used for reasoning and deciding when to call the predictor tool.</p>
+        <label>Endpoint (RHOAI)</label>
+        <input type="url" value="https://api.example.com/v1" style="margin-bottom:0.75rem;">
+        <label>Model</label>
+        <select style="max-width:280px;">
+          <option>llama-3.1-70b</option>
+          <option>granite-20b</option>
+        </select>
+      </div>
+
+      <div class="card">
+        <h3>Predictor tools</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">AutoGluon models from previous step — each from a different experiment. The agent chooses which tool to call based on the user's question.</p>
+        <table>
+          <thead>
+            <tr><th>Tool name</th><th>Description</th><th>Model / experiment</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="mono">predict_demand</span></td>
+              <td>Run demand forecast model. Input: feature dict or natural language.</td>
+              <td>WeightedEnsemble_L2 (demand_forecast_2025-02)</td>
+            </tr>
+            <tr>
+              <td><span class="mono">predict_churn</span></td>
+              <td>Run churn classifier. Input: feature dict or natural language.</td>
+              <td>WeightedEnsemble_L2 (churn_classifier)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:0.75rem; font-size:13px;">Optional: add more predictor models (different experiments) or other tools (e.g. search, calculator).</p>
+        <button class="btn btn-secondary" style="margin-top:0.5rem;">+ Add model from experiment</button>
+        <button class="btn btn-secondary" style="margin-top:0.5rem; margin-left:0.5rem;">+ Add other tool</button>
+      </div>
+
+      <div class="card">
+        <h3>Agent behavior</h3>
+        <label>Max reasoning steps</label>
+        <input type="number" value="10" style="max-width:80px; margin-bottom:1rem;">
+        <p class="muted" style="font-size:13px;">Maximum tool calls + reasoning turns before returning an answer.</p>
+        <div style="margin-top:1rem;">
+          <a href="01_select_model.html" class="btn btn-secondary">Back</a>
+          <a href="03_chat.html" class="btn btn-primary">Start chat</a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

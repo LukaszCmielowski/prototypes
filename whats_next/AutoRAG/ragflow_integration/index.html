@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoRAG + open-source RAG backends — Mock UI</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hero { margin-bottom: 1.5rem; }
+    .hero p { max-width: 620px; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoRAG integration</h2>
+      <a href="index.html" class="active">Overview</a>
+      <a href="01_connect_backend.html">Connect backend</a>
+      <a href="02_pipeline_to_backend.html">Pipeline → backend</a>
+      <a href="03_run_compare.html">Run & compare</a>
+      <a href="04_deploy.html">Deploy</a>
+      <a href="05_open_in_ragflow.html">Open in RAGFlow</a>
+      <a href="06_edit_flow_in_ragflow.html">Edit flow (nodes)</a>
+    </nav>
+    <main class="main">
+      <h1 class="hero" style="margin:0 0 0.5rem;">AutoRAG + RAGFlow / LightRAG / OpenRAG</h1>
+      <p class="muted hero">Use AutoRAG (document loading, chunking, RAG template optimization) with popular open-source RAG engines. Connect a backend, run optimization, then sync or deploy the best config into RAGFlow, LightRAG, or OpenRAG for production.</p>
+
+      <div class="card">
+        <h3>Supported backends</h3>
+        <ul class="muted" style="margin:0; padding-left:1.25rem;">
+          <li><strong>RAGFlow</strong> (infiniflow/ragflow) — RAG + Agent context layer; sync optimized chunks &amp; prompts to a RAGFlow project.</li>
+          <li><strong>LightRAG</strong> (HKUDS/LightRAG) — Simple, fast RAG; export optimized parsing/chunk config for LightRAG ingestion.</li>
+          <li><strong>OpenRAG</strong> (langflow-ai/openrag) — Langflow + Docling + Opensearch; deploy optimized pipeline as OpenRAG-compatible config.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Flow</h3>
+        <div class="screens">
+          <a href="01_connect_backend.html"><strong>1. Connect backend</strong><span>Choose RAGFlow, LightRAG, or OpenRAG; URL + auth</span></a>
+          <a href="02_pipeline_to_backend.html"><strong>2. Pipeline → backend</strong><span>How AutoRAG output maps to the backend</span></a>
+          <a href="03_run_compare.html"><strong>3. Run & compare</strong><span>Run optimization; try queries in the backend</span></a>
+          <a href="04_deploy.html"><strong>4. Deploy</strong><span>Sync or export best config to the backend</span></a>
+          <a href="05_open_in_ragflow.html"><strong>5. Open in RAGFlow</strong><span>Open synced dataset in RAGFlow UI and customize further</span></a>
+          <a href="06_edit_flow_in_ragflow.html"><strong>6. Edit flow (nodes)</strong><span>Node-based flow editor in RAGFlow — add, remove, reconfigure nodes</span></a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Static HTML mockups for design reference. Red Hat OpenShift AI / AutoRAG.</p>
+    </main>
+  </div>
+</body>
+</html>

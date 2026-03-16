@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoGluon + LLM — Gen AI joint experience (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .screens { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .screens a { display: block; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); }
+    .screens a:hover { border-color: var(--primary); background: #eff6ff; }
+    .screens a strong { display: block; margin-bottom: 0.25rem; }
+    .screens a span { font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Gen AI joint experience</h2>
+      <a href="index.html" class="active">Overview</a>
+      <a href="01_configuration.html">Configuration</a>
+      <a href="02_leaderboard.html">Leaderboard</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">AutoGluon + LLM — Gen AI joint experience</h1>
+      <p class="muted">Mock UI for a single experience that combines <strong>predictive AI</strong> (AutoGluon: classification, regression, time-series) and <strong>generative AI</strong> (LLMs). One configuration pane, one leaderboard, same metric.</p>
+
+      <div class="card">
+        <h3>Screens</h3>
+        <div class="screens">
+          <a href="01_configuration.html"><strong>Configuration</strong><span>Task type, AutoGluon + LLM panes, combined mode, data & metric</span></a>
+          <a href="02_leaderboard.html"><strong>Leaderboard</strong><span>Predictive, LLM, and Combined rows ranked together</span></a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">See <a href="README.md">README.md</a> for scenario descriptions and research references. Design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

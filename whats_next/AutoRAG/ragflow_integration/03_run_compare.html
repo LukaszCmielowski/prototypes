@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run & compare — AutoRAG integration (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_backend.html">Connect backend</a>
+      <a href="02_pipeline_to_backend.html">Pipeline → backend</a>
+      <a href="03_run_compare.html" class="active">Run & compare</a>
+      <a href="04_deploy.html">Deploy</a>
+      <a href="05_open_in_ragflow.html">Open in RAGFlow</a>
+      <a href="06_edit_flow_in_ragflow.html">Edit flow (nodes)</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Run optimization & try in backend</h1>
+      <p class="muted">Run the AutoRAG pipeline (e.g. on Kubeflow). Then run the same test queries in the connected RAG backend to compare before/after or different configs.</p>
+
+      <div class="card">
+        <h3>AutoRAG run</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Pipeline: documents-rag-optimization-pipeline. Backend: RAGFlow (ragflow.example.com).</p>
+        <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+          <button class="btn btn-primary">Run pipeline</button>
+          <span class="muted">Last run: 2 hours ago · 5/5 components succeeded</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Results summary</h3>
+        <table>
+          <thead>
+            <tr><th>Run</th><th>Chunk strategy</th><th>Retrieval</th><th>Score (eval)</th><th>Backend</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>run-abc123</td>
+              <td>semantic_500</td>
+              <td>top_k=5, bm25+embed</td>
+              <td><strong>0.82</strong></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>run-def456</td>
+              <td>fixed_300</td>
+              <td>top_k=3, embed</td>
+              <td><strong>0.78</strong></td>
+              <td>Synced to RAGFlow ✓</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:0.75rem; font-size:13px;">Score = same metric on test Q&A set. "Backend" = whether this config was pushed to RAGFlow for side-by-side try.</p>
+      </div>
+
+      <div class="card">
+        <h3>Try query in backend</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Send a test question to the connected RAG backend (RAGFlow) to see answers with the current or synced config.</p>
+        <label>Question</label>
+        <textarea placeholder="e.g. What is the refund policy?" style="min-height:60px; margin-bottom:0.75rem;"></textarea>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <button class="btn btn-primary">Ask in RAGFlow</button>
+          <select style="max-width:220px;">
+            <option>Use latest synced config</option>
+            <option>docs-product-2025 (project)</option>
+          </select>
+        </div>
+        <div style="margin-top:1rem; padding:1rem; background:#f9fafb; border-radius:6px; font-size:13px;">
+          <strong>Response (mock):</strong> Refunds are allowed within 30 days with receipt. Contact support@example.com for processing.
+        </div>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <a href="04_deploy.html" class="btn btn-primary">Deploy best config →</a>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended settings — AutoRAG → OpenRAG (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>OpenRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_openrag.html">Connect OpenRAG</a>
+      <a href="02_map_steps.html">Map steps</a>
+      <a href="03_run_optimization.html">Run optimization</a>
+      <a href="04_recommended_settings.html" class="active">Recommended settings</a>
+      <a href="05_apply_to_openrag.html">Apply to OpenRAG</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Recommended settings for OpenRAG</h1>
+      <p class="muted">Leaderboard of AutoRAG runs ranked by your metric. Each row is a full OpenRAG-compatible config (embedding model, language model, chunk, retrieval). Apply the best — or any row — to your OpenRAG pipeline.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect OpenRAG</span>
+        <span class="step done">Map steps</span>
+        <span class="step done">Run optimization</span>
+        <span class="step current">Recommended settings</span>
+        <span class="step">Apply to OpenRAG</span>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h3 style="margin:0;">OpenRAG config leaderboard</h3>
+          <div>
+            <button class="btn btn-secondary">Run again</button>
+            <a href="05_apply_to_openrag.html" class="btn btn-primary">Apply best to OpenRAG</a>
+          </div>
+        </div>
+        <p class="muted" style="margin-bottom:1rem;">Metric: mean answer correctness (eval set, 50 examples). Sorted best first.</p>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:50px;">Rank</th>
+              <th>Embedding model</th>
+              <th>Language model</th>
+              <th>Chunk</th>
+              <th>Retrieval</th>
+              <th style="width:80px;">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fef9c3;">
+              <td>1</td>
+              <td>BAAI/bge-large-en-v1.5</td>
+              <td>llama-3.1-70b</td>
+              <td>512 / 64</td>
+              <td>top_k=5, th=0.2</td>
+              <td><strong>0.84</strong> <span class="badge badge-best">Best</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>BAAI/bge-large-en-v1.5</td>
+              <td>granite-20b</td>
+              <td>512 / 64</td>
+              <td>top_k=5, th=0.2</td>
+              <td><strong>0.82</strong></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>sentence-transformers/all-MiniLM-L6-v2</td>
+              <td>llama-3.1-70b</td>
+              <td>256 / 128</td>
+              <td>top_k=10, th=0.2</td>
+              <td><strong>0.78</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:0.75rem; font-size:13px;">Select a row to apply that config to OpenRAG (or use "Apply best" for rank 1).</p>
+      </div>
+
+      <div class="card">
+        <h3>Best config summary (for OpenRAG)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Settings to push to your OpenRAG pipeline:</p>
+        <ul style="margin:0; padding-left:1.25rem;">
+          <li><strong>Embedding model:</strong> BAAI/bge-large-en-v1.5</li>
+          <li><strong>Language model:</strong> llama-3.1-70b</li>
+          <li><strong>Chunk size / overlap:</strong> 512 / 64 (tokens)</li>
+          <li><strong>Retrieval:</strong> top_k=5, similarity_threshold=0.2</li>
+        </ul>
+        <div style="margin-top:1rem;">
+          <a href="05_apply_to_openrag.html" class="btn btn-primary">Apply to OpenRAG →</a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

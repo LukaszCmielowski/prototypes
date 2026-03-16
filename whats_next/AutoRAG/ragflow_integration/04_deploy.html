@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deploy — AutoRAG integration (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_backend.html">Connect backend</a>
+      <a href="02_pipeline_to_backend.html">Pipeline → backend</a>
+      <a href="03_run_compare.html">Run & compare</a>
+      <a href="04_deploy.html" class="active">Deploy</a>
+      <a href="05_open_in_ragflow.html">Open in RAGFlow</a>
+      <a href="06_edit_flow_in_ragflow.html">Edit flow (nodes)</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Deploy to backend</h1>
+      <p class="muted">Sync or export the chosen AutoRAG run to your connected RAG backend. RAGFlow: push dataset + config. LightRAG / OpenRAG: export files or API payload.</p>
+
+      <div class="card">
+        <h3>Select run to deploy</h3>
+        <label>AutoRAG run</label>
+        <select style="max-width:400px; margin-bottom:0.75rem;">
+          <option>run-abc123 — semantic_500, top_k=5 (score 0.82)</option>
+          <option>run-def456 — fixed_300, top_k=3 (score 0.78)</option>
+        </select>
+        <p class="muted" style="font-size:13px;">Chunks, retrieval settings, and prompt template from this run will be pushed to the backend.</p>
+      </div>
+
+      <div class="card">
+        <h3>Deploy to RAGFlow</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Target project in RAGFlow. Creates or updates dataset and app config.</p>
+        <label>Target project</label>
+        <select style="max-width:360px; margin-bottom:0.75rem;">
+          <option>docs-product-2025 (existing)</option>
+          <option>Create new: autorag-export-2025-02</option>
+        </select>
+        <label style="display:flex; align-items:center; gap:0.5rem; margin-top:0.75rem;">
+          <input type="checkbox" checked> Overwrite existing chunks for same document set
+        </label>
+        <div style="margin-top:1.25rem;">
+          <button class="btn btn-primary">Deploy to RAGFlow</button>
+          <a href="05_open_in_ragflow.html" class="btn btn-secondary" style="margin-left:0.5rem;">Open in RAGFlow UI</a>
+          <span class="muted" style="margin-left:0.75rem;">Last deploy: 2 hours ago ✓</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Export for other backends</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">If you use LightRAG or OpenRAG, export config and assets instead of direct sync.</p>
+        <ul class="muted" style="margin:0; padding-left:1.25rem;">
+          <li><strong>LightRAG:</strong> Export chunk config (YAML) + document corpus (JSON/parquet) for <code>lightrag ingest</code>.</li>
+          <li><strong>OpenRAG:</strong> Export Langflow/Opensearch-compatible pipeline config (YAML) and document index payload.</li>
+        </ul>
+        <div style="margin-top:1rem;">
+          <button class="btn btn-secondary">Export for LightRAG</button>
+          <button class="btn btn-secondary">Export for OpenRAG</button>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

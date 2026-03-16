@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard — DSPy prompt optimization (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html" class="active">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Leaderboard</h1>
+      <p class="muted">Baseline (uncompiled) vs optimized (compiled), ranked by score on <strong>dev set</strong>. Applies to any task type (QA, RAG, Summarization, Sentiment, etc.).</p>
+
+      <div class="stepper">
+        <span class="step done">Connection</span>
+        <span class="step done">Task type</span>
+        <span class="step done">Data & metric</span>
+        <span class="step current">Run & leaderboard</span>
+        <span class="step">Export</span>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h3 style="margin:0;">Leaderboard (score on dev set)</h3>
+          <div>
+            <button class="btn btn-secondary">Run again</button>
+            <button class="btn btn-primary">Download CSV</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:60px;">Rank</th>
+              <th>Config</th>
+              <th style="width:120px;">Score (dev set)</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-success">#1</span></td>
+              <td><strong>Optimized (BootstrapFewShot)</strong></td>
+              <td>100.00%</td>
+              <td class="muted">Few-shot examples + CoT</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-muted">#2</span></td>
+              <td>Baseline (no optimization)</td>
+              <td>33.33%</td>
+              <td class="muted">ChainOfThought only</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:0.75rem; font-size:13px;">Dev set: 3 examples. Metric: exact match. Baseline = before compile; optimized = after compile.</p>
+      </div>
+
+      <div class="card">
+        <h3>Next steps</h3>
+        <p class="muted">Inspect the top-ranked prompt and export it as chat completion messages for your app.</p>
+        <button class="btn btn-primary">Inspect & export →</button>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

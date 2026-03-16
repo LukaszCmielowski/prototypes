@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Try it — DSPy prompt optimization (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html" class="active">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Try it</h1>
+      <p class="muted">Run an input with the selected config and see the output. Input/output fields depend on task type (e.g. question→answer, document→summary, sentence→sentiment).</p>
+
+      <div class="card" style="max-width:560px;">
+        <h3>Test prompt</h3>
+        <label>Config</label>
+        <select style="max-width:280px; margin-bottom:1rem;">
+          <option>Optimized (BootstrapFewShot)</option>
+          <option>Baseline (no optimization)</option>
+        </select>
+        <label>Input <span class="muted" style="font-weight:normal;">(e.g. question for QA)</span></label>
+        <textarea placeholder="e.g. What is the capital of Germany? (QA) or paste document/sentence for other task types" style="min-height:60px;">What is the capital of Germany?</textarea>
+        <div style="margin-top:1rem;">
+          <button class="btn btn-primary">Get answer</button>
+        </div>
+      </div>
+
+      <div class="card" style="max-width:560px;">
+        <h3>Response</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Reasoning <span class="muted" style="font-weight:normal;">(if CoT)</span></p>
+        <div class="mono" style="display:block; padding:0.75rem; margin-bottom:0.75rem;">Germany's capital is Berlin. It became the capital again after reunification in 1990.</div>
+        <p class="muted" style="margin-bottom:0.5rem;">Output <span class="muted" style="font-weight:normal;">(e.g. answer, summary, sentiment)</span></p>
+        <div class="mono" style="display:block; padding:0.75rem;">Berlin</div>
+        <button class="btn btn-secondary" style="margin-top:0.75rem;">View messages sent</button>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSPy prompt optimization — Mock UI</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .screens { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .screens a { display: block; padding: 1rem; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text); }
+    .screens a:hover { border-color: var(--primary); background: #eff6ff; }
+    .screens a strong { display: block; margin-bottom: 0.25rem; }
+    .screens a span { font-size: 12px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html" class="active">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Mock UI — DSPy prompt optimization</h1>
+      <p class="muted">Static HTML mockups for design reference. Open any screen in a browser to view or capture screenshots.</p>
+
+      <div class="card">
+        <h3>Prompt optimization</h3>
+        <div class="screens">
+          <a href="01_connection.html"><strong>1. Connection</strong><span>RHOAI URL + token</span></a>
+          <a href="02_task_type.html"><strong>2. Task type</strong><span>Simple QA, RAG, Summarization, Sentiment, Custom</span></a>
+          <a href="03_data_metric.html"><strong>3. Data & metric</strong><span>Training & dev set, optimizer, metric</span></a>
+          <a href="04_leaderboard.html"><strong>4. Leaderboard</strong><span>Score on dev set, baseline vs optimized</span></a>
+          <a href="05_export.html"><strong>5. Export</strong><span>Inspect, save program (DSPy), export for API</span></a>
+          <a href="06_try_it.html"><strong>6. Try it</strong><span>Question → answer</span></a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Building from blocks</h3>
+        <div class="screens">
+          <a href="07_pipeline_builder.html"><strong>7. Pipeline builder</strong><span>Palette + canvas, connect blocks</span></a>
+          <a href="08_react_agent.html"><strong>8. ReAct agent</strong><span>Tools list, max_iters</span></a>
+          <a href="09_program_of_thought.html"><strong>9. ProgramOfThought</strong><span>Code reasoning, sandbox</span></a>
+          <a href="10_compile_pipeline.html"><strong>10. Compile pipeline</strong><span>Optimize full pipeline, leaderboard</span></a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">See <a href="../UX_SCENARIOS.md">UX_SCENARIOS.md</a> for full scenario descriptions. These mocks are for illustration only.</p>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard — AutoGluon + LLM (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Gen AI joint experience</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_configuration.html">Configuration</a>
+      <a href="02_leaderboard.html" class="active">Leaderboard</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Common leaderboard</h1>
+      <p class="muted">Predictive (AutoGluon) and LLM results in one table. Same task, same metric — compare both types of AI in a single experience.</p>
+
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h3 style="margin:0;">Churn classification — ranked by accuracy</h3>
+          <div>
+            <button class="btn btn-secondary">Run again</button>
+            <button class="btn btn-primary">Download CSV</button>
+          </div>
+        </div>
+        <p class="muted" style="margin-bottom:1rem;">Eval set: churn_holdout_2025-02 (150 examples). Metric: accuracy.</p>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:50px;">Rank</th>
+              <th style="width:100px;">Type</th>
+              <th>Task</th>
+              <th>Model</th>
+              <th style="width:90px;">Score</th>
+              <th style="width:70px;">Latency</th>
+              <th style="width:90px;">Explain</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="leaderboard-type-predictive">
+              <td>1</td>
+              <td><span class="badge badge-predictive">Predictive</span></td>
+              <td>Classification</td>
+              <td>WeightedEnsemble_L2 (AutoGluon)</td>
+              <td><strong>94.0%</strong></td>
+              <td>12 ms</td>
+              <td>—</td>
+              <td>churn_classifier — run-def456</td>
+            </tr>
+            <tr class="leaderboard-type-predictive">
+              <td>2</td>
+              <td><span class="badge badge-predictive">Predictive</span></td>
+              <td>Classification</td>
+              <td>LightGBM_BAG_L1 (AutoGluon)</td>
+              <td><strong>92.7%</strong></td>
+              <td>8 ms</td>
+              <td>—</td>
+              <td>churn_classifier — run-def456</td>
+            </tr>
+            <tr class="leaderboard-type-llm">
+              <td>3</td>
+              <td><span class="badge badge-llm">LLM</span></td>
+              <td>Classification</td>
+              <td>llama-3.1-70b (few-shot, 3 ex.)</td>
+              <td><strong>89.3%</strong></td>
+              <td>420 ms</td>
+              <td>—</td>
+              <td>Same eval set, same metric</td>
+            </tr>
+            <tr class="leaderboard-type-llm">
+              <td>4</td>
+              <td><span class="badge badge-llm">LLM</span></td>
+              <td>Classification</td>
+              <td>granite-20b (few-shot, 3 ex.)</td>
+              <td><strong>86.0%</strong></td>
+              <td>380 ms</td>
+              <td>—</td>
+              <td>Same eval set, same metric</td>
+            </tr>
+            <tr class="leaderboard-type-combined">
+              <td>5</td>
+              <td><span class="badge badge-combined">Combined</span></td>
+              <td>Classification</td>
+              <td>WeightedEnsemble_L2 + llama-3.1 (SHAP→narrative)</td>
+              <td><strong>94.0%</strong></td>
+              <td>445 ms</td>
+              <td>Good</td>
+              <td>Predictive score; LLM narrates SHAP in plain language</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:1rem; font-size:13px;"><strong>Type:</strong> Predictive = AutoGluon only. LLM = generative model on same task. Combined = predictive + LLM (e.g. explain or ensemble). <strong>Latency:</strong> p50 inference (ms). <strong>Explain:</strong> quality of LLM-generated explanation when using SHAP→narrative (combined rows). All scored on the same eval set and metric.</p>
+      </div>
+
+      <div class="card">
+        <h3>Explanation preview (combined row)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Sample: predictive output + SHAP values → LLM turns into a short narrative (Explingo-style).</p>
+        <div style="background:#f9fafb; padding:1rem; border-radius:6px; font-size:13px;">
+          <strong>Prediction:</strong> churn = yes (prob 0.87)<br>
+          <strong>Top SHAP:</strong> tenure −0.32, support_tickets +0.28, contract_months −0.18<br>
+          <strong>LLM narrative:</strong> “This customer has a high churn risk mainly because of the number of support tickets and shorter tenure. Extending the contract could reduce the risk.”
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Filters (mock)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Filter leaderboard by type or task.</p>
+        <label style="display:inline-flex; align-items:center; gap:0.5rem; margin-right:1rem;">
+          <input type="checkbox" checked=""> Predictive
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:0.5rem; margin-right:1rem;">
+          <input type="checkbox" checked=""> LLM
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:0.5rem;">
+          <input type="checkbox" checked=""> Combined
+        </label>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+
+
+</body>
+</html>

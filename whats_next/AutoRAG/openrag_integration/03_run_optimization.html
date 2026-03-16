@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run optimization — AutoRAG → OpenRAG (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>OpenRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_openrag.html">Connect OpenRAG</a>
+      <a href="02_map_steps.html">Map steps</a>
+      <a href="03_run_optimization.html" class="active">Run optimization</a>
+      <a href="04_recommended_settings.html">Recommended settings</a>
+      <a href="05_apply_to_openrag.html">Apply to OpenRAG</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Run optimization</h1>
+      <p class="muted">AutoRAG runs the pipeline (document load, chunk, embed, retrieve, generate) over the search space aligned to OpenRAG steps. Each trial is a valid OpenRAG config; the best will be recommended for Apply.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect OpenRAG</span>
+        <span class="step done">Map steps</span>
+        <span class="step current">Run optimization</span>
+        <span class="step">Recommended settings</span>
+        <span class="step">Apply to OpenRAG</span>
+      </div>
+
+      <div class="card">
+        <h3>Search space (for OpenRAG)</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Dimensions and values AutoRAG will try. Matches the Map steps configuration.</p>
+        <div class="step-card">
+          <span><strong>Embedding model</strong></span>
+          <span class="dim">3 options: bge-large, sentence-transformers/all-MiniLM-L6-v2, e5-base</span>
+        </div>
+        <div class="step-card">
+          <span><strong>Language model</strong></span>
+          <span class="dim">2 options: llama-3.1-70b, granite-20b</span>
+        </div>
+        <div class="step-card">
+          <span><strong>Chunk size / overlap</strong></span>
+          <span class="dim">256/128, 512/64, 1024/0</span>
+        </div>
+        <div class="step-card">
+          <span><strong>Retrieval</strong></span>
+          <span class="dim">top_k: 3, 5, 10; threshold: 0.2</span>
+        </div>
+        <p class="muted" style="margin-top:0.75rem; font-size:13px;">Total combinations (or sampled): up to 54 trials. Eval set: 50 Q&A pairs.</p>
+      </div>
+
+      <div class="card">
+        <h3>Run</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Uses the same AutoRAG pipeline (Kubeflow) with search space and metric chosen for OpenRAG compatibility. Results appear in Recommended settings.</p>
+        <button class="btn btn-primary">Run optimization</button>
+        <span class="muted" style="margin-left:0.75rem;">Last run: 1 hour ago · 54/54 completed</span>
+        <div style="margin-top:1rem;">
+          <a href="04_recommended_settings.html" class="btn btn-secondary">View recommended settings →</a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

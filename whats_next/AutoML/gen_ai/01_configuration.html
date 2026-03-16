@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuration — AutoGluon + LLM (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Gen AI joint experience</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_configuration.html" class="active">Configuration</a>
+      <a href="02_leaderboard.html">Leaderboard</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Configuration</h1>
+      <p class="muted">Configure predictive (AutoGluon) and LLM in one place. Same eval set and metric for the leaderboard.</p>
+
+      <div class="card">
+        <h3>Task type</h3>
+        <div style="display:flex; gap:0.5rem; margin-bottom:1rem;">
+          <button class="btn btn-primary">Classification</button>
+          <button class="btn btn-secondary">Regression</button>
+          <button class="btn btn-secondary">Time-series</button>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+        <div class="card">
+          <h3>Predictive (AutoGluon)</h3>
+          <label>Experiment / run</label>
+          <select style="max-width:100%; margin-bottom:0.75rem;">
+            <option>churn_experiment_2025-02 (run-3)</option>
+          </select>
+          <label>Include in run</label>
+          <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" checked> Top model from leaderboard</label>
+        </div>
+        <div class="card">
+          <h3>LLM</h3>
+          <label>Endpoint</label>
+          <select style="max-width:100%; margin-bottom:0.75rem;">
+            <option>RHOAI — default inference</option>
+          </select>
+          <label>Model</label>
+          <select style="max-width:100%; margin-bottom:0.75rem;">
+            <option>Llama 3.1 70B (few-shot for same task)</option>
+          </select>
+          <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" checked> Include in run</label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Combined experience</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">How to use predictive and LLM together on the leaderboard.</p>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid #2563eb; border-radius:8px; background:#eff6ff; margin-bottom:0.5rem;">
+          <input type="radio" name="combined" checked style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Compare on same metric</strong><br>
+            <span class="muted">Run both; rank Predictive and LLM (and optional Combined) on one leaderboard by score.</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid var(--border); border-radius:8px; margin-bottom:0.5rem;">
+          <input type="radio" name="combined" style="width:18px; margin-top:2px;">
+          <div>
+            <strong>LLM explains predictive</strong><br>
+            <span class="muted">Use LLM to turn predictive model output (e.g. SHAP, feature importance) into natural-language explanation.</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid var(--border); border-radius:8px;">
+          <input type="radio" name="combined" style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Ensemble with weighting</strong><br>
+            <span class="muted">Combine predictive + LLM with fixed weight, confidence-based (e.g. use LLM more when predictive confidence is low), or calibrated weighting.</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="card">
+        <h3>Data & metric</h3>
+        <label>Evaluation set</label>
+        <select style="max-width:360px; margin-bottom:0.75rem;">
+          <option>churn_holdout_2025-02 (150 examples)</option>
+          <option>Upload new eval set</option>
+        </select>
+        <label>Metric (shared for leaderboard)</label>
+        <select style="max-width:280px;">
+          <option>Accuracy (classification)</option>
+          <option>RMSE (regression)</option>
+          <option>MAPE (time-series)</option>
+        </select>
+        <div style="margin-top:1.25rem;">
+          <a href="02_leaderboard.html" class="btn btn-primary">Run & view leaderboard</a>
+          <button class="btn btn-secondary">Save config</button>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

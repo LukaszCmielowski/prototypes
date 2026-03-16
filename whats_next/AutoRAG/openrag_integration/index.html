@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoRAG → OpenRAG — optimal settings (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hero { margin-bottom: 1.5rem; }
+    .hero p { max-width: 620px; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>OpenRAG integration</h2>
+      <a href="index.html" class="active">Overview</a>
+      <a href="01_connect_openrag.html">Connect OpenRAG</a>
+      <a href="02_map_steps.html">Map steps</a>
+      <a href="03_run_optimization.html">Run optimization</a>
+      <a href="04_recommended_settings.html">Recommended settings</a>
+      <a href="05_apply_to_openrag.html">Apply to OpenRAG</a>
+    </nav>
+    <main class="main">
+      <h1 class="hero" style="margin:0 0 0.5rem;">AutoRAG → OpenRAG: find optimal settings</h1>
+      <p class="muted hero">Use <strong>AutoRAG (ai4rag)</strong> to search for the best <strong>embedding model</strong>, <strong>language model</strong>, chunk size, and retrieval settings for your <strong>OpenRAG</strong> pipeline (Langflow + Docling + Opensearch). Apply the winning config directly to OpenRAG.</p>
+
+      <div class="card">
+        <h3>Integration approach</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">OpenRAG has fixed pipeline steps (Docling parsing, chunking, embedding, Opensearch index, retrieval, LLM). AutoRAG optimizes the <em>configurable parameters</em> of those steps so you don't have to guess — run optimization once, then apply the recommended settings to your OpenRAG instance.</p>
+        <ul class="muted" style="margin:0; padding-left:1.25rem;">
+          <li><strong>Embedding model</strong> — AutoRAG tries several; best one for your data becomes the OpenRAG embedding step.</li>
+          <li><strong>Language model</strong> — Which LLM to use for generation; AutoRAG scores combinations.</li>
+          <li><strong>Chunk size / strategy</strong> — Chunk token size, overlap; maps to OpenRAG chunking config.</li>
+          <li><strong>Retrieval</strong> — top_k, similarity threshold; applied to OpenRAG retrieval step.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Flow</h3>
+        <div class="screens">
+          <a href="01_connect_openrag.html"><strong>1. Connect OpenRAG</strong><span>URL, auth; select pipeline to optimize for</span></a>
+          <a href="02_map_steps.html"><strong>2. Map steps</strong><span>OpenRAG steps ↔ AutoRAG search dimensions</span></a>
+          <a href="03_run_optimization.html"><strong>3. Run optimization</strong><span>AutoRAG searches over embedding, LLM, chunk, retrieval</span></a>
+          <a href="04_recommended_settings.html"><strong>4. Recommended settings</strong><span>Leaderboard: best config for OpenRAG</span></a>
+          <a href="05_apply_to_openrag.html"><strong>5. Apply to OpenRAG</strong><span>Push best config to OpenRAG pipeline</span></a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Static HTML mockups. Red Hat OpenShift AI / AutoRAG + <a href="https://github.com/langflow-ai/openrag">OpenRAG</a>.</p>
+    </main>
+  </div>
+</body>
+</html>

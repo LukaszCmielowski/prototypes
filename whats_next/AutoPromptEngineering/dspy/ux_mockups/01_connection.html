@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model connection — DSPy prompt optimization (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html" class="active">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Model connection</h1>
+      <p class="muted">Configure the RHOAI inference endpoint and authentication.</p>
+
+      <div class="stepper">
+        <span class="step current">Connection</span>
+        <span class="step">Task type</span>
+        <span class="step">Data & metric</span>
+        <span class="step">Run & leaderboard</span>
+        <span class="step">Export</span>
+      </div>
+
+      <div class="card">
+        <h3>RHOAI inference</h3>
+        <label for="url">Inference URL</label>
+        <input type="url" id="url" value="https://redhataillama-3-1-8b-instruct-autox.apps.rosa.rhoai-dev.../" placeholder="https://your-model.apps...">
+        <p class="muted" style="margin-top:0.25rem;">Base URL of your deployed model (OpenAI-compatible).</p>
+
+        <label for="token" style="margin-top:1rem;">Bearer token</label>
+        <input type="password" id="token" value="••••••••••••••••••••••••••••••••" placeholder="Paste token">
+        <p class="muted" style="margin-top:0.25rem;">From OpenShift AI / inference service.</p>
+
+        <div style="margin-top:1.25rem;">
+          <button class="btn btn-secondary">Test connection</button>
+          <button class="btn btn-primary">Save</button>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only. See UX_SCENARIOS.md.</p>
+    </main>
+  </div>
+</body>
+</html>

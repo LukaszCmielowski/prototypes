@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select model — AutoGluon ReAct agent (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoML ReAct agent</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_select_model.html" class="active">Select model</a>
+      <a href="02_agent_config.html">Agent config</a>
+      <a href="03_chat.html">Chat</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Select model(s)</h1>
+      <p class="muted">Choose <strong>deployed</strong> AutoGluon model(s) from one or more experiments to expose as predictor tools. The agent will call the selected models when it needs a prediction — you can mix models from different experiments.</p>
+
+      <div class="stepper">
+        <span class="step current">Select model</span>
+        <span class="step">Agent config</span>
+        <span class="step">Chat</span>
+      </div>
+
+      <div class="card">
+        <h3>Deployed models from experiments</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Only deployed models are listed. Each selected model becomes a tool (e.g. predict_demand, predict_churn) in the next step.</p>
+        <label style="margin-bottom:0.5rem;">Filter by experiment</label>
+        <select style="max-width:320px; margin-bottom:1rem;">
+          <option>All experiments</option>
+          <option>demand_forecast_2025-02</option>
+          <option>churn_classifier</option>
+          <option>fraud_detection</option>
+        </select>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:44px;"></th>
+              <th>Experiment</th>
+              <th>Run</th>
+              <th>Model</th>
+              <th>Metric</th>
+              <th style="width:100px;">Deployment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td>demand_forecast_2025-02</td>
+              <td>run-01</td>
+              <td>WeightedEnsemble_L2</td>
+              <td>RMSE 0.12</td>
+              <td><span class="badge badge-success">Deployed</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td>churn_classifier</td>
+              <td>run-def456</td>
+              <td>WeightedEnsemble_L2</td>
+              <td>94.0%</td>
+              <td><span class="badge badge-success">Deployed</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>churn_classifier</td>
+              <td>run-def456</td>
+              <td>LightGBM_BAG_L1</td>
+              <td>92.7%</td>
+              <td><span class="badge badge-success">Deployed</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>fraud_detection</td>
+              <td>run-abc</td>
+              <td>LightGBM_BAG_L1</td>
+              <td>98.1%</td>
+              <td><span class="badge badge-success">Deployed</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:0.75rem; font-size:13px;">Models from different experiments can be selected together. Multiple models from the same experiment (e.g. churn_classifier) are allowed — each will get a distinct tool name.</p>
+        <a href="02_agent_config.html" class="btn btn-primary" style="margin-top:1rem;">Next → Agent config</a>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

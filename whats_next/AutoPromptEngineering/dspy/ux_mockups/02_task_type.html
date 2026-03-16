@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task type — DSPy prompt optimization (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html" class="active">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Signature / task type</h1>
+      <p class="muted">Choose the <strong>signature</strong> (inputs → outputs). In DSPy this is the declarative spec for the program.</p>
+
+      <div class="stepper">
+        <span class="step done">Connection</span>
+        <span class="step current">Task type</span>
+        <span class="step">Data & metric</span>
+        <span class="step">Run & leaderboard</span>
+        <span class="step">Export</span>
+      </div>
+
+      <div class="card" style="max-width:560px;">
+        <h3>Task type</h3>
+        <p class="muted" style="margin-bottom:0.75rem; font-size:13px;">Presets map to DSPy signatures (see <a href="https://dspy.ai/learn/programming/signatures/">Signatures</a>).</p>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid #2563eb; border-radius:8px; background:#eff6ff; margin-bottom:0.5rem;">
+          <input type="radio" name="task" checked style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Simple QA</strong><br>
+            <span class="muted">question → answer (optional chain-of-thought)</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid var(--border); border-radius:8px; margin-bottom:0.5rem;">
+          <input type="radio" name="task" style="width:18px; margin-top:2px;">
+          <div>
+            <strong>RAG</strong><br>
+            <span class="muted">context + question → answer (retrieved passages + question)</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid var(--border); border-radius:8px; margin-bottom:0.5rem;">
+          <input type="radio" name="task" style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Summarization</strong><br>
+            <span class="muted">document → summary</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid var(--border); border-radius:8px; margin-bottom:0.5rem;">
+          <input type="radio" name="task" style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Sentiment / classification</strong><br>
+            <span class="muted">sentence → sentiment (bool or label)</span>
+          </div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; padding:0.75rem; border:2px solid var(--border); border-radius:8px;">
+          <input type="radio" name="task" style="width:18px; margin-top:2px;">
+          <div>
+            <strong>Custom signature</strong><br>
+            <span class="muted">e.g. question, choices → reasoning, selection</span>
+          </div>
+        </label>
+        <div style="margin-top:1.25rem;">
+          <button class="btn btn-primary">Continue</button>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

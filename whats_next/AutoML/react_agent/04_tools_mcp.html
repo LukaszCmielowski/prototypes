@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools (MCP) — AutoGluon ReAct agent (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoML ReAct agent</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_select_model.html">Select model</a>
+      <a href="02_agent_config.html">Agent config</a>
+      <a href="03_chat.html">Chat</a>
+      <a href="04_tools_mcp.html" class="active">Tools (MCP)</a>
+      <a href="05_run_trace.html">Run & trace</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Tools (MCP)</h1>
+      <p class="muted">AutoML-backed tools exposed via <strong>Model Context Protocol</strong>. Descriptions and input schema help the agent choose and call tools correctly.</p>
+
+      <div class="card">
+        <h3>Registered tools</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Tool name</th>
+              <th>Description</th>
+              <th>Inputs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="mono">predict_demand</span></td>
+              <td>Run demand forecast model. Input: feature dict or natural language.</td>
+              <td><span class="muted">features (dict or JSON)</span></td>
+            </tr>
+            <tr>
+              <td><span class="mono">predict_churn</span></td>
+              <td>Run churn classifier. Input: feature dict or natural language.</td>
+              <td><span class="muted">features (dict or JSON)</span></td>
+            </tr>
+            <tr>
+              <td><span class="mono">get_leaderboard</span></td>
+              <td>Fetch the leaderboard for an AutoML experiment.</td>
+              <td><span class="muted">experiment_id, run_id (optional)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Tool: predict_churn (input schema)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">JSON Schema shown to the agent for tool selection and parameter filling.</p>
+        <pre class="mono" style="background:#1f2937; color:#e5e7eb; padding:1rem; border-radius:6px; font-size:11px; overflow:auto;">{
+  "features": { "type": "object", "description": "Feature names and values for one instance" }
+}</pre>
+      </div>
+
+      <div class="card">
+        <h3>MCP server</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">These tools are served by the AutoML MCP server. Optional: optimize tool descriptions (AutoMCP) for better agent reliability.</p>
+        <label style="display:flex; align-items:center; gap:0.5rem;">
+          <input type="checkbox"> Enable AutoMCP — improve tool metadata for agent selection
+        </label>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <a href="02_agent_config.html" class="btn btn-secondary">Back to agent config</a>
+      </div>
+
+      <p class="muted" style="font-size:12px; margin-top:1rem;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

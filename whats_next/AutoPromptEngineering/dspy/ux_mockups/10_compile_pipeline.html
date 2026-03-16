@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compile pipeline — DSPy mock UI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html" class="active">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Compile & optimize entire pipeline</h1>
+      <p class="muted">Optimize prompts and few-shots for <strong>all</strong> blocks in the pipeline to maximize the end-to-end metric.</p>
+
+      <div class="card">
+        <h3>Pipeline</h3>
+        <div class="canvas" style="min-height:80px; padding:1rem;">
+          <div class="canvas-node"><div class="name">Retrieve</div><div class="sig">query → passages</div></div>
+          <span class="canvas-arrow">→</span>
+          <div class="canvas-node"><div class="name">ChainOfThought</div><div class="sig">context, question → answer</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Compile</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Trainset: inputs for pipeline + gold outputs for the <strong>final</strong> block. Metric: evaluates final output.</p>
+        <label>Compiler</label>
+        <select style="max-width:280px; margin-bottom:1rem;">
+          <option>BootstrapFewShot</option>
+          <option>MIPRO</option>
+        </select>
+        <div style="margin-top:1rem;">
+          <button class="btn btn-primary">Compile pipeline</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Pipeline leaderboard</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Baseline pipeline vs optimized pipeline (all blocks tuned together).</p>
+        <table>
+          <thead>
+            <tr><th style="width:60px;">Rank</th><th>Config</th><th style="width:100px;">Score</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-success">#1</span></td>
+              <td><strong>Optimized pipeline</strong></td>
+              <td>92.00%</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-muted">#2</span></td>
+              <td>Baseline pipeline</td>
+              <td>67.00%</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-secondary" style="margin-top:0.75rem;">View per-block prompt diff</button>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — Compile full pipeline (section 4.6).</p>
+    </main>
+  </div>
+</body>
+</html>

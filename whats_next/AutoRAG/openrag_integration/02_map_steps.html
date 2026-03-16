@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map OpenRAG steps — AutoRAG integration (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>OpenRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_openrag.html">Connect OpenRAG</a>
+      <a href="02_map_steps.html" class="active">Map steps</a>
+      <a href="03_run_optimization.html">Run optimization</a>
+      <a href="04_recommended_settings.html">Recommended settings</a>
+      <a href="05_apply_to_openrag.html">Apply to OpenRAG</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Map OpenRAG steps to AutoRAG</h1>
+      <p class="muted">Each OpenRAG pipeline step that can be tuned is mapped to an AutoRAG search dimension. AutoRAG will try combinations and recommend the best for your data.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect OpenRAG</span>
+        <span class="step current">Map steps</span>
+        <span class="step">Run optimization</span>
+        <span class="step">Recommended settings</span>
+        <span class="step">Apply to OpenRAG</span>
+      </div>
+
+      <div class="card">
+        <h3>OpenRAG step ↔ AutoRAG search dimension</h3>
+        <table>
+          <thead>
+            <tr><th>OpenRAG step</th><th>AutoRAG optimizes</th><th>Search space (example)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Embedding</strong></td>
+              <td>Embedding model</td>
+              <td>BAAI/bge-*, sentence-transformers/*, OpenAI text-embedding-* (if configured)</td>
+            </tr>
+            <tr>
+              <td><strong>Language model (generation)</strong></td>
+              <td>LLM</td>
+              <td>llama-3.1-70b, granite-20b, mistral-7b, … (from your endpoint)</td>
+            </tr>
+            <tr>
+              <td><strong>Chunking (Docling / post-parse)</strong></td>
+              <td>Chunk size, overlap</td>
+              <td>chunk_size: 256, 512, 1024; overlap: 0, 64, 128</td>
+            </tr>
+            <tr>
+              <td><strong>Retrieval</strong></td>
+              <td>top_k, similarity threshold</td>
+              <td>top_k: 3, 5, 10; similarity_threshold: 0.2, 0.5, 0.7</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:0.75rem; font-size:13px;">Docling parsing stays as in OpenRAG; AutoRAG does not change the parser type, only downstream chunk/embed/retrieve/LLM settings.</p>
+      </div>
+
+      <div class="card">
+        <h3>Include / exclude dimensions</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Uncheck to keep OpenRAG's current value and not search over that dimension.</p>
+        <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" checked> Embedding model</label>
+        <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" checked> Language model</label>
+        <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" checked> Chunk size & overlap</label>
+        <label style="display:flex; align-items:center; gap:0.5rem;"><input type="checkbox" checked> Retrieval (top_k, threshold)</label>
+        <div style="margin-top:1rem;">
+          <a href="03_run_optimization.html" class="btn btn-primary">Next → Run optimization</a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

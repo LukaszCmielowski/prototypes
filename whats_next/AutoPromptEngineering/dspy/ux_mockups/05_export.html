@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Export — DSPy prompt optimization (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html" class="active">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Inspect, save program, export</h1>
+      <p class="muted">Inspect the compiled program; save for Python (DSPy load) or export chat messages for API.</p>
+
+      <div class="card">
+        <h3>Inspect prompt (compiled)</h3>
+        <p class="muted" style="margin-bottom:0.5rem; font-size:12px;">Layout and placeholders depend on signature (example below: Simple QA).</p>
+        <p class="muted" style="margin-bottom:0.5rem;">System</p>
+        <div class="mono" style="display:block; padding:0.75rem; margin-bottom:0.75rem;">Answer the following question. Reason step by step, then give the final answer.</div>
+        <p class="muted" style="margin-bottom:0.5rem;">Few-shot examples (2)</p>
+        <div class="mono" style="display:block; padding:0.75rem; font-size:11px; white-space:pre-wrap;">user: What is 2 + 2?
+assistant: 4
+
+user: What is the capital of Italy?
+assistant: Rome</div>
+      </div>
+
+      <div class="card">
+        <h3>Save program (DSPy)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Save state (signatures, demos, config) for <code>program.load(path)</code> in Python.</p>
+        <div style="margin-top:0.75rem;">
+          <button class="btn btn-secondary">Save as JSON</button>
+          <button class="btn btn-secondary">Save full program</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Export for API</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Chat completion messages (JSON) — use with POST .../v1/chat/completions</p>
+        <pre style="background:#1f2937; color:#e5e7eb; padding:1rem; border-radius:6px; font-size:11px; overflow:auto; max-height:200px;">[
+  { "role": "system", "content": "Answer the following question..." },
+  { "role": "user", "content": "What is 2 + 2?" },
+  { "role": "assistant", "content": "4" },
+  { "role": "user", "content": "{{question}}" }
+]</pre>
+        <div style="margin-top:0.75rem;">
+          <button class="btn btn-secondary">Copy JSON</button>
+          <button class="btn btn-secondary">Download JSON</button>
+          <a href="06_try_it.html" class="btn btn-primary">Try in API</a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

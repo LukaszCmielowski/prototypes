@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat — AutoGluon ReAct agent (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoML ReAct agent</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_select_model.html">Select model</a>
+      <a href="02_agent_config.html">Agent config</a>
+      <a href="03_chat.html" class="active">Chat</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Chat</h1>
+      <p class="muted">Ask questions; the agent will reason and call predictor tools (e.g. predict_churn, predict_demand) when needed.</p>
+
+      <div class="stepper">
+        <span class="step done">Select model</span>
+        <span class="step done">Agent config</span>
+        <span class="step current">Chat</span>
+      </div>
+
+      <div class="card" style="max-width:640px;">
+        <h3>Conversation</h3>
+        <div style="background:var(--page-bg); padding:1rem; border-radius:6px; margin-bottom:1rem; min-height:200px;">
+          <div style="margin-bottom:1.25rem; padding-bottom:1.25rem; border-bottom:1px solid var(--border);">
+            <p style="margin:0 0 0.5rem;"><strong>User:</strong> What’s the churn risk for customer id 42 and the top model for that experiment?</p>
+            <p style="margin:0 0 0.5rem;" class="muted" style="font-size:12px;"><em>Agent called predict_churn and get_leaderboard.</em></p>
+            <p style="margin:0;"><strong>Agent:</strong> For customer 42, the churn model predicts <strong>churn = yes</strong> (probability 0.82). The top model on the churn_classifier leaderboard is WeightedEnsemble_L2 with 94.0% accuracy.</p>
+          </div>
+          <div>
+            <p style="margin:0 0 0.5rem;"><strong>User:</strong> What’s the demand forecast for region North, next quarter?</p>
+            <p style="margin:0 0 0.5rem;" class="muted" style="font-size:12px;"><em>Agent called predict_demand.</em></p>
+            <p style="margin:0;"><strong>Agent:</strong> For region North, next quarter, the demand model predicts <strong>12,400 units</strong> (RMSE-based interval: 11,800–13,000). That’s from the WeightedEnsemble_L2 model on demand_forecast_2025-02.</p>
+          </div>
+        </div>
+        <label>Your question</label>
+        <textarea placeholder="e.g. Run demand forecast for region North, next quarter" style="width:100%; min-height:60px; margin-bottom:0.75rem;"></textarea>
+        <button class="btn btn-primary">Send</button>
+        <a href="05_run_trace.html" class="btn btn-secondary" style="margin-left:0.5rem;">View trace</a>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

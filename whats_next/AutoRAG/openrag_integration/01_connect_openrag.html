@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect OpenRAG — AutoRAG integration (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>OpenRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_openrag.html" class="active">Connect OpenRAG</a>
+      <a href="02_map_steps.html">Map steps</a>
+      <a href="03_run_optimization.html">Run optimization</a>
+      <a href="04_recommended_settings.html">Recommended settings</a>
+      <a href="05_apply_to_openrag.html">Apply to OpenRAG</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Connect OpenRAG</h1>
+      <p class="muted">Point to your OpenRAG instance (Langflow + Docling + Opensearch). AutoRAG will use it to run evaluations and, later, apply the optimal config.</p>
+
+      <div class="stepper">
+        <span class="step current">Connect OpenRAG</span>
+        <span class="step">Map steps</span>
+        <span class="step">Run optimization</span>
+        <span class="step">Recommended settings</span>
+        <span class="step">Apply to OpenRAG</span>
+      </div>
+
+      <div class="card">
+        <h3>OpenRAG instance</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">OpenRAG exposes Langflow and/or Opensearch endpoints. Provide the base URL and optional API key.</p>
+        <label>OpenRAG / Langflow URL</label>
+        <input type="url" value="https://openrag.example.com" placeholder="https://..." style="margin-bottom:0.75rem;">
+        <label>API key (optional)</label>
+        <input type="password" value="" placeholder="If required for pipeline config push" style="margin-bottom:0.75rem;">
+        <label>Opensearch URL (optional)</label>
+        <input type="url" value="" placeholder="Override if different from default" style="margin-bottom:0.75rem;">
+        <button class="btn btn-secondary">Test connection</button>
+        <span class="muted" style="margin-left:0.75rem;">Connected ✓</span>
+      </div>
+
+      <div class="card">
+        <h3>Pipeline to optimize</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Select which OpenRAG pipeline (or default RAG flow) to tune. AutoRAG will search over its configurable steps.</p>
+        <select style="max-width:360px;">
+          <option>Default RAG pipeline (Docling → Chunk → Embed → Opensearch → Retrieve → LLM)</option>
+          <option>Custom: docs-qa-v2</option>
+        </select>
+        <div style="margin-top:1rem;">
+          <a href="02_map_steps.html" class="btn btn-primary">Next → Map steps</a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

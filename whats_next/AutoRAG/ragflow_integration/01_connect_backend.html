@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect backend — AutoRAG + RAGFlow / LightRAG / OpenRAG (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_backend.html" class="active">Connect backend</a>
+      <a href="02_pipeline_to_backend.html">Pipeline → backend</a>
+      <a href="03_run_compare.html">Run & compare</a>
+      <a href="04_deploy.html">Deploy</a>
+      <a href="05_open_in_ragflow.html">Open in RAGFlow</a>
+      <a href="06_edit_flow_in_ragflow.html">Edit flow (nodes)</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Connect RAG backend</h1>
+      <p class="muted">Choose one open-source RAG engine. AutoRAG will use it for running optimized configs and (optionally) syncing results.</p>
+
+      <div class="card">
+        <h3>Select backend</h3>
+        <div class="backend-card selected">
+          <h4>RAGFlow</h4>
+          <p class="stars muted">infiniflow/ragflow · 75k+ stars · RAG + Agent context layer</p>
+          <p class="muted" style="font-size:13px; margin:0.5rem 0 0;">Best for: full document parsing, chunking, and retrieval pipelines with agent capabilities. Sync optimized chunks and prompts to a RAGFlow project.</p>
+        </div>
+        <div class="backend-card">
+          <h4>LightRAG</h4>
+          <p class="stars muted">HKUDS/LightRAG · ~30k stars · Simple and fast RAG</p>
+          <p class="muted" style="font-size:13px; margin:0.5rem 0 0;">Best for: entity-centric, graph-style retrieval. Export chunk/parsing config; ingest optimized documents into LightRAG.</p>
+        </div>
+        <div class="backend-card">
+          <h4>OpenRAG</h4>
+          <p class="stars muted">langflow-ai/openrag · Langflow + Docling + Opensearch</p>
+          <p class="muted" style="font-size:13px; margin:0.5rem 0 0;">Best for: Langflow-based flows, Docling parsing, Opensearch. Deploy AutoRAG output as OpenRAG-compatible pipeline config.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Connection (RAGFlow)</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">RAGFlow API or server URL. Used to list projects, push optimized datasets, and run test queries.</p>
+        <label>RAGFlow URL</label>
+        <input type="url" value="https://ragflow.example.com" placeholder="https://..." style="margin-bottom:0.75rem;">
+        <label>API key (optional)</label>
+        <input type="password" value="" placeholder="Leave empty if using same cluster auth" style="margin-bottom:0.75rem;">
+        <button class="btn btn-secondary">Test connection</button>
+        <span class="muted" style="margin-left:0.75rem;">Connected ✓</span>
+      </div>
+
+      <div class="card">
+        <h3>Project / dataset (optional)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">If the backend has projects or datasets, select one to sync to after optimization.</p>
+        <select style="max-width:360px;">
+          <option>— Create new on deploy —</option>
+          <option>docs-product-2025 (RAGFlow project)</option>
+          <option>kb-internal (RAGFlow project)</option>
+        </select>
+        <div style="margin-top:1rem;">
+          <a href="02_pipeline_to_backend.html" class="btn btn-primary">Next → Pipeline mapping</a>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit flow in RAGFlow — node-based editor (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .ragflow-frame { border: 2px solid #3b82f6; border-radius: 12px; overflow: hidden; background: #f8fafc; margin-top: 1rem; }
+    .ragflow-header { background: #1e40af; color: #fff; padding: 0.6rem 1rem; display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+    .flow-editor-layout { display: flex; min-height: 420px; }
+    .flow-palette { width: 160px; padding: 0.75rem; background: #e2e8f0; border-right: 1px solid var(--border); }
+    .flow-palette h4 { margin: 0 0 0.5rem; font-size: 11px; text-transform: uppercase; color: var(--text-muted); }
+    .flow-palette .palette-node { padding: 0.4rem 0.6rem; margin-bottom: 0.35rem; background: #fff; border: 1px solid var(--border); border-radius: 6px; font-size: 12px; cursor: pointer; }
+    .flow-palette .palette-node:hover { border-color: #3b82f6; background: #eff6ff; }
+    .flow-canvas { flex: 1; padding: 1.5rem; overflow: auto; position: relative; }
+    .flow-nodes { display: flex; flex-direction: column; gap: 0; align-items: flex-start; }
+    .flow-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .flow-node { min-width: 120px; padding: 0.6rem 0.75rem; border-radius: 8px; font-size: 12px; text-align: center; border: 2px solid #94a3b8; background: #fff; }
+    .flow-node.ingestion { border-color: #0ea5e9; background: #f0f9ff; }
+    .flow-node.retrieval { border-color: #8b5cf6; background: #f5f3ff; }
+    .flow-node.llm { border-color: #059669; background: #ecfdf5; }
+    .flow-node.from-autorag { box-shadow: 0 0 0 2px #c00; }
+    .flow-node .label { font-weight: 600; display: block; margin-bottom: 0.2rem; }
+    .flow-node .hint { font-size: 10px; color: var(--text-muted); }
+    .flow-arrow { color: #94a3b8; font-size: 18px; }
+    .flow-props { width: 260px; padding: 1rem; background: #fff; border-left: 1px solid var(--border); }
+    .flow-props h4 { margin: 0 0 0.75rem; font-size: 0.85rem; }
+    .flow-props label { font-size: 12px; }
+    .flow-props input, .flow-props select { font-size: 12px; max-width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_backend.html">Connect backend</a>
+      <a href="02_pipeline_to_backend.html">Pipeline → backend</a>
+      <a href="03_run_compare.html">Run & compare</a>
+      <a href="04_deploy.html">Deploy</a>
+      <a href="05_open_in_ragflow.html">Open in RAGFlow</a>
+      <a href="06_edit_flow_in_ragflow.html" class="active">Edit flow (nodes)</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Edit flow in RAGFlow — node-based editor</h1>
+      <p class="muted">RAGFlow lets you edit the ingestion and retrieval flow as a graph of nodes. The dataset synced from AutoRAG appears as a pre-wired flow; you can add, remove, or reconfigure nodes (parser, chunker, embedding, retrieval, LLM).</p>
+
+      <div class="card">
+        <h3>RAGFlow flow editor (mock)</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Nodes represent pipeline steps. Highlighted nodes are the ones populated from AutoRAG; edit them here or add new nodes (e.g. re-ranker, extra parser).</p>
+
+        <div class="ragflow-frame">
+          <div class="ragflow-header">
+            <strong>Flow editor</strong>
+            <span>Dataset: docs-product-2025 · <span style="opacity:0.9;">Ingestion + Retrieval</span></span>
+          </div>
+          <div class="flow-editor-layout">
+            <div class="flow-palette">
+              <h4>Add node</h4>
+              <div class="palette-node">Document loader</div>
+              <div class="palette-node">Parser</div>
+              <div class="palette-node">Chunker</div>
+              <div class="palette-node">Embedding</div>
+              <div class="palette-node">Vector store</div>
+              <div class="palette-node">Retrieval</div>
+              <div class="palette-node">Re-ranker</div>
+              <div class="palette-node">LLM</div>
+            </div>
+            <div class="flow-canvas">
+              <div class="flow-nodes">
+                <div class="flow-row">
+                  <div class="flow-node ingestion from-autorag">
+                    <span class="label">Document</span>
+                    <span class="hint">PDF, DOCX, …</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node ingestion from-autorag">
+                    <span class="label">Parser</span>
+                    <span class="hint">DeepDOC</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node ingestion from-autorag">
+                    <span class="label">Chunker</span>
+                    <span class="hint">naive, 128 tok</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node ingestion">
+                    <span class="label">Embedding</span>
+                    <span class="hint">bge-large@BAAI</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node ingestion">
+                    <span class="label">Vector store</span>
+                    <span class="hint">Index</span>
+                  </div>
+                </div>
+                <div class="flow-row" style="margin-top:1.25rem;">
+                  <div class="flow-node" style="background:#f1f5f9;">
+                    <span class="label">Query</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node retrieval from-autorag">
+                    <span class="label">Retrieval</span>
+                    <span class="hint">top_k=5</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node retrieval">
+                    <span class="label">Re-ranker</span>
+                    <span class="hint">(optional)</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node llm from-autorag">
+                    <span class="label">LLM</span>
+                    <span class="hint">llama-3.1-70b</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-node llm">
+                    <span class="label">Response</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-props">
+              <h4>Chunker (selected)</h4>
+              <p class="muted" style="font-size:11px; margin-bottom:0.5rem;">From AutoRAG · edit here</p>
+              <label>Chunk method</label>
+              <select style="margin-bottom:0.5rem;"><option>naive</option><option>qa</option></select>
+              <label>Chunk token num</label>
+              <input type="number" value="128" style="margin-bottom:0.5rem;">
+              <label>Delimiter</label>
+              <input type="text" value="\n!?;" style="margin-bottom:0.5rem;">
+              <button class="btn btn-secondary" style="margin-top:0.5rem; font-size:12px;">Apply</button>
+            </div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:0.75rem; font-size:12px;"><strong>Red outline</strong> = nodes synced from AutoRAG (chunker, retrieval, LLM config). Drag to reorder; click to edit in the properties panel. Save to update the dataset.</p>
+      </div>
+
+      <div class="card">
+        <h3>What you can do in the flow editor</h3>
+        <ul class="muted" style="margin:0; padding-left:1.25rem;">
+          <li><strong>Reorder or replace nodes</strong> — e.g. add a Re-ranker between Retrieval and LLM, or switch the parser to a different document type.</li>
+          <li><strong>Edit node config</strong> — Click a node (e.g. Chunker) to change chunk_token_num, delimiter, or embedding model in the right-hand panel.</li>
+          <li><strong>Wire new nodes</strong> — Drag from the palette onto the canvas and connect inputs/outputs; RAGFlow validates the flow before save.</li>
+          <li><strong>Use with AutoRAG</strong> — The flow you deploy from AutoRAG becomes the initial graph; further edits in RAGFlow stay in RAGFlow until you re-deploy from AutoRAG (overwrite) or keep both in sync manually.</li>
+        </ul>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only. Actual RAGFlow flow editor may differ.</p>
+    </main>
+  </div>
+</body>
+</html>

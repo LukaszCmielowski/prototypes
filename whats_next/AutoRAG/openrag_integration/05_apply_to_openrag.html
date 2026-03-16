@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply to OpenRAG — AutoRAG integration (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>OpenRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_openrag.html">Connect OpenRAG</a>
+      <a href="02_map_steps.html">Map steps</a>
+      <a href="03_run_optimization.html">Run optimization</a>
+      <a href="04_recommended_settings.html">Recommended settings</a>
+      <a href="05_apply_to_openrag.html" class="active">Apply to OpenRAG</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Apply optimal settings to OpenRAG</h1>
+      <p class="muted">Push the chosen AutoRAG-recommended config to your OpenRAG instance. OpenRAG (Langflow + Docling + Opensearch) will use the new embedding model, LLM, chunk, and retrieval settings.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect OpenRAG</span>
+        <span class="step done">Map steps</span>
+        <span class="step done">Run optimization</span>
+        <span class="step done">Recommended settings</span>
+        <span class="step current">Apply to OpenRAG</span>
+      </div>
+
+      <div class="card">
+        <h3>Config to apply</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Best run from leaderboard. You can change selection in Recommended settings.</p>
+        <table>
+          <thead>
+            <tr><th>Step</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Embedding model</td><td>BAAI/bge-large-en-v1.5</td></tr>
+            <tr><td>Language model</td><td>llama-3.1-70b</td></tr>
+            <tr><td>Chunk size</td><td>512</td></tr>
+            <tr><td>Chunk overlap</td><td>64</td></tr>
+            <tr><td>Retrieval top_k</td><td>5</td></tr>
+            <tr><td>Similarity threshold</td><td>0.2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Target OpenRAG</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Config will be written to the pipeline you connected in step 1.</p>
+        <p><strong>URL:</strong> https://openrag.example.com</p>
+        <p><strong>Pipeline:</strong> Default RAG pipeline</p>
+        <label style="margin-top:0.75rem; display:flex; align-items:center; gap:0.5rem;">
+          <input type="checkbox" checked> Re-index documents after applying (recommended if embedding or chunk changed)
+        </label>
+        <div style="margin-top:1.25rem;">
+          <button class="btn btn-primary">Apply to OpenRAG</button>
+          <button class="btn btn-secondary">Export as YAML</button>
+          <span class="muted" style="margin-left:0.75rem;">Last applied: 1 hour ago ✓</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Export for manual use</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">If you prefer to update OpenRAG yourself (e.g. edit Langflow flow or Opensearch config), export the recommended settings as YAML or JSON.</p>
+        <button class="btn btn-secondary">Download OpenRAG-compatible YAML</button>
+        <p class="muted" style="font-size:12px; margin-top:0.5rem;">YAML can be imported into Langflow or used to configure Opensearch index settings.</p>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pipeline builder — DSPy mock UI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>Prompt optimization</h2>
+      <a href="index.html">All screens</a>
+      <a href="01_connection.html">Connection</a>
+      <a href="02_task_type.html">Task type</a>
+      <a href="03_data_metric.html">Data & metric</a>
+      <a href="04_leaderboard.html">Leaderboard</a>
+      <a href="05_export.html">Export</a>
+      <a href="06_try_it.html">Try it</a>
+      <h2>Building from blocks</h2>
+      <a href="07_pipeline_builder.html" class="active">Pipeline builder</a>
+      <a href="08_react_agent.html">ReAct agent</a>
+      <a href="09_program_of_thought.html">ProgramOfThought</a>
+      <a href="10_compile_pipeline.html">Compile pipeline</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Pipeline builder</h1>
+      <p class="muted">Build an AI app by adding and connecting blocks. Drag blocks onto the canvas or add steps below.</p>
+
+      <div class="card">
+        <h3>Blocks</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Click to add to pipeline. Connect outputs → inputs.</p>
+        <div class="palette">
+          <div class="block-card"><strong>Retrieve</strong><span>query → passages</span></div>
+          <div class="block-card"><strong>Predict</strong><span>inputs → outputs</span></div>
+          <div class="block-card"><strong>ChainOfThought</strong><span>reasoning + answer</span></div>
+          <div class="block-card"><strong>ReAct</strong><span>tools + answer</span></div>
+          <div class="block-card"><strong>ProgramOfThought</strong><span>code → answer</span></div>
+          <div class="block-card"><strong>MultiChainComparison</strong><span>compare & select</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Pipeline canvas</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Example: Full RAG — Retrieve then generate answer.</p>
+        <div class="canvas">
+          <div class="canvas-node">
+            <div class="name">Retrieve</div>
+            <div class="sig">query → passages</div>
+          </div>
+          <span class="canvas-arrow">→</span>
+          <div class="canvas-node">
+            <div class="name">ChainOfThought</div>
+            <div class="sig">context, question → answer</div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:0.5rem; font-size:12px;">Wiring: Retrieve.passages → ChainOfThought.context</p>
+        <div style="margin-top:1rem;">
+          <button class="btn btn-secondary">Validate pipeline</button>
+          <button class="btn btn-secondary">Run on sample input</button>
+          <button class="btn btn-primary">Compile & optimize</button>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — Building from blocks (section 4.2).</p>
+    </main>
+  </div>
+</body>
+</html>

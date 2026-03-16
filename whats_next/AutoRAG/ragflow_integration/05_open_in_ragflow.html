@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open in RAGFlow & customize — AutoRAG integration (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .ragflow-frame { border: 2px solid #3b82f6; border-radius: 12px; overflow: hidden; background: #fff; margin-top: 1rem; }
+    .ragflow-header { background: #1e40af; color: #fff; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; }
+    .ragflow-header span { font-size: 14px; opacity: 0.9; }
+    .ragflow-body { padding: 1.25rem; }
+    .from-autorag { display: inline-flex; align-items: center; gap: 0.35rem; background: #fef2f2; color: #c00; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 0.5rem; }
+    .customize-section { margin-bottom: 1.25rem; }
+    .customize-section h4 { margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
+    .open-cta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoRAG integration</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_backend.html">Connect backend</a>
+      <a href="02_pipeline_to_backend.html">Pipeline → backend</a>
+      <a href="03_run_compare.html">Run & compare</a>
+      <a href="04_deploy.html">Deploy</a>
+      <a href="05_open_in_ragflow.html" class="active">Open in RAGFlow</a>
+      <a href="06_edit_flow_in_ragflow.html">Edit flow (nodes)</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Open in RAGFlow & customize</h1>
+      <p class="muted">After deploying from AutoRAG to RAGFlow, open the dataset directly in the RAGFlow UI to tweak chunking, add documents, or change retrieval and embedding settings.</p>
+
+      <div class="card">
+        <h3>Open AutoRAG → RAGFlow result in RAGFlow UI</h3>
+        <div class="open-cta">
+          <a href="#" class="btn btn-primary">Open in RAGFlow</a>
+          <span class="muted">Opens: docs-product-2025 at ragflow.example.com</span>
+        </div>
+        <p class="muted" style="font-size:13px;">Uses the RAGFlow URL from Connect backend and the dataset/project you deployed to. You can bookmark the RAGFlow dataset URL for quick access.</p>
+      </div>
+
+      <div class="card">
+        <h3>RAGFlow UI — dataset from AutoRAG (mock)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Below is a simplified mock of the RAGFlow interface with the synced dataset open. In the real RAGFlow UI you can customize everything listed here.</p>
+
+        <div class="ragflow-frame">
+          <div class="ragflow-header">
+            <strong>RAGFlow</strong>
+            <span>ragflow.example.com · Dataset: docs-product-2025</span>
+          </div>
+          <div class="ragflow-body">
+            <h3 style="margin:0 0 1rem;">docs-product-2025 <span class="from-autorag">From AutoRAG</span></h3>
+
+            <div class="customize-section">
+              <h4>Chunk method</h4>
+              <select style="max-width:280px;">
+                <option selected>General (naive)</option>
+                <option>Q&A</option>
+                <option>Paper</option>
+                <option>Book</option>
+                <option>Laws</option>
+                <option>Manual</option>
+              </select>
+              <p class="muted" style="font-size:12px; margin-top:0.35rem;">Synced from AutoRAG pattern. Change here to override.</p>
+            </div>
+
+            <div class="customize-section">
+              <h4>Parser config</h4>
+              <label>Chunk token num</label>
+              <input type="number" value="128" style="max-width:100px; margin-bottom:0.5rem;">
+              <label>Delimiter</label>
+              <input type="text" value="\n!?;。；！？" style="max-width:240px; margin-bottom:0.35rem;">
+              <p class="muted" style="font-size:12px;">Mapped from AutoRAG chunk_size / delimiter. Edit in RAGFlow to refine.</p>
+            </div>
+
+            <div class="customize-section">
+              <h4>Embedding model</h4>
+              <select style="max-width:320px;">
+                <option>BAAI/bge-large-zh-v1.5@BAAI</option>
+                <option selected>text-embedding-v2@Tongyi-Qianwen</option>
+              </select>
+              <p class="muted" style="font-size:12px; margin-top:0.35rem;">Synced from AutoRAG embeddings.model_id. Switch if your RAGFlow has other models.</p>
+            </div>
+
+            <div class="customize-section">
+              <h4>Documents</h4>
+              <p class="muted" style="font-size:13px; margin:0 0 0.5rem;">3 documents · 142 chunks</p>
+              <button class="btn btn-secondary">Upload document</button>
+              <button class="btn btn-secondary" style="margin-left:0.5rem;">Re-parse</button>
+              <p class="muted" style="font-size:12px; margin-top:0.35rem;">Add more files or re-parse after changing chunk/parser settings.</p>
+            </div>
+
+            <div class="customize-section">
+              <h4>Retrieval & chat</h4>
+              <label>Similarity threshold</label>
+              <input type="number" value="0.2" step="0.1" style="max-width:80px; margin-bottom:0.5rem;">
+              <label>Vector similarity weight</label>
+              <input type="number" value="0.3" step="0.1" style="max-width:80px; margin-bottom:0.35rem;">
+              <p class="muted" style="font-size:12px;">Adjust retrieval behavior. Create or edit a Chat/Agent in RAGFlow to use this dataset and set top_k (e.g. from AutoRAG number_of_chunks).</p>
+            </div>
+
+            <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--border);">
+              <button class="btn btn-primary">Save changes</button>
+              <a href="06_edit_flow_in_ragflow.html" class="btn btn-secondary" style="margin-left:0.5rem;">Edit flow (nodes)</a>
+              <a href="03_run_compare.html" class="btn btn-secondary" style="margin-left:0.5rem;">Back to AutoRAG — Try query</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Why open in RAGFlow?</h3>
+        <ul class="muted" style="margin:0; padding-left:1.25rem;">
+          <li><strong>Refine chunking</strong> — Tweak chunk_token_num, delimiter, or switch to Q&A / Paper template without re-running AutoRAG.</li>
+          <li><strong>Add documents</strong> — Upload more files in RAGFlow; they are parsed with the current (AutoRAG-synced or customized) config.</li>
+          <li><strong>Change embedding model</strong> — Use a different model available in RAGFlow; re-index if needed.</li>
+          <li><strong>Create chats/agents</strong> — In RAGFlow UI, create a Chat or Agent that uses this dataset, then share or embed.</li>
+        </ul>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only. RAGFlow UI layout and options may differ.</p>
+    </main>
+  </div>
+</body>
+</html>
