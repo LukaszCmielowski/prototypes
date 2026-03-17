@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tool list — AutoMCP (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoMCP</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_mcp.html">Connect MCP</a>
+      <a href="02_tool_list.html" class="active">Tool list</a>
+      <a href="03_tool_metadata.html">Tool metadata</a>
+      <a href="04_optimize.html">Run optimization</a>
+      <a href="05_before_after.html">Before / after</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Tool list</h1>
+      <p class="muted">All tools from the connected MCP server. Select tools to optimize or open metadata for editing.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect MCP</span>
+        <span class="step current">Tool list</span>
+        <span class="step">Tool metadata</span>
+        <span class="step">Run optimization</span>
+        <span class="step">Before / after</span>
+      </div>
+
+      <div class="card">
+        <h3>Tools</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Select one or more tools to include in the next optimization run. Optional: show usage or health (if registry provides it).</p>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:44px;"></th>
+              <th>Tool name</th>
+              <th>Description</th>
+              <th style="width:90px;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td><a href="03_tool_metadata.html" style="color:var(--primary);"><span class="mono">fetch_weather</span></a></td>
+              <td>Gets the weather for a location.</td>
+              <td><span class="badge badge-success">OK</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" checked></td>
+              <td><a href="03_tool_metadata.html" style="color:var(--primary);"><span class="mono">search_docs</span></a></td>
+              <td>Search documentation.</td>
+              <td><span class="badge badge-muted">—</span></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><a href="03_tool_metadata.html" style="color:var(--primary);"><span class="mono">run_query</span></a></td>
+              <td>Execute a query.</td>
+              <td><span class="badge badge-muted">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:1rem;">
+          <a href="04_optimize.html" class="btn btn-primary">Optimize selected</a>
+          <button class="btn btn-secondary">Refresh from server</button>
+        </div>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

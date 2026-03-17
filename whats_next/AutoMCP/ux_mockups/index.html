@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoMCP — MCP tools optimization (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoMCP</h2>
+      <a href="index.html" class="active">Overview</a>
+      <a href="01_connect_mcp.html">Connect MCP</a>
+      <a href="02_tool_list.html">Tool list</a>
+      <a href="03_tool_metadata.html">Tool metadata</a>
+      <a href="04_optimize.html">Run optimization</a>
+      <a href="05_before_after.html">Before / after</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">AutoMCP — MCP tools optimization</h1>
+      <p class="muted">Explore UX for <strong>optimizing MCP tool metadata</strong>: better descriptions and input schema so agents select and call tools more reliably. Connect to an MCP server, review tools, run optimization, and compare before/after.</p>
+
+      <div class="card">
+        <h3>Flow</h3>
+        <div class="screens">
+          <a href="01_connect_mcp.html"><strong>1. Connect MCP</strong><span>Server URL, auth; discover tools</span></a>
+          <a href="02_tool_list.html"><strong>2. Tool list</strong><span>All tools; name, description; optional health</span></a>
+          <a href="03_tool_metadata.html"><strong>3. Tool metadata</strong><span>View/edit name, description, inputSchema</span></a>
+          <a href="04_optimize.html"><strong>4. Run optimization</strong><span>Optimize descriptions and/or schema</span></a>
+          <a href="05_before_after.html"><strong>5. Before / after</strong><span>Compare original vs optimized metadata</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>What AutoMCP optimizes</h3>
+        <ul class="muted" style="margin:0; padding-left:1.25rem;">
+          <li><strong>Tool descriptions</strong> — Clearer, agent-friendly text so the LLM picks the right tool.</li>
+          <li><strong>Input schema</strong> — Parameter names, types, and per-parameter descriptions (JSON Schema) tuned for LLM consumption.</li>
+          <li>Optional: <strong>prompt layer</strong> around tool listing (how tools are presented in the system message).</li>
+        </ul>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Static HTML mockups. See <a href="../mcp_optimization_ideas.md">mcp_optimization_ideas.md</a> for research and open-source references.</p>
+    </main>
+  </div>
+</body>
+</html>

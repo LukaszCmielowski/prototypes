@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run optimization — AutoMCP (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoMCP</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_mcp.html">Connect MCP</a>
+      <a href="02_tool_list.html">Tool list</a>
+      <a href="03_tool_metadata.html">Tool metadata</a>
+      <a href="04_optimize.html" class="active">Run optimization</a>
+      <a href="05_before_after.html">Before / after</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Run optimization</h1>
+      <p class="muted">Run AutoMCP to improve tool descriptions and/or input schema. Uses LLM-backed optimization (e.g. Trace-Free+ style) to rewrite metadata for better agent tool selection.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect MCP</span>
+        <span class="step done">Tool list</span>
+        <span class="step done">Tool metadata</span>
+        <span class="step current">Run optimization</span>
+        <span class="step">Before / after</span>
+      </div>
+
+      <div class="card">
+        <h3>Scope</h3>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer; margin-bottom:0.5rem;">
+          <input type="checkbox" checked style="width:18px; margin-top:2px;">
+          <div><strong>Optimize descriptions</strong><br><span class="muted">Rewrite tool and parameter descriptions for clearer agent use.</span></div>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:0.75rem; cursor:pointer;">
+          <input type="checkbox" checked style="width:18px; margin-top:2px;">
+          <div><strong>Optimize input schema</strong><br><span class="muted">Refine JSON Schema (names, types, enums) for LLM consumption; keep backward compatibility.</span></div>
+        </label>
+      </div>
+
+      <div class="card">
+        <h3>Tools to optimize</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Selected from tool list.</p>
+        <p style="margin:0;"><span class="mono">fetch_weather</span>, <span class="mono">search_docs</span></p>
+        <a href="02_tool_list.html" class="btn btn-secondary" style="margin-top:0.75rem;">Change selection</a>
+      </div>
+
+      <div class="card">
+        <h3>LLM for optimization</h3>
+        <label>Model (used to generate improved metadata)</label>
+        <select style="max-width:280px;">
+          <option>llama-3.1-70b</option>
+          <option>granite-20b</option>
+        </select>
+      </div>
+
+      <div style="margin-top:1rem;">
+        <a href="05_before_after.html" class="btn btn-primary">Run optimization</a>
+        <button class="btn btn-secondary">Cancel</button>
+      </div>
+
+      <p class="muted" style="font-size:12px; margin-top:1rem;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

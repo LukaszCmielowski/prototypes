@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tool metadata — AutoMCP (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoMCP</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_mcp.html">Connect MCP</a>
+      <a href="02_tool_list.html">Tool list</a>
+      <a href="03_tool_metadata.html" class="active">Tool metadata</a>
+      <a href="04_optimize.html">Run optimization</a>
+      <a href="05_before_after.html">Before / after</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Tool metadata</h1>
+      <p class="muted">View or edit a tool’s name, description, and input schema. These are what the LLM sees when deciding whether to call the tool.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect MCP</span>
+        <span class="step done">Tool list</span>
+        <span class="step current">Tool metadata</span>
+        <span class="step">Run optimization</span>
+        <span class="step">Before / after</span>
+      </div>
+
+      <div class="card">
+        <h3><span class="mono">fetch_weather</span></h3>
+        <label>Description</label>
+        <textarea style="max-width:100%;">Returns current weather conditions for a given location. Use when the user asks about weather, temperature, or conditions in a city or region. Input: location (string) and optional unit (celsius|fahrenheit).</textarea>
+        <p class="muted" style="margin-top:0.5rem; font-size:12px;">Clear, one-sentence-when-possible descriptions help the agent pick the right tool.</p>
+      </div>
+
+      <div class="card">
+        <h3>Input schema (JSON Schema)</h3>
+        <p class="muted" style="margin-bottom:0.5rem;">Parameters the LLM must fill. Good property names and descriptions improve reliability.</p>
+        <pre class="mono" style="display:block; padding:1rem; background:#1f2937; color:#e5e7eb; border-radius:6px; font-size:11px; overflow:auto; max-height:220px;">{
+  "location": {
+    "type": "string",
+    "description": "City name or region, e.g. 'San Francisco' or 'London'"
+  },
+  "unit": {
+    "type": "string",
+    "enum": ["celsius", "fahrenheit"],
+    "description": "Temperature unit; default celsius if omitted"
+  }
+}</pre>
+        <div style="margin-top:1rem;">
+          <button class="btn btn-secondary">Edit schema</button>
+          <a href="04_optimize.html" class="btn btn-primary">Optimize this tool</a>
+        </div>
+      </div>
+
+      <a href="02_tool_list.html" class="btn btn-secondary">← Back to tool list</a>
+
+      <p class="muted" style="font-size:12px; margin-top:1rem;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

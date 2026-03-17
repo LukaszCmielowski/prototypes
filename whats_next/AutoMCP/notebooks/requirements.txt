@@ -1,0 +1,5 @@
+# MCP tool optimization POC — optional deps for full run
+# pip install -r requirements.txt
+
+httpx>=0.24.0          # OpenAI-compatible API calls
+python-dotenv>=1.0.0   # load OPENAI_API_KEY, OPENAI_API_BASE from .env

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Before / after — AutoMCP (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoMCP</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_mcp.html">Connect MCP</a>
+      <a href="02_tool_list.html">Tool list</a>
+      <a href="03_tool_metadata.html">Tool metadata</a>
+      <a href="04_optimize.html">Run optimization</a>
+      <a href="05_before_after.html" class="active">Before / after</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Before / after</h1>
+      <p class="muted">Compare original vs optimized tool metadata. Apply changes to the MCP server config or export for review.</p>
+
+      <div class="stepper">
+        <span class="step done">Connect MCP</span>
+        <span class="step done">Tool list</span>
+        <span class="step done">Tool metadata</span>
+        <span class="step done">Run optimization</span>
+        <span class="step current">Before / after</span>
+      </div>
+
+      <div class="card">
+        <h3><span class="mono">fetch_weather</span> — Description</h3>
+        <table style="font-size:13px;">
+          <thead>
+            <tr><th style="width:100px;">Version</th><th>Text</th></tr>
+          </thead>
+          <tbody>
+            <tr class="diff-old">
+              <td><strong>Original</strong></td>
+              <td>Gets the weather for a location.</td>
+            </tr>
+            <tr class="diff-new">
+              <td><strong>Optimized</strong></td>
+              <td>Returns current weather conditions for a given location. Use when the user asks about weather, temperature, or conditions in a city or region. Accepts <code>location</code> (string) and optional <code>unit</code> (celsius|fahrenheit).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span class="mono">fetch_weather</span> — Input schema (excerpt)</h3>
+        <table style="font-size:12px;">
+          <thead>
+            <tr><th style="width:100px;">Version</th><th>Property</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr class="diff-old">
+              <td>Original</td>
+              <td><span class="mono">location</span></td>
+              <td>Location</td>
+            </tr>
+            <tr class="diff-new">
+              <td>Optimized</td>
+              <td><span class="mono">location</span></td>
+              <td>City name or region, e.g. 'San Francisco' or 'London'. Required.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Evaluation results — tool calling (selected model)</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Metrics on an eval set of <strong>50 user queries</strong> with the model used for the agent (<strong>llama-3.1-70b</strong>). Compares tool-calling behavior before vs after applying optimized metadata.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th style="width:100px;">Before</th>
+              <th style="width:100px;">After</th>
+              <th style="width:90px;">Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tool selection accuracy</td>
+              <td>62%</td>
+              <td><strong>84%</strong></td>
+              <td><span style="color:var(--success);">+22%</span></td>
+            </tr>
+            <tr>
+              <td>Correct tool + valid args</td>
+              <td>54%</td>
+              <td><strong>78%</strong></td>
+              <td><span style="color:var(--success);">+24%</span></td>
+            </tr>
+            <tr>
+              <td>Tool call success (no retry)</td>
+              <td>58%</td>
+              <td><strong>76%</strong></td>
+              <td><span style="color:var(--success);">+18%</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:0.75rem; font-size:12px;"><strong>Tool selection accuracy:</strong> % of eval turns where the model chose the correct tool. <strong>Correct tool + valid args:</strong> correct tool and all required parameters properly filled. <strong>Tool call success:</strong> first tool call succeeded without retry.</p>
+      </div>
+
+      <div class="card">
+        <h3>Actions</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Apply optimized metadata to your MCP server config or export for manual review.</p>
+        <button class="btn btn-primary">Apply to MCP server config</button>
+        <button class="btn btn-secondary">Export diff (JSON)</button>
+        <a href="02_tool_list.html" class="btn btn-secondary">Back to tool list</a>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>

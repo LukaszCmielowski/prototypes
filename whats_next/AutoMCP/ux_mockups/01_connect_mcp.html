@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect MCP — AutoMCP (mock)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <h2>AutoMCP</h2>
+      <a href="index.html">Overview</a>
+      <a href="01_connect_mcp.html" class="active">Connect MCP</a>
+      <a href="02_tool_list.html">Tool list</a>
+      <a href="03_tool_metadata.html">Tool metadata</a>
+      <a href="04_optimize.html">Run optimization</a>
+      <a href="05_before_after.html">Before / after</a>
+    </nav>
+    <main class="main">
+      <h1 style="margin:0 0 0.5rem;">Connect MCP server</h1>
+      <p class="muted">Connect to an MCP server to discover its tools. AutoMCP will optimize the metadata (descriptions, schema) of those tools.</p>
+
+      <div class="stepper">
+        <span class="step current">Connect MCP</span>
+        <span class="step">Tool list</span>
+        <span class="step">Tool metadata</span>
+        <span class="step">Run optimization</span>
+        <span class="step">Before / after</span>
+      </div>
+
+      <div class="card">
+        <h3>MCP server connection</h3>
+        <label>Server URL</label>
+        <input type="url" value="https://mcp.example.com/sse" style="margin-bottom:0.75rem;">
+        <label>Transport</label>
+        <select style="max-width:200px; margin-bottom:0.75rem;">
+          <option>SSE (HTTP)</option>
+          <option>stdio (local)</option>
+        </select>
+        <label>API key (optional)</label>
+        <input type="password" placeholder="Bearer token or API key" style="margin-bottom:0.75rem;">
+        <button class="btn btn-primary">Connect & discover tools</button>
+      </div>
+
+      <div class="card">
+        <h3>Discovered tools</h3>
+        <p class="muted" style="margin-bottom:0.75rem;">Tools listed by the MCP server after connection.</p>
+        <table>
+          <thead>
+            <tr><th>Tool name</th><th>Description (current)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="mono">fetch_weather</span></td>
+              <td>Gets the weather for a location.</td>
+            </tr>
+            <tr>
+              <td><span class="mono">search_docs</span></td>
+              <td>Search documentation.</td>
+            </tr>
+            <tr>
+              <td><span class="mono">run_query</span></td>
+              <td>Execute a query.</td>
+            </tr>
+          </tbody>
+        </table>
+        <a href="02_tool_list.html" class="btn btn-primary" style="margin-top:1rem;">Next → Tool list</a>
+      </div>
+
+      <p class="muted" style="font-size:12px;">Mock screen — for design reference only.</p>
+    </main>
+  </div>
+</body>
+</html>
