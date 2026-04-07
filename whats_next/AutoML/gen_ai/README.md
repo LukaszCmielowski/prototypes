@@ -8,7 +8,7 @@ Mocked UX/UI for a **single experience** that combines **predictive AI** (AutoGl
 - **Predictive (AutoGluon):** Select experiment/run and model from leaderboard; include in run.
 - **LLM:** Select endpoint and model (e.g. few-shot for same task); include in run.
 - **Combined options:** Compare on same metric, LLM explains predictive, or ensemble/fallback — so predictive and LLM are combined in one workflow.
-- **Common leaderboard:** One table with **Type** (Predictive | LLM | Combined), **Task**, **Model**, **Score**, **Notes**. Same eval set, same metric; rank AutoGluon and LLM together.
+- **Common leaderboard:** One table with **Type** (Predictive | LLM | Combined), **Family** (built-in vs tabular foundation vs LLM), **Task**, **Model**, **Score**, **Notes**. Same eval set, same metric; rank AutoGluon and LLM together.
 
 ## Screens
 
@@ -16,7 +16,7 @@ Mocked UX/UI for a **single experience** that combines **predictive AI** (AutoGl
 |----------------|------------------------------|-------------|
 | Overview       | [index.html](index.html)     | Intro and links to Configuration and Leaderboard. |
 | Configuration  | [01_configuration.html](01_configuration.html) | Task type (classification / regression / time-series), AutoGluon + LLM side-by-side panes, combined experience mode, data & metric, Run. |
-| Leaderboard    | [02_leaderboard.html](02_leaderboard.html) | Single table: Predictive and LLM (and Combined) rows, same score column; optional filters by type. |
+| Leaderboard    | [02_leaderboard.html](02_leaderboard.html) | Single table: built-in tabular models, tabular foundation models, LLMs, and Combined rows; same score column; optional filters by type. |
 
 ## How to view
 
@@ -29,6 +29,22 @@ Open any HTML file in a browser (e.g. `index.html`). No build step. For design r
 - **Combined:** One experience — configure both, run both, view both on the same leaderboard (and optional combined modes: explain, ensemble).
 
 Part of Red Hat OpenShift AI / AutoML.
+
+### AutoGluon tabular: built-in models vs tabular foundation models
+
+AutoGluon’s tabular module trains a **stack of built-in algorithms** (gradient-boosted trees, bagged models, neural nets, k-NN, etc.) and **ensembles** them (`WeightedEnsemble_*`). That is the default “AutoML” story most pipelines expose in a leaderboard.
+
+**Tabular foundation models (TFMs)** are a separate track in recent AutoGluon (1.5+): models pretrained for tabular data (synthetic priors, in-context learning, or prior-fitted networks) that you opt into via **extra installs** and/or **presets**. The upstream tutorial [*Tabular — Foundational Models*](https://auto.gluon.ai/stable/tutorials/tabular/tabular-foundational-models.html) documents:
+
+| Model | Role |
+|-------|------|
+| **Mitra** | AutoGluon’s tabular foundation model; zero-shot or fine-tune; strong on smaller tabular datasets. |
+| **TabICL** | In-context learning for larger tabular datasets. |
+| **TabPFNv2** | Prior-fitted network; strong on small/medium data; evolved from the TabPFN line. |
+
+Install paths are split (e.g. `autogluon.tabular[mitra]`, `[tabicl]`, `[tabpfn]`). Presets such as **`extreme`** can pull in multiple TFMs together with the **TabArena** extra (`autogluon.tabular[tabarena]`) where documented. **FT-Transformer** and other neural tabular models remain available as standard deep tabular options alongside GBDTs—they are not the same as the Mitra/TabPFN/TabICL “foundation” track but often appear next to them on a full leaderboard.
+
+A realistic **joint leaderboard** therefore mixes: (1) **ensembles and GBMs** from the classic stack, (2) **one or more TFMs** when enabled, (3) **LLM few-shot** baselines, and (4) optional **combined** rows—same metric and holdout for fair comparison.
 
 ---
 

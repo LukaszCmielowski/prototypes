@@ -30,13 +30,14 @@
         <table>
           <thead>
             <tr>
-              <th style="width:50px;">Rank</th>
-              <th style="width:100px;">Type</th>
+              <th style="width:44px;">Rank</th>
+              <th style="width:96px;">Type</th>
+              <th style="width:140px;">Family</th>
               <th>Task</th>
               <th>Model</th>
-              <th style="width:90px;">Score</th>
-              <th style="width:70px;">Latency</th>
-              <th style="width:90px;">Explain</th>
+              <th style="width:84px;">Score</th>
+              <th style="width:68px;">Latency</th>
+              <th style="width:84px;">Explain</th>
               <th>Notes</th>
             </tr>
           </thead>
@@ -44,8 +45,9 @@
             <tr class="leaderboard-type-predictive">
               <td>1</td>
               <td><span class="badge badge-predictive">Predictive</span></td>
+              <td>Ensemble (L2)</td>
               <td>Classification</td>
-              <td>WeightedEnsemble_L2 (AutoGluon)</td>
+              <td>WeightedEnsemble_L2</td>
               <td><strong>94.0%</strong></td>
               <td>12 ms</td>
               <td>—</td>
@@ -54,16 +56,73 @@
             <tr class="leaderboard-type-predictive">
               <td>2</td>
               <td><span class="badge badge-predictive">Predictive</span></td>
+              <td>GBM (built-in)</td>
               <td>Classification</td>
-              <td>LightGBM_BAG_L1 (AutoGluon)</td>
+              <td>LightGBM_BAG_L1</td>
               <td><strong>92.7%</strong></td>
               <td>8 ms</td>
               <td>—</td>
-              <td>churn_classifier — run-def456</td>
+              <td>Same run; stack layer 1</td>
+            </tr>
+            <tr class="leaderboard-type-predictive">
+              <td>3</td>
+              <td><span class="badge badge-predictive">Predictive</span></td>
+              <td>GBM (built-in)</td>
+              <td>Classification</td>
+              <td>CatBoost_BAG_L1</td>
+              <td><strong>92.3%</strong></td>
+              <td>11 ms</td>
+              <td>—</td>
+              <td>Same run; stack layer 1</td>
+            </tr>
+            <tr class="leaderboard-type-foundation">
+              <td>4</td>
+              <td><span class="badge badge-foundation" title="Tabular foundation model (AutoGluon optional extras)">Predictive</span></td>
+              <td>Tabular foundation</td>
+              <td>Classification</td>
+              <td>MITRA <span class="muted" style="font-size:11px;">(zero-shot)</span></td>
+              <td><strong>92.1%</strong></td>
+              <td>38 ms</td>
+              <td>—</td>
+              <td>Optional TFM; <span class="mono">autogluon.tabular[mitra]</span></td>
+            </tr>
+            <tr class="leaderboard-type-foundation">
+              <td>5</td>
+              <td><span class="badge badge-foundation" title="Tabular foundation model (AutoGluon optional extras)">Predictive</span></td>
+              <td>Tabular foundation</td>
+              <td>Classification</td>
+              <td>TabPFNv2</td>
+              <td><strong>91.6%</strong></td>
+              <td>52 ms</td>
+              <td>—</td>
+              <td>Strong on small/medium tabular; <span class="mono">[tabpfn]</span></td>
+            </tr>
+            <tr class="leaderboard-type-predictive">
+              <td>6</td>
+              <td><span class="badge badge-predictive">Predictive</span></td>
+              <td>Neural (built-in)</td>
+              <td>Classification</td>
+              <td>FT_TRANSFORMER</td>
+              <td><strong>90.4%</strong></td>
+              <td>24 ms</td>
+              <td>—</td>
+              <td>Deep tabular transformer in AutoGluon stack</td>
+            </tr>
+            <tr class="leaderboard-type-predictive">
+              <td>7</td>
+              <td><span class="badge badge-predictive">Predictive</span></td>
+              <td>Forest (built-in)</td>
+              <td>Classification</td>
+              <td>RandomForest_BAG_L1</td>
+              <td><strong>89.8%</strong></td>
+              <td>6 ms</td>
+              <td>—</td>
+              <td>Same run; bagged RF base model</td>
             </tr>
             <tr class="leaderboard-type-llm">
-              <td>3</td>
+              <td>8</td>
               <td><span class="badge badge-llm">LLM</span></td>
+              <td>Generative (few-shot)</td>
               <td>Classification</td>
               <td>llama-3.1-70b (few-shot, 3 ex.)</td>
               <td><strong>89.3%</strong></td>
@@ -72,8 +131,9 @@
               <td>Same eval set, same metric</td>
             </tr>
             <tr class="leaderboard-type-llm">
-              <td>4</td>
+              <td>9</td>
               <td><span class="badge badge-llm">LLM</span></td>
+              <td>Generative (few-shot)</td>
               <td>Classification</td>
               <td>granite-20b (few-shot, 3 ex.)</td>
               <td><strong>86.0%</strong></td>
@@ -82,8 +142,9 @@
               <td>Same eval set, same metric</td>
             </tr>
             <tr class="leaderboard-type-combined">
-              <td>5</td>
+              <td>10</td>
               <td><span class="badge badge-combined">Combined</span></td>
+              <td>Hybrid</td>
               <td>Classification</td>
               <td>WeightedEnsemble_L2 + llama-3.1 (SHAP→narrative)</td>
               <td><strong>94.0%</strong></td>
@@ -93,7 +154,7 @@
             </tr>
           </tbody>
         </table>
-        <p class="muted" style="margin-top:1rem; font-size:13px;"><strong>Type:</strong> Predictive = AutoGluon only. LLM = generative model on same task. Combined = predictive + LLM (e.g. explain or ensemble). <strong>Latency:</strong> p50 inference (ms). <strong>Explain:</strong> quality of LLM-generated explanation when using SHAP→narrative (combined rows). All scored on the same eval set and metric.</p>
+        <p class="muted" style="margin-top:1rem; font-size:13px;"><strong>Type:</strong> Predictive = AutoGluon built-in stack. <strong>Tabular FM</strong> = tabular foundation models via AutoGluon (e.g. Mitra, TabPFNv2; optional extras)—same column as Predictive, different badge. <strong>Family:</strong> how the row is trained—ensemble, GBM, TFM, neural, forest, LLM few-shot, or hybrid. LLM = generative model on same task. Combined = predictive + LLM (e.g. explain or ensemble). <strong>Latency:</strong> p50 inference (ms). <strong>Explain:</strong> quality of LLM-generated explanation when using SHAP→narrative (combined rows). All scored on the same eval set and metric.</p>
       </div>
 
       <div class="card">
@@ -108,9 +169,15 @@
 
       <div class="card">
         <h3>Filters (mock)</h3>
-        <p class="muted" style="margin-bottom:0.5rem;">Filter leaderboard by type or task.</p>
+        <p class="muted" style="margin-bottom:0.5rem;">Filter leaderboard by type, family, or task.</p>
         <label style="display:inline-flex; align-items:center; gap:0.5rem; margin-right:1rem;">
-          <input type="checkbox" checked=""> Predictive
+          <input type="checkbox" checked=""> Predictive (all)
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:0.5rem; margin-right:1rem;">
+          <input type="checkbox" checked=""> Built-in only (ensemble, GBM, neural, forest)
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:0.5rem; margin-right:1rem;">
+          <input type="checkbox" checked=""> Tabular foundation (Mitra, TabPFNv2)
         </label>
         <label style="display:inline-flex; align-items:center; gap:0.5rem; margin-right:1rem;">
           <input type="checkbox" checked=""> LLM
