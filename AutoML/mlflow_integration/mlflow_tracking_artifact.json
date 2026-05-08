@@ -1,0 +1,10 @@
+{
+  "tracking_enabled": true,
+  "mlflow_tracking_uri": "https://rh-ai.apps.rosa.ai-eng-gpu.socc.p3.openshiftapps.com/mlflow",
+  "mlflow_experiment_id": "6",
+  "mlflow_experiment_name": "AutoML-Tabular-XXX-Training",
+  "mlflow_parent_run_id": "a4d579976a79494881ff8be6eeb6982f",
+  "mlflow_workspace": "ai-eng-cracow",
+  "mlflow_run_url": "https://rh-ai.apps.rosa.ai-eng-gpu.socc.p3.openshiftapps.com/mlflow/#/experiments/6/runs/a4d579976a79494881ff8be6eeb6982f",
+  "kfp_run_id": "run-abc123-def456-789ghi"
+}

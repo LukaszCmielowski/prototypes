@@ -1,1 +1,0 @@
-[llama-stack setup and examples](https://github.com/red-hat-data-services/red-hat-ai-examples/tree/autorag_sample/examples/llama-stack) are on red-hat-data-services now 🚀
