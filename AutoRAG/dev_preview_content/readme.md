@@ -1,1 +1,0 @@
-[AutoRAG overview and tutorials](https://github.com/red-hat-data-services/red-hat-ai-examples/blob/autorag_sample/examples/autorag/) are on red-hat-data-services now 🚀
