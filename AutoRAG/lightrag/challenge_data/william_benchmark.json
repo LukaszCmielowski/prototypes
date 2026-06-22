@@ -1,0 +1,200 @@
+[
+   {
+      "question": "Who owns Romano's Bakery, and how is this person related to Isabella Romano?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Rosa Romano owns/founded Romano's Family Bakery in 1963. Isabella Romano is her granddaughter who lives with her."
+      ]
+   },
+   {
+      "question": "Dr. Okafor treated a patient in the emergency department. What was the patient's condition, and what is Dr. Okafor's relationship to the patient?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Dr. Kwame Okafor (pediatrician) treated Emmanuel Okafor for acute appendicitis. Emmanuel is Dr. Okafor's son."
+      ]
+   },
+   {
+      "question": "There are two bakeries mentioned in the documents. What are their names and who runs them ?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Al-Rashid Mediterranean Bakery (run by Ahmed Al-Rashid) and Romano's Family Bakery (founded by Rosa Romano in 1963)"
+      ]
+   },
+   {
+      "question": "What significant infrastructure event happened in Millbrook in 1963, and how does it relate to current events in 2024?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Bridge 7 was constructed in 1963 (same year Rosa Romano founded her bakery). In 2024, this bridge requires major structural repairs due to deterioration."
+      ]
+   },
+   {
+      "question": "How long has Ahmed Al-Rashid been operating his bakery, and what was his career before opening it?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Al-Rashid has been operating his bakery for 30 years (opened 1994, document dated 2024). Before that, he worked in construction after immigrating in 1989."
+      ]
+   },
+   {
+      "question": "When did Dr. Elena Vasquez assume her current role as Hospital Director, and how long had she been at the hospital before that promotion?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "She became Hospital Director in January 2020. She had been at Millbrook General since 2006, so 14 years before her promotion"
+      ]
+   },
+   {
+      "question": "What is the current load capacity of Bridge 7, and are there any restrictions in place?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "The current load rating is 25 tons (reduced from original 40 tons), but there are temporary 15-ton restrictions due to safety concerns."
+      ]
+   },
+   {
+      "question": "How much time will be added to emergency response times due to the bridge construction, and how has this actually affected hospital operations ?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "The engineering report projects +4.7 minutes average response time, but the newspaper reports actual increases have been 'minimal' due to proactive routing strategies."
+      ]
+   },
+   {
+      "question": "What is the projected economic impact of the bridge construction on local businesses?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Two different measures are given: $47,000 per day economic loss (from detour costs), and 25-35% reduction in foot traffic for Historic Downtown businesses."
+      ]
+   },
+   {
+      "question": "What happened to Isabella Romano's parents?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "The documents indicate Isabella's parents are deceased but do not provide details about what happened to them."
+      ]
+   },
+   {
+      "question": "Why did Sofia Okafor move from Texas to Millbrook to start her engineering firm?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "The documents indicate Sofia has a Texas PE license and founded her firm in Millbrook in 2018, but do not explain the reason for relocating."
+      ]
+   },
+   {
+      "question": "What architectural projects has Miguel Vasquez (Elena's husband) worked on in Millbrook?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Miguel Vasquez is identified as an architect and Elena's husband, but no specific projects in Millbrook are mentioned in the documents."
+      ]
+   },
+   {
+      "question": "What does Sofia Okafor's PE license enable her to do professionally?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Sofia's PE (Professional Engineer) license #89472 enables her to practice engineering and stamp engineering documents in Texas (she also has a California PE license #67821)."
+      ]
+   },
+   {
+      "question": "In the medical record, what does 'attending physician' refer to, and how does this differ from meeting attendance mentioned elsewhere?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Attending physician refers to Dr. Kwame Okafor's role as the supervising doctor responsible for patient care, not meeting attendance. This is standard medical terminology."
+      ]
+   },
+   {
+      "question": "What type of 'code-switching' is mentioned in the documents?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Linguistic code-switching - the practice of alternating between languages within conversations, as shown in the bakery conversation transcript."
+      ]
+   },
+   {
+      "question": "How are Carmen Vasquez and Emmanuel Okafor connected, and trace the path of their relationship through their families' professional connections?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Carmen Vasquez (daughter of Dr. Elena Vasquez) is friends with Emmanuel Okafor (son of Dr. Kwame Okafor). Their mothers work together at Millbrook General Hospital - Elena as Hospital Director and Kwame as a pediatrician."
+      ]
+   },
+   {
+      "question": "What connections exist between the Chen family and the bridge project, considering both professional and personal relationships?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Marcus Chen (city councilman) works professionally with Sofia Okafor on the bridge project. His daughter Lily Chen is friends with Carmen Vasquez, whose mother (Dr. Elena Vasquez) has concerns about bridge impact on hospital access. Lily also helps Isabella Romano with studies, connecting to another affected family."
+      ]
+   },
+   {
+      "question": "How many degrees of separation exist between Ahmed Al-Rashid and Dr. Kwame Okafor, and what is the path?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Multiple paths exist: Direct: Al-Rashid → community meetings → hospital discussions → Dr. Okafor Through children: Al-Rashid → community connections → Emmanuel Okafor → Dr. Okafor (father) Through Isabella: Al-Rashid → Isabella Romano (who knows about Emmanuel's hospital visit) → Dr. Okafor"
+      ]
+   },
+   {
+      "question": "What languages does Dr. Elena Vasquez speak, and how do her language skills impact her role in the community?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Dr. Vasquez speaks Spanish (native), English (fluent), and Portuguese (conversational). Her bilingual abilities help in medical care and community meetings, as noted in Carmen's academic comments about tutoring Spanish-speaking students."
+      ]
+   },
+   {
+      "question": "In the bakery conversation transcript, identify all instances of code-switching and explain what languages are being mixed.",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Multiple instances: Ahmed: Arabic ('أهلاً وسهلاً' - welcome) to English Dr. Vasquez: Spanish ('Gracias,' 'Para los pacientes cardíacos') mixed with English Marcus: English to Mandarin ('你明白吗？') Isabella: Italian ('Scusi,' 'questi ponti vengono e vanno') to Spanish/English Ahmed: Arabic ('المجتمع يجب أن يعرف') translated to English"
+      ]
+   },
+   {
+      "question": "According to the engineering report, what are the specific technical reasons Bridge 7 needs immediate attention, and how do these relate to the timeline concerns expressed in the city council meeting?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Technical reasons include 15.3cm pylon displacement, 65% load capacity, micro-cracking, and 18% natural frequency reduction. These support the council's concern about the 8-14 month failure timeline and need for immediate $2.3M intervention."
+      ]
+   },
+   {
+      "question": "What medical considerations are mentioned regarding the bridge construction, and which healthcare professionals are involved in planning?",
+      "correct_answer_document_ids": [
+         "william.md"
+      ],
+      "correct_answers": [
+         "Main concerns are increased emergency response times (+4.7 minutes) affecting cardiac patients. Dr. Elena Vasquez (Hospital Director) and Rebecca Martinez (Emergency Nurse Manager) are involved in planning alternative routes and weekly progress reviews."
+      ]
+   }
+]
