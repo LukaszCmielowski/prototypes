@@ -1,0 +1,155 @@
+{
+  "name": "Pattern11",
+  "max_combinations": 72,
+  "scores": {
+    "scores": {
+      "answer_correctness": {
+        "mean": 0.3295,
+        "ci_low": 0.2328,
+        "ci_high": 0.4357
+      },
+      "faithfulness": {
+        "mean": 0.4435,
+        "ci_low": 0.3336,
+        "ci_high": 0.5758
+      },
+      "context_correctness": {
+        "mean": 1.0,
+        "ci_low": null,
+        "ci_high": null
+      }
+    },
+    "question_scores": {
+      "answer_correctness": {
+        "q0": 0.3529,
+        "q1": 0.6,
+        "q2": 0.6471,
+        "q3": 0.1667,
+        "q4": 0.0833,
+        "q5": 0.5714,
+        "q6": 0.1429,
+        "q7": 0.5714,
+        "q8": 0.087,
+        "q9": 0.0,
+        "q10": 0.1364,
+        "q11": 0.0526,
+        "q12": 0.7083,
+        "q13": 0.6957,
+        "q14": 0.1333,
+        "q15": 0.6061,
+        "q16": 0.5217,
+        "q17": 0.0714,
+        "q18": 0.1,
+        "q19": 0.3182,
+        "q20": 0.5,
+        "q21": 0.1818
+      },
+      "faithfulness": {
+        "q0": 0.5,
+        "q1": 0.8929,
+        "q2": 0.3393,
+        "q3": 0.197,
+        "q4": 0.2353,
+        "q5": 0.9167,
+        "q6": 0.1408,
+        "q7": 0.9333,
+        "q8": 0.0896,
+        "q9": 0.0,
+        "q10": 0.3125,
+        "q11": 0.2222,
+        "q12": 0.5455,
+        "q13": 0.5426,
+        "q14": 0.4583,
+        "q15": 0.7903,
+        "q16": 0.82,
+        "q17": 0.3333,
+        "q18": 0.125,
+        "q19": 0.4316,
+        "q20": 0.7477,
+        "q21": 0.1839
+      },
+      "context_correctness": {
+        "q0": 1.0,
+        "q1": 1.0,
+        "q2": 1.0,
+        "q3": 1.0,
+        "q4": 1.0,
+        "q5": 1.0,
+        "q6": 1.0,
+        "q7": 1.0,
+        "q8": 1.0,
+        "q9": 1.0,
+        "q10": 1.0,
+        "q11": 1.0,
+        "q12": 1.0,
+        "q13": 1.0,
+        "q14": 1.0,
+        "q15": 1.0,
+        "q16": 1.0,
+        "q17": 1.0,
+        "q18": 1.0,
+        "q19": 1.0,
+        "q20": 1.0,
+        "q21": 1.0
+      }
+    }
+  },
+  "duration_seconds": 35,
+  "final_score": 0.3295,
+  "settings": {
+    "vector_store_binding": {
+      "provider_id": "milvus-remote",
+      "vector_store_id": "vs_7b4ffec7-f0e9-4f04-8bd0-11a4e7b5905d",
+      "provider_type": "remote::milvus"
+    },
+    "chunking": {
+      "method": "recursive",
+      "chunk_size": 2048,
+      "chunk_overlap": 128
+    },
+    "embedding": {
+      "model_id": "vllm-embedding/bge-m3",
+      "embedding_params": {
+        "embedding_dimension": 1024,
+        "context_length": 8129
+      }
+    },
+    "retrieval": {
+      "method": "simple",
+      "number_of_chunks": 10,
+      "search_mode": "vector"
+    },
+    "generation": {
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "context_template_text": "[document]: {document}\n",
+      "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+      "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n",
+      "detected_language": {
+        "code": "en",
+        "name": "English"
+      }
+    },
+    "responses_template": {
+      "model": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "stream": false,
+      "store": false,
+      "input": "<user_query_placeholder>",
+      "instructions": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n",
+      "tools": [
+        {
+          "type": "file_search",
+          "vector_store_ids": [
+            "vs_7b4ffec7-f0e9-4f04-8bd0-11a4e7b5905d"
+          ],
+          "ranking_options": {
+            "max_num_results": 10
+          }
+        }
+      ],
+      "include": [
+        "file_search_call.results"
+      ]
+    }
+  },
+  "iteration": 10
+}

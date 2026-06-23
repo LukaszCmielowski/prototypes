@@ -1,4 +1,4 @@
-question,ground_truth,predicted_answer,retrieval_mode,answer_correctness,faithfulness
+question,ground_truth,predicted_answer,retrieval_mode,answer_correctness,faithfulness,llm_judge_score
 "Who owns Romano's Bakery, and how is this person related to Isabella Romano?",Rosa Romano owns/founded Romano's Family Bakery in 1963. Isabella Romano is her granddaughter who lives with her.,"### Isabella Romano's Family Background
 
 Isabella Romano is a nursing student who works part-time as a CNA at Sunset Manor. Her family has a long history in Millbrook, particularly in the Historic Downtown area.
@@ -21,7 +21,7 @@ Isabella's family has a strong connection to the community, and Romano's Bakery 
 * [2] Document Title Two
 * [3] Document Title Three
 * [4] Document Title Four
-* [5] Document Title Five",naive,1.0,0.9
+* [5] Document Title Five",naive,1.0,0.9,0.6
 "Dr. Okafor treated a patient in the emergency department. What was the patient's condition, and what is Dr. Okafor's relationship to the patient?",Dr. Kwame Okafor (pediatrician) treated Emmanuel Okafor for acute appendicitis. Emmanuel is Dr. Okafor's son.,"### Patient Condition and Dr. Okafor's Relationship
 
 Dr. Okafor treated an 8-year-old male patient in the emergency department with a condition of acute appendicitis, uncomplicated.
@@ -31,7 +31,7 @@ Dr. Okafor's relationship to the patient is that of the patient's father. The pa
 #### References
 
 - [4] MEDICAL RECORD EXCERPT
-- [10] TECHNICAL ENGINEERING REPORT",naive,0.875,0.9
+- [10] TECHNICAL ENGINEERING REPORT",naive,0.875,0.9,0.8
 There are two bakeries mentioned in the documents. What are their names and who runs them ?,Al-Rashid Mediterranean Bakery (run by Ahmed Al-Rashid) and Romano's Family Bakery (founded by Rosa Romano in 1963),"### Bakeries in Millbrook
 
 There are two bakeries mentioned in the documents: Romano's Family Bakery and Al-Rashid Mediterranean Bakery.
@@ -54,7 +54,7 @@ There are two bakeries mentioned in the documents: Romano's Family Bakery and Al
 *   [2] DOCUMENT 1: CITY DEMOGRAPHIC REPORT
 *   [3] DOCUMENT 2: BIOGRAPHICAL DOSSIERS
 *   [4] DOCUMENT 6: PERSONAL DIARY ENTRY
-*   [5] DOCUMENT 7: BUSINESS CORRESPONDENCE",naive,1.0,0.9
+*   [5] DOCUMENT 7: BUSINESS CORRESPONDENCE",naive,1.0,0.9,0.8
 "What significant infrastructure event happened in Millbrook in 1963, and how does it relate to current events in 2024?","Bridge 7 was constructed in 1963 (same year Rosa Romano founded her bakery). In 2024, this bridge requires major structural repairs due to deterioration.","## Significant Infrastructure Event in Millbrook in 1963
 
 In 1963, the original Bridge 7 over Millbrook Creek was constructed, connecting various neighborhoods and providing a vital transportation link for the city. This event played a crucial role in shaping the city's growth and development.
@@ -79,7 +79,7 @@ The community is rallying around the crisis, with business owners like Ahmed Al-
 * [2] DOCUMENT 9: NEWSPAPER ARTICLE
 * [3] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES
 * [4] DOCUMENT 8: CONVERSATION TRANSCRIPT
-* [5] DOCUMENT 7: BUSINESS CORRESPONDENCE",naive,0.75,0.9
+* [5] DOCUMENT 7: BUSINESS CORRESPONDENCE",naive,0.75,0.9,0.8
 "How long has Ahmed Al-Rashid been operating his bakery, and what was his career before opening it?","Al-Rashid has been operating his bakery for 30 years (opened 1994, document dated 2024). Before that, he worked in construction after immigrating in 1989.","### Ahmed Al-Rashid's Bakery Experience
 
 Ahmed Al-Rashid has been operating his Mediterranean bakery for approximately 30 years, having opened it in 1994.
@@ -90,7 +90,7 @@ Prior to opening the bakery, Al-Rashid worked in construction after immigrating 
 
 - [1] PROFILE: Ahmed Al-Rashid
 - [2] PROFILE: Dr. Elena Vasquez
-- [3] PROFILE: Sofia Okafor",naive,0.913,0.9
+- [3] PROFILE: Sofia Okafor",naive,0.913,0.9,0.8
 "When did Dr. Elena Vasquez assume her current role as Hospital Director, and how long had she been at the hospital before that promotion?","She became Hospital Director in January 2020. She had been at Millbrook General since 2006, so 14 years before her promotion","### References
 
 * [2] Document Title Two
@@ -105,7 +105,7 @@ Before her promotion to Hospital Director, she had been working at Millbrook Gen
 
 ### Background Information
 
-Dr. Vasquez joined Millbrook General in 2006 as an attending cardiologist. She has a rich medical background, with a degree in medicine from Universidad Nacional de Colombia (1999) and a cardiology fellowship from Johns Hopkins (2004). Her experience and dedication to the hospital and its community have earned her a prominent position as Hospital Director.",naive,1.0,0.9
+Dr. Vasquez joined Millbrook General in 2006 as an attending cardiologist. She has a rich medical background, with a degree in medicine from Universidad Nacional de Colombia (1999) and a cardiology fellowship from Johns Hopkins (2004). Her experience and dedication to the hospital and its community have earned her a prominent position as Hospital Director.",naive,1.0,0.9,0.8
 "What is the current load capacity of Bridge 7, and are there any restrictions in place?","The current load rating is 25 tons (reduced from original 40 tons), but there are temporary 15-ton restrictions due to safety concerns.","### Current Load Capacity and Restrictions
 
 According to the technical engineering report from Okafor Engineering Solutions, the current load-bearing capacity of Bridge 7 has degraded to 65% of its original design specifications.
@@ -132,7 +132,7 @@ According to the technical engineering report from Okafor Engineering Solutions,
 
 - [1] DOCUMENT 10: TECHNICAL ENGINEERING REPORT
 - [2] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES
-- [3] DOCUMENT 8: CONVERSATION TRANSCRIPT",naive,0.6136,0.9
+- [3] DOCUMENT 8: CONVERSATION TRANSCRIPT",naive,0.6136,0.9,0.6
 "How much time will be added to emergency response times due to the bridge construction, and how has this actually affected hospital operations ?","The engineering report projects +4.7 minutes average response time, but the newspaper reports actual increases have been 'minimal' due to proactive routing strategies.","### Added Response Time Due to Bridge Construction
 
 According to the conversation between Dr. Elena Vasquez and the community leaders at Al-Rashid Mediterranean Bakery, the alternative emergency response routes implemented due to the bridge construction are expected to add approximately 4.7 minutes to emergency response times.
@@ -150,7 +150,7 @@ In Document 4: MEDICAL RECORD EXCERPT, a nursing note by Rebecca Martinez mentio
 - [1] DOCUMENT 8: CONVERSATION TRANSCRIPT
 - [2] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES
 - [3] DOCUMENT 5: ACADEMIC TRANSCRIPT
-- [4] DOCUMENT 4: MEDICAL RECORD EXCERPT",naive,0.4773,0.9
+- [4] DOCUMENT 4: MEDICAL RECORD EXCERPT",naive,0.4773,0.9,0.8
 What is the projected economic impact of the bridge construction on local businesses?,"Two different measures are given: $47,000 per day economic loss (from detour costs), and 25-35% reduction in foot traffic for Historic Downtown businesses.","### Projected Economic Impact of Bridge Construction on Local Businesses
 
 The projected economic impact of the bridge construction on local businesses is a significant concern for the community. According to the technical engineering report from Okafor Engineering Solutions (Document 10), the construction of the bridge is expected to have a substantial economic impact on the local businesses.
@@ -174,14 +174,14 @@ The projected economic impact of the bridge construction on local businesses is 
 
 *   [1] DOCUMENT 10: TECHNICAL ENGINEERING REPORT (OKAFOR ENGINEERING SOLUTIONS)
 *   [2] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES (OCTOBER 14, 2024)
-*   [3] DOCUMENT 7: BUSINESS CORRESPONDENCE (SOFFIA OKAFOR TO INFRASTRUCTURE@MILLBROOK.GOV)",naive,0.6522,0.9
+*   [3] DOCUMENT 7: BUSINESS CORRESPONDENCE (SOFFIA OKAFOR TO INFRASTRUCTURE@MILLBROOK.GOV)",naive,0.6522,0.9,0.8
 What happened to Isabella Romano's parents?,The documents indicate Isabella's parents are deceased but do not provide details about what happened to them.,"### What happened to Isabella Romano's parents?
 
 Isabella Romano lives with her grandmother Rosa Romano (89) and her parents are deceased.
 
 ### References
 
-* [1] Document Chunks: PROFILE: Isabella Romano",naive,0.4412,0.9
+* [1] Document Chunks: PROFILE: Isabella Romano",naive,0.4412,0.9,0.8
 Why did Sofia Okafor move from Texas to Millbrook to start her engineering firm?,"The documents indicate Sofia has a Texas PE license and founded her firm in Millbrook in 2018, but do not explain the reason for relocating.","### Sofia Okafor's Background and Move to Millbrook
 
 Sofia Okafor, a licensed Professional Engineer, moved to Millbrook to establish her engineering firm, Okafor Engineering Solutions. While the provided context does not explicitly state the reasons for her move, it can be inferred from her background and experiences.
@@ -200,7 +200,7 @@ While the context does not provide explicit information about Sofia's reasons fo
 
 *   [3] DOCUMENT 2: BIOGRAPHICAL DOSSIERS
 *   [8] DOCUMENT 7: BUSINESS CORRESPONDENCE
-*   [10] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",naive,0.913,0.9
+*   [10] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",naive,0.913,0.9,0.8
 What architectural projects has Miguel Vasquez (Elena's husband) worked on in Millbrook?,"Miguel Vasquez is identified as an architect and Elena's husband, but no specific projects in Millbrook are mentioned in the documents.","### Architectural Projects by Miguel Vasquez
 
 Miguel Vasquez, husband of Dr. Elena Vasquez, is an architect with a diverse portfolio of projects in Millbrook. While specific details about his current or past projects are not provided in the available documents, we can infer some information based on the profiles of other individuals in the community.
@@ -219,7 +219,7 @@ To find more information about Miguel Vasquez's architectural projects, we would
 
 * [1] PROFILE: Dr. Elena Vasquez
 * [2] PROFILE: Ahmed Al-Rashid
-* [3] PROFILE: Sofia Okafor",naive,0.975,0.9
+* [3] PROFILE: Sofia Okafor",naive,0.975,0.9,0.6
 What does Sofia Okafor's PE license enable her to do professionally?,Sofia's PE (Professional Engineer) license #89472 enables her to practice engineering and stamp engineering documents in Texas (she also has a California PE license #67821).,"### Sofia Okafor's Professional Certifications
 
 Sofia Okafor holds a Professional Engineer (PE) license in both Texas (#89472) and California (#67821). This certification enables her to practice as a licensed engineer in her respective jurisdictions.
@@ -249,7 +249,7 @@ By holding a PE license, Sofia Okafor demonstrates her expertise and commitment 
 
 *   [1] Document Title One
 *   [2] Document Title Two
-*   [3] Document Title Three",naive,0.9545,0.9
+*   [3] Document Title Three",naive,0.9545,0.9,1.0
 "In the medical record, what does 'attending physician' refer to, and how does this differ from meeting attendance mentioned elsewhere?","Attending physician refers to Dr. Kwame Okafor's role as the supervising doctor responsible for patient care, not meeting attendance. This is standard medical terminology.","### Attending Physician
 
 The term 'attending physician' refers to the primary doctor responsible for a patient's care during a hospital stay. In the medical record excerpt provided, Dr. Kwame Okafor is listed as the attending physician for Emmanuel Okafor's visit on September 22, 2024. This means Dr. Okafor is the doctor in charge of Emmanuel's case, overseeing his treatment and making decisions regarding his care.
@@ -264,7 +264,7 @@ Key differences between the two:
 *   **Context**: The attending physician is typically mentioned in medical settings, such as hospital records or medical reports, whereas meeting attendance is commonly used in business, community, or social contexts.
 *   **Responsibilities**: The attending physician is responsible for a patient's medical care, whereas meeting attendees may have various roles, such as providing input, making decisions, or representing a particular group or organization.
 
-By understanding these differences, you can accurately interpret the context in which these terms are used and appreciate the distinct responsibilities and roles associated with each.",naive,1.0,0.7
+By understanding these differences, you can accurately interpret the context in which these terms are used and appreciate the distinct responsibilities and roles associated with each.",naive,1.0,0.7,0.8
 What type of 'code-switching' is mentioned in the documents?,"Linguistic code-switching - the practice of alternating between languages within conversations, as shown in the bakery conversation transcript.","### Code-Switching in the Documents
 
 Code-switching is mentioned in the context of language use among individuals in the community. Specifically, it is mentioned in the following instances:
@@ -280,8 +280,8 @@ Code-switching in this context refers to the practice of switching between two o
 *   To signal social identity or affiliation
 *   To navigate complex social situations
 
-The code-switching mentioned in the documents highlights the diversity of languages spoken in the community and the flexibility of language use among its members.",naive,0.9706,0.9
-"How are Carmen Vasquez and Emmanuel Okafor connected, and trace the path of their relationship through their families' professional connections?",Carmen Vasquez (daughter of Dr. Elena Vasquez) is friends with Emmanuel Okafor (son of Dr. Kwame Okafor). Their mothers work together at Millbrook General Hospital - Elena as Hospital Director and Kwame as a pediatrician.,Error: Query returned no response,naive,0.0,0.7
+The code-switching mentioned in the documents highlights the diversity of languages spoken in the community and the flexibility of language use among its members.",naive,0.9706,0.9,0.8
+"How are Carmen Vasquez and Emmanuel Okafor connected, and trace the path of their relationship through their families' professional connections?",Carmen Vasquez (daughter of Dr. Elena Vasquez) is friends with Emmanuel Okafor (son of Dr. Kwame Okafor). Their mothers work together at Millbrook General Hospital - Elena as Hospital Director and Kwame as a pediatrician.,Error: Query returned no response,naive,0.0,0.7,0.2
 "What connections exist between the Chen family and the bridge project, considering both professional and personal relationships?","Marcus Chen (city councilman) works professionally with Sofia Okafor on the bridge project. His daughter Lily Chen is friends with Carmen Vasquez, whose mother (Dr. Elena Vasquez) has concerns about bridge impact on hospital access. Lily also helps Isabella Romano with studies, connecting to another affected family.","### Connections between the Chen Family and the Bridge Project
 
 The Chen family has significant connections to the bridge project, both professionally and personally. Key connections include:
@@ -303,7 +303,7 @@ The Chen family has significant connections to the bridge project, both professi
 - [2] DOCUMENT 8: CONVERSATION TRANSCRIPT
 - [3] DOCUMENT 5: ACADEMIC TRANSCRIPT
 - [4] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES
-- [5] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",naive,0.5488,0.9
+- [5] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",naive,0.5488,0.9,0.8
 "How many degrees of separation exist between Ahmed Al-Rashid and Dr. Kwame Okafor, and what is the path?",Multiple paths exist: Direct: Al-Rashid → community meetings → hospital discussions → Dr. Okafor Through children: Al-Rashid → community connections → Emmanuel Okafor → Dr. Okafor (father) Through Isabella: Al-Rashid → Isabella Romano (who knows about Emmanuel's hospital visit) → Dr. Okafor,"### Degrees of Separation Between Ahmed Al-Rashid and Dr. Kwame Okafor
 
 There are 3 degrees of separation between Ahmed Al-Rashid and Dr. Kwame Okafor.
@@ -318,7 +318,7 @@ There are 3 degrees of separation between Ahmed Al-Rashid and Dr. Kwame Okafor.
 
 - [3] DOCUMENT 8: CONVERSATION TRANSCRIPT
 - [6] DOCUMENT 10: TECHNICAL ENGINEERING REPORT
-- [9] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES",naive,0.36,0.9
+- [9] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES",naive,0.36,0.9,0.8
 "What languages does Dr. Elena Vasquez speak, and how do her language skills impact her role in the community?","Dr. Vasquez speaks Spanish (native), English (fluent), and Portuguese (conversational). Her bilingual abilities help in medical care and community meetings, as noted in Carmen's academic comments about tutoring Spanish-speaking students.","### Languages Spoken by Dr. Elena Vasquez
 
 According to **Document 2: BIOGRAPHICAL DOSSIERS**, Dr. Elena Vasquez speaks:
@@ -339,7 +339,7 @@ Dr. Elena Vasquez's multilingual abilities have a significant impact on her role
 ### References
 
 *   [2] Document Title Two
-*   [1] Document Title One",naive,0.8036,0.9
+*   [1] Document Title One",naive,0.8036,0.9,0.8
 "In the bakery conversation transcript, identify all instances of code-switching and explain what languages are being mixed.","Multiple instances: Ahmed: Arabic ('أهلاً وسهلاً' - welcome) to English Dr. Vasquez: Spanish ('Gracias,' 'Para los pacientes cardíacos') mixed with English Marcus: English to Mandarin ('你明白吗？') Isabella: Italian ('Scusi,' 'questi ponti vengono e vanno') to Spanish/English Ahmed: Arabic ('المجتمع يجب أن يعرف') translated to English","### Code-Switching in the Bakery Conversation Transcript
 
 In the provided conversation transcript, code-switching occurs when individuals switch between two or more languages during a conversation. The languages involved in the code-switching instances are English and Arabic.
@@ -374,7 +374,7 @@ In this continued conversation, Ahmed reiterates the importance of the community
 
 ### References
 
-- [2] DOCUMENT 1: CITY DEMOGRAPHIC REPORT",naive,0.2838,0.9
+- [2] DOCUMENT 1: CITY DEMOGRAPHIC REPORT",naive,0.2838,0.9,0.8
 "According to the engineering report, what are the specific technical reasons Bridge 7 needs immediate attention, and how do these relate to the timeline concerns expressed in the city council meeting?","Technical reasons include 15.3cm pylon displacement, 65% load capacity, micro-cracking, and 18% natural frequency reduction. These support the council's concern about the 8-14 month failure timeline and need for immediate $2.3M intervention.","### Technical Reasons for Immediate Attention
 
 According to the engineering report, the specific technical reasons Bridge 7 needs immediate attention are as follows:
@@ -395,7 +395,7 @@ The engineering report's recommendations for immediate action, traffic managemen
 ### References
 
 *   [1] Okafor Engineering Solutions, Millbrook Bridge 7 Structural Rehabilitation, Report ID: OES-2024-MB7-FINAL, November 1, 2024.
-*   [2] Millbrook City Council Meeting Minutes, October 14, 2024.",naive,0.65,0.9
+*   [2] Millbrook City Council Meeting Minutes, October 14, 2024.",naive,0.65,0.9,0.8
 "What medical considerations are mentioned regarding the bridge construction, and which healthcare professionals are involved in planning?",Main concerns are increased emergency response times (+4.7 minutes) affecting cardiac patients. Dr. Elena Vasquez (Hospital Director) and Rebecca Martinez (Emergency Nurse Manager) are involved in planning alternative routes and weekly progress reviews.,"### Medical Considerations Regarding Bridge Construction
 
 According to the conversation transcript, Dr. Elena Vasquez expresses concerns about the potential impact of bridge construction on emergency vehicle access to Millbrook General Hospital. This is mentioned in the context of the bridge's structural rehabilitation, where Dr. Vasquez is quoted as saying, ""Para los pacientes cardíacos, four additional minutes could be critical.""
@@ -418,10 +418,10 @@ These healthcare professionals are working together to address the medical consi
 - [2] DOCUMENT 4: MEDICAL RECORD EXCERPT
 - [3] DOCUMENT 9: NEWSPAPER ARTICLE
 - [4] DOCUMENT 5: ACADEMIC TRANSCRIPT
-- [5] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",naive,0.6774,0.9
+- [5] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",naive,0.6774,0.9,0.8
 "Who owns Romano's Bakery, and how is this person related to Isabella Romano?",Rosa Romano owns/founded Romano's Family Bakery in 1963. Isabella Romano is her granddaughter who lives with her.,"### Who Owns Romano's Bakery and Relationship to Isabella Romano
 
-Unfortunately, I do not have enough information to answer your query about Romano's Bakery ownership and the relationship between the owner and Isabella Romano. The **Context** provided does not contain any information about Romano's Bakery or its owners.",hybrid,0.4688,0.7
+Unfortunately, I do not have enough information to answer your query about Romano's Bakery ownership and the relationship between the owner and Isabella Romano. The **Context** provided does not contain any information about Romano's Bakery or its owners.",hybrid,0.4688,0.7,0.2
 "Dr. Okafor treated a patient in the emergency department. What was the patient's condition, and what is Dr. Okafor's relationship to the patient?",Dr. Kwame Okafor (pediatrician) treated Emmanuel Okafor for acute appendicitis. Emmanuel is Dr. Okafor's son.,"### Dr. Okafor's Patient Information
 
 Unfortunately, there is no information provided in the **Context** about Dr. Okafor treating a patient in the emergency department. The **Context** does not mention any patient or Dr. Okafor's relationship to a patient. The information provided is related to customer support and refund policies, which does not seem to be relevant to the query about Dr. Okafor's patient.
@@ -430,20 +430,20 @@ Unfortunately, there is no information provided in the **Context** about Dr. Oka
 
 * [] Document Title One
 * [] Document Title Two
-* [] Document Title Three",hybrid,0.5,0.9
+* [] Document Title Three",hybrid,0.5,0.9,0.2
 There are two bakeries mentioned in the documents. What are their names and who runs them ?,Al-Rashid Mediterranean Bakery (run by Ahmed Al-Rashid) and Romano's Family Bakery (founded by Rosa Romano in 1963),"Based on the provided **Context**, there are no bakeries mentioned. The documents contain information related to customer support, shipping, product warranty, and refund policy, but no bakeries are mentioned.
 
-Therefore, I do not have enough information to answer this question.",hybrid,0.1,0.7
-"What significant infrastructure event happened in Millbrook in 1963, and how does it relate to current events in 2024?","Bridge 7 was constructed in 1963 (same year Rosa Romano founded her bakery). In 2024, this bridge requires major structural repairs due to deterioration.",I don't have enough information to answer this question. The provided context does not contain any information about Millbrook or significant infrastructure events that occurred there in 1963.,hybrid,0.2045,0.7
-"How long has Ahmed Al-Rashid been operating his bakery, and what was his career before opening it?","Al-Rashid has been operating his bakery for 30 years (opened 1994, document dated 2024). Before that, he worked in construction after immigrating in 1989.","I do not have enough information to answer your question. The provided context does not mention any information about a person named Ahmed Al-Rashid or his career before opening a bakery. It appears to be about customer support hours, loyalty programs, and other business-related topics.",hybrid,0.1957,0.7
-"When did Dr. Elena Vasquez assume her current role as Hospital Director, and how long had she been at the hospital before that promotion?","She became Hospital Director in January 2020. She had been at Millbrook General since 2006, so 14 years before her promotion",I don't have enough information to answer your question about Dr. Elena Vasquez. The provided context does not mention Dr. Elena Vasquez or any information related to her role at the hospital.,hybrid,0.15,0.7
-"What is the current load capacity of Bridge 7, and are there any restrictions in place?","The current load rating is 25 tons (reduced from original 40 tons), but there are temporary 15-ton restrictions due to safety concerns.","I don't have enough information to answer your question. The context provided does not include any information about Bridge 7 or its load capacity. It appears to be related to customer support, shipping, and product warranty information for hardware products. If you could provide more context or clarify the question, I would be happy to try and assist you further.",hybrid,0.2045,0.7
-"How much time will be added to emergency response times due to the bridge construction, and how has this actually affected hospital operations ?","The engineering report projects +4.7 minutes average response time, but the newspaper reports actual increases have been 'minimal' due to proactive routing strategies.","I don't have enough information to answer your question. The provided context does not include any information related to bridge construction, emergency response times, or hospital operations. The context only contains information about customer support hours, contact methods, and a product refund policy.",hybrid,0.2727,0.7
-What is the projected economic impact of the bridge construction on local businesses?,"Two different measures are given: $47,000 per day economic loss (from detour costs), and 25-35% reduction in foot traffic for Historic Downtown businesses.","I don't have enough information to answer your question. The provided context does not contain any information about a bridge construction project, its scope, or its potential economic impact on local businesses.",hybrid,0.1304,0.7
-What happened to Isabella Romano's parents?,The documents indicate Isabella's parents are deceased but do not provide details about what happened to them.,I don't have enough information to answer your question about Isabella Romano's parents.,hybrid,0.1765,0.7
-Why did Sofia Okafor move from Texas to Millbrook to start her engineering firm?,"The documents indicate Sofia has a Texas PE license and founded her firm in Millbrook in 2018, but do not explain the reason for relocating.","I don't have enough information to answer your question. The context provided does not contain any information about Sofia Okafor or her background. It only contains information about Customer Support, Loyalty Program, and Product Warranty.",hybrid,0.3261,0.7
-What architectural projects has Miguel Vasquez (Elena's husband) worked on in Millbrook?,"Miguel Vasquez is identified as an architect and Elena's husband, but no specific projects in Millbrook are mentioned in the documents.","I don't have enough information to answer your question. The context provided does not include any information about Miguel Vasquez, Elena's husband, or his architectural projects in Millbrook.",hybrid,0.45,0.7
-What does Sofia Okafor's PE license enable her to do professionally?,Sofia's PE (Professional Engineer) license #89472 enables her to practice engineering and stamp engineering documents in Texas (she also has a California PE license #67821).,I don't have enough information to answer your question about Sofia Okafor's PE license. The context provided does not mention Sofia Okafor or her PE license.,hybrid,0.2045,0.7
+Therefore, I do not have enough information to answer this question.",hybrid,0.1,0.7,1.0
+"What significant infrastructure event happened in Millbrook in 1963, and how does it relate to current events in 2024?","Bridge 7 was constructed in 1963 (same year Rosa Romano founded her bakery). In 2024, this bridge requires major structural repairs due to deterioration.",I don't have enough information to answer this question. The provided context does not contain any information about Millbrook or significant infrastructure events that occurred there in 1963.,hybrid,0.2045,0.7,1.0
+"How long has Ahmed Al-Rashid been operating his bakery, and what was his career before opening it?","Al-Rashid has been operating his bakery for 30 years (opened 1994, document dated 2024). Before that, he worked in construction after immigrating in 1989.","I do not have enough information to answer your question. The provided context does not mention any information about a person named Ahmed Al-Rashid or his career before opening a bakery. It appears to be about customer support hours, loyalty programs, and other business-related topics.",hybrid,0.1957,0.7,0.2
+"When did Dr. Elena Vasquez assume her current role as Hospital Director, and how long had she been at the hospital before that promotion?","She became Hospital Director in January 2020. She had been at Millbrook General since 2006, so 14 years before her promotion",I don't have enough information to answer your question about Dr. Elena Vasquez. The provided context does not mention Dr. Elena Vasquez or any information related to her role at the hospital.,hybrid,0.15,0.7,0.2
+"What is the current load capacity of Bridge 7, and are there any restrictions in place?","The current load rating is 25 tons (reduced from original 40 tons), but there are temporary 15-ton restrictions due to safety concerns.","I don't have enough information to answer your question. The context provided does not include any information about Bridge 7 or its load capacity. It appears to be related to customer support, shipping, and product warranty information for hardware products. If you could provide more context or clarify the question, I would be happy to try and assist you further.",hybrid,0.2045,0.7,1.0
+"How much time will be added to emergency response times due to the bridge construction, and how has this actually affected hospital operations ?","The engineering report projects +4.7 minutes average response time, but the newspaper reports actual increases have been 'minimal' due to proactive routing strategies.","I don't have enough information to answer your question. The provided context does not include any information related to bridge construction, emergency response times, or hospital operations. The context only contains information about customer support hours, contact methods, and a product refund policy.",hybrid,0.2727,0.7,0.2
+What is the projected economic impact of the bridge construction on local businesses?,"Two different measures are given: $47,000 per day economic loss (from detour costs), and 25-35% reduction in foot traffic for Historic Downtown businesses.","I don't have enough information to answer your question. The provided context does not contain any information about a bridge construction project, its scope, or its potential economic impact on local businesses.",hybrid,0.1304,0.7,1.0
+What happened to Isabella Romano's parents?,The documents indicate Isabella's parents are deceased but do not provide details about what happened to them.,I don't have enough information to answer your question about Isabella Romano's parents.,hybrid,0.1765,0.7,1.0
+Why did Sofia Okafor move from Texas to Millbrook to start her engineering firm?,"The documents indicate Sofia has a Texas PE license and founded her firm in Millbrook in 2018, but do not explain the reason for relocating.","I don't have enough information to answer your question. The context provided does not contain any information about Sofia Okafor or her background. It only contains information about Customer Support, Loyalty Program, and Product Warranty.",hybrid,0.3261,0.7,0.2
+What architectural projects has Miguel Vasquez (Elena's husband) worked on in Millbrook?,"Miguel Vasquez is identified as an architect and Elena's husband, but no specific projects in Millbrook are mentioned in the documents.","I don't have enough information to answer your question. The context provided does not include any information about Miguel Vasquez, Elena's husband, or his architectural projects in Millbrook.",hybrid,0.45,0.7,1.0
+What does Sofia Okafor's PE license enable her to do professionally?,Sofia's PE (Professional Engineer) license #89472 enables her to practice engineering and stamp engineering documents in Texas (she also has a California PE license #67821).,I don't have enough information to answer your question about Sofia Okafor's PE license. The context provided does not mention Sofia Okafor or her PE license.,hybrid,0.2045,0.7,0.2
 "In the medical record, what does 'attending physician' refer to, and how does this differ from meeting attendance mentioned elsewhere?","Attending physician refers to Dr. Kwame Okafor's role as the supervising doctor responsible for patient care, not meeting attendance. This is standard medical terminology.","### Attending Physician and Meeting Attendance
 
 The concept of 'attending physician' is not explicitly mentioned in the provided context. However, based on the available information, we can infer that the attending physician is a term used in a medical context.
@@ -458,7 +458,7 @@ On the other hand, meeting attendance refers to the act of participating in or a
 * [2] Product Warranty
 * [3] Customer Support: 
 * [4] Customer Contact Methods
-* [5] Customer Support",hybrid,0.9375,0.9
+* [5] Customer Support",hybrid,0.9375,0.9,0.8
 What type of 'code-switching' is mentioned in the documents?,"Linguistic code-switching - the practice of alternating between languages within conversations, as shown in the bakery conversation transcript.","### Code-Switching in Documents
 
 Code-switching in the context of documents typically refers to the practice of switching between two or more languages within a single document or text. However, based on the provided context, there is no explicit mention of code-switching in the documents. 
@@ -468,24 +468,24 @@ The documents do mention specific languages or communication methods such as ""E
 ### References
 
 * [1] Product Warranty
-* [2] Product Refund Policy",hybrid,0.8824,0.9
-"How are Carmen Vasquez and Emmanuel Okafor connected, and trace the path of their relationship through their families' professional connections?",Carmen Vasquez (daughter of Dr. Elena Vasquez) is friends with Emmanuel Okafor (son of Dr. Kwame Okafor). Their mothers work together at Millbrook General Hospital - Elena as Hospital Director and Kwame as a pediatrician.,"I don't have enough information to answer your question. The context does not provide any information about Carmen Vasquez and Emmanuel Okafor, their families, or any professional connections between them.",hybrid,0.2586,0.7
+* [2] Product Refund Policy",hybrid,0.8824,0.9,0.8
+"How are Carmen Vasquez and Emmanuel Okafor connected, and trace the path of their relationship through their families' professional connections?",Carmen Vasquez (daughter of Dr. Elena Vasquez) is friends with Emmanuel Okafor (son of Dr. Kwame Okafor). Their mothers work together at Millbrook General Hospital - Elena as Hospital Director and Kwame as a pediatrician.,"I don't have enough information to answer your question. The context does not provide any information about Carmen Vasquez and Emmanuel Okafor, their families, or any professional connections between them.",hybrid,0.2586,0.7,0.2
 "What connections exist between the Chen family and the bridge project, considering both professional and personal relationships?","Marcus Chen (city councilman) works professionally with Sofia Okafor on the bridge project. His daughter Lily Chen is friends with Carmen Vasquez, whose mother (Dr. Elena Vasquez) has concerns about bridge impact on hospital access. Lily also helps Isabella Romano with studies, connecting to another affected family.","I don't have enough information to answer the question about the Chen family and the bridge project. The provided context does not mention any information related to the Chen family or the bridge project. 
 
-However, if you'd like to know about the customer support provided by the company or the loyalty program, I can provide that information based on the provided context.",hybrid,0.2561,0.7
+However, if you'd like to know about the customer support provided by the company or the loyalty program, I can provide that information based on the provided context.",hybrid,0.2561,0.7,0.2
 "How many degrees of separation exist between Ahmed Al-Rashid and Dr. Kwame Okafor, and what is the path?",Multiple paths exist: Direct: Al-Rashid → community meetings → hospital discussions → Dr. Okafor Through children: Al-Rashid → community connections → Emmanuel Okafor → Dr. Okafor (father) Through Isabella: Al-Rashid → Isabella Romano (who knows about Emmanuel's hospital visit) → Dr. Okafor,"### Degrees of Separation and Path between Ahmed Al-Rashid and Dr. Kwame Okafor
 
-Unfortunately, there is not enough information in the provided context to determine the degrees of separation between Ahmed Al-Rashid and Dr. Kwame Okafor. The knowledge graph and document chunks do not contain any information about these individuals.",hybrid,0.24,0.7
-"What languages does Dr. Elena Vasquez speak, and how do her language skills impact her role in the community?","Dr. Vasquez speaks Spanish (native), English (fluent), and Portuguese (conversational). Her bilingual abilities help in medical care and community meetings, as noted in Carmen's academic comments about tutoring Spanish-speaking students.","I don't have enough information to answer your question. The provided context does not mention Dr. Elena Vasquez, nor does it contain any information about her language skills or role in the community.",hybrid,0.2143,0.7
-"In the bakery conversation transcript, identify all instances of code-switching and explain what languages are being mixed.","Multiple instances: Ahmed: Arabic ('أهلاً وسهلاً' - welcome) to English Dr. Vasquez: Spanish ('Gracias,' 'Para los pacientes cardíacos') mixed with English Marcus: English to Mandarin ('你明白吗？') Isabella: Italian ('Scusi,' 'questi ponti vengono e vanno') to Spanish/English Ahmed: Arabic ('المجتمع يجب أن يعرف') translated to English",I don't see a conversation transcript about a bakery. It seems that the provided context is about customer support and their contact methods. I also do not see any instances of code-switching.,hybrid,0.0,0.7
+Unfortunately, there is not enough information in the provided context to determine the degrees of separation between Ahmed Al-Rashid and Dr. Kwame Okafor. The knowledge graph and document chunks do not contain any information about these individuals.",hybrid,0.24,0.7,0.4
+"What languages does Dr. Elena Vasquez speak, and how do her language skills impact her role in the community?","Dr. Vasquez speaks Spanish (native), English (fluent), and Portuguese (conversational). Her bilingual abilities help in medical care and community meetings, as noted in Carmen's academic comments about tutoring Spanish-speaking students.","I don't have enough information to answer your question. The provided context does not mention Dr. Elena Vasquez, nor does it contain any information about her language skills or role in the community.",hybrid,0.2143,0.7,1.0
+"In the bakery conversation transcript, identify all instances of code-switching and explain what languages are being mixed.","Multiple instances: Ahmed: Arabic ('أهلاً وسهلاً' - welcome) to English Dr. Vasquez: Spanish ('Gracias,' 'Para los pacientes cardíacos') mixed with English Marcus: English to Mandarin ('你明白吗？') Isabella: Italian ('Scusi,' 'questi ponti vengono e vanno') to Spanish/English Ahmed: Arabic ('المجتمع يجب أن يعرف') translated to English",I don't see a conversation transcript about a bakery. It seems that the provided context is about customer support and their contact methods. I also do not see any instances of code-switching.,hybrid,0.0,0.7,0.4
 "According to the engineering report, what are the specific technical reasons Bridge 7 needs immediate attention, and how do these relate to the timeline concerns expressed in the city council meeting?","Technical reasons include 15.3cm pylon displacement, 65% load capacity, micro-cracking, and 18% natural frequency reduction. These support the council's concern about the 8-14 month failure timeline and need for immediate $2.3M intervention.","I don't have enough information to answer your question. The context provided does not contain any information about an engineering report, Bridge 7, or a city council meeting. 
 
 ### References
 
 * [] Document Title One
 * [] Document Title Two
-* [] Document Title Three",hybrid,0.1,0.9
-"What medical considerations are mentioned regarding the bridge construction, and which healthcare professionals are involved in planning?",Main concerns are increased emergency response times (+4.7 minutes) affecting cardiac patients. Dr. Elena Vasquez (Hospital Director) and Rebecca Martinez (Emergency Nurse Manager) are involved in planning alternative routes and weekly progress reviews.,I don't have enough information to answer your question. The context provided does not mention bridge construction or medical considerations. It appears to be related to product warranty and customer support.,hybrid,0.0484,0.7
+* [] Document Title Three",hybrid,0.1,0.9,0.2
+"What medical considerations are mentioned regarding the bridge construction, and which healthcare professionals are involved in planning?",Main concerns are increased emergency response times (+4.7 minutes) affecting cardiac patients. Dr. Elena Vasquez (Hospital Director) and Rebecca Martinez (Emergency Nurse Manager) are involved in planning alternative routes and weekly progress reviews.,I don't have enough information to answer your question. The context provided does not mention bridge construction or medical considerations. It appears to be related to product warranty and customer support.,hybrid,0.0484,0.7,0.2
 "Who owns Romano's Bakery, and how is this person related to Isabella Romano?",Rosa Romano owns/founded Romano's Family Bakery in 1963. Isabella Romano is her granddaughter who lives with her.,"### Who owns Romano's Bakery, and how is this person related to Isabella Romano?
 
 According to the provided **Context**, Romano's Bakery is owned by Rosa Romano. Rosa Romano is the grandmother of Isabella Romano.
@@ -495,7 +495,7 @@ According to the provided **Context**, Romano's Bakery is owned by Rosa Romano. 
 - [1] Document Title: Romano's Bakery Information
 - [2] Document Title: Isabella Romano Profile
 - [3] Document Title: Rosa Romano Profile
-- [4] Document Title: Family Information for Isabella Romano",mix,0.75,0.9
+- [4] Document Title: Family Information for Isabella Romano",mix,0.75,0.9,0.8
 "Dr. Okafor treated a patient in the emergency department. What was the patient's condition, and what is Dr. Okafor's relationship to the patient?",Dr. Kwame Okafor (pediatrician) treated Emmanuel Okafor for acute appendicitis. Emmanuel is Dr. Okafor's son.,"### Patient Condition and Dr. Okafor's Relationship
 
 Dr. Kwame Okafor treated an 8-year-old male patient, Emmanuel Okafor, in the emergency department. Emmanuel's chief complaint was acute onset severe right lower quadrant (RLQ) abdominal pain, which had been present for 6 hours. The patient's vital signs were T 100.2°F, HR 110, BP 95/60, RR 22, and O2 Sat 98% RA. The physical examination revealed tenderness in the RLQ with guarding and a positive McBurney's point tenderness.
@@ -505,7 +505,7 @@ Dr. Okafor is Emmanuel's father and a pediatrician.
 #### References
 
 * [10] TECHNICAL ENGINEERING REPORT
-* [4] MEDICAL RECORD EXCERPT",mix,1.0,0.9
+* [4] MEDICAL RECORD EXCERPT",mix,1.0,0.9,1.0
 There are two bakeries mentioned in the documents. What are their names and who runs them ?,Al-Rashid Mediterranean Bakery (run by Ahmed Al-Rashid) and Romano's Family Bakery (founded by Rosa Romano in 1963),"### Bakeries in Millbrook
 
 There are two bakeries mentioned in the documents.
@@ -526,7 +526,7 @@ There are two bakeries mentioned in the documents.
 * [4] DOCUMENT 2: BIOGRAPHICAL DOSSIERS
 * [5] DOCUMENT 6: PERSONAL DIARY ENTRY
 * [7] DOCUMENT 7: BUSINESS CORRESPONDENCE
-* [8] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,1.0,0.9
+* [8] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,1.0,0.9,0.8
 "What significant infrastructure event happened in Millbrook in 1963, and how does it relate to current events in 2024?","Bridge 7 was constructed in 1963 (same year Rosa Romano founded her bakery). In 2024, this bridge requires major structural repairs due to deterioration.","### Significant Infrastructure Event in Millbrook
 
 In 1963, Millbrook witnessed the construction of its first bridge over Millbrook Creek. This bridge, Bridge 7, has played a crucial role in connecting the city's various districts and facilitating the growth of the community.
@@ -543,7 +543,7 @@ The community is coming together to address this crisis. Dr. Elena Vasquez, the 
 
 * [1] DOCUMENT 10: TECHNICAL ENGINEERING REPORT
 * [2] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES
-* [3] DOCUMENT 7: BUSINESS CORRESPONDENCE",mix,0.5455,0.9
+* [3] DOCUMENT 7: BUSINESS CORRESPONDENCE",mix,0.5455,0.9,1.0
 "How long has Ahmed Al-Rashid been operating his bakery, and what was his career before opening it?","Al-Rashid has been operating his bakery for 30 years (opened 1994, document dated 2024). Before that, he worked in construction after immigrating in 1989.","### How long has Ahmed Al-Rashid been operating his bakery, and what was his career before opening it?
 
 Ahmed Al-Rashid has been operating his bakery for approximately 30 years. Before opening the bakery, he initially worked in the construction industry after immigrating to Millbrook in 1989.
@@ -552,14 +552,14 @@ Ahmed Al-Rashid has been operating his bakery for approximately 30 years. Before
 
 * [8] DOCUMENT 8: CONVERSATION TRANSCRIPT
 * [7] DOCUMENT 7: BUSINESS CORRESPONDENCE
-* [2] DOCUMENT 2: BIOGRAPHICAL DOSSIERS",mix,1.0,0.9
+* [2] DOCUMENT 2: BIOGRAPHICAL DOSSIERS",mix,1.0,0.9,0.8
 "When did Dr. Elena Vasquez assume her current role as Hospital Director, and how long had she been at the hospital before that promotion?","She became Hospital Director in January 2020. She had been at Millbrook General since 2006, so 14 years before her promotion","### References
 
 * [1] DOCUMENT 2: BIOGRAPHICAL DOSSIERS
 * [2] DOCUMENT 4: MEDICAL RECORD EXCERPT
 
 ### Answer
-Dr. Elena Vasquez assumed her current role as Hospital Director in January 2020. She had been at Millbrook General Hospital for 14 years before that promotion, starting her role as an attending cardiologist in 2006.",mix,1.0,0.9
+Dr. Elena Vasquez assumed her current role as Hospital Director in January 2020. She had been at Millbrook General Hospital for 14 years before that promotion, starting her role as an attending cardiologist in 2006.",mix,1.0,0.9,1.0
 "What is the current load capacity of Bridge 7, and are there any restrictions in place?","The current load rating is 25 tons (reduced from original 40 tons), but there are temporary 15-ton restrictions due to safety concerns.","### Current Load Capacity of Bridge 7
 The current load capacity of Bridge 7 is 25 tons, reduced from its original design specification of 40 tons due to structural deficiencies.
 
@@ -572,7 +572,7 @@ Yes, there are restrictions in place to ensure public safety. Load restrictions 
 * [2] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES
 * [3] DOCUMENT 7: BUSINESS CORRESPONDENCE
 * [4] DOCUMENT 10: TECHNICAL ENGINEERING REPORT
-* [5] DOCUMENT 9: NEWSPAPER ARTICLE",mix,0.9545,0.9
+* [5] DOCUMENT 9: NEWSPAPER ARTICLE",mix,0.9545,0.9,0.8
 "How much time will be added to emergency response times due to the bridge construction, and how has this actually affected hospital operations ?","The engineering report projects +4.7 minutes average response time, but the newspaper reports actual increases have been 'minimal' due to proactive routing strategies.","### Added Response Time to Emergency Services
 
 According to the engineering assessment report by Sofia Okafor's team at Okafor Engineering Solutions, the bridge construction is expected to add approximately 4.7 minutes to emergency response times. This increase in response time is due to the need to reroute emergency vehicles through University Heights.
@@ -593,7 +593,7 @@ The community has rallied around the hospital to address the concerns raised by 
 - [2] DOCUMENT 4: MEDICAL RECORD EXCERPT
 - [3] DOCUMENT 8: CONVERSATION TRANSCRIPT
 - [4] DOCUMENT 10: TECHNICAL ENGINEERING REPORT
-- [5] DOCUMENT 9: NEWSPAPER ARTICLE",mix,0.6136,0.9
+- [5] DOCUMENT 9: NEWSPAPER ARTICLE",mix,0.6136,0.9,0.8
 What is the projected economic impact of the bridge construction on local businesses?,"Two different measures are given: $47,000 per day economic loss (from detour costs), and 25-35% reduction in foot traffic for Historic Downtown businesses.","### Projected Economic Impact of Bridge Construction on Local Businesses
 
 The projected economic impact of the bridge construction on local businesses in Millbrook can be understood by examining the available data and analysis. According to the document `#89472`, Principal Engineer, Okafor Engineering Solutions, a comprehensive structural analysis of Bridge 7 reveals critical deficiencies requiring immediate intervention.
@@ -620,7 +620,7 @@ The projected economic impact of the bridge construction on local businesses in 
 - [2] DOCUMENT 8: CONVERSATION TRANSCRIPT
 - [3] DOCUMENT 9: NEWSPAPER ARTICLE
 - [4] DOCUMENT 10: TECHNICAL ENGINEERING REPORT
-- [5] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.7826,0.9
+- [5] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.7826,0.9,1.0
 What happened to Isabella Romano's parents?,The documents indicate Isabella's parents are deceased but do not provide details about what happened to them.,"### Isabella Romano's Family Background
 
 Isabella Romano lives with her grandmother Rosa Romano. Unfortunately, her parents are deceased.
@@ -648,8 +648,8 @@ Unfortunately, there is no further information available in the provided context
 - [5] DOCUMENT 5: ACADEMIC TRANSCRIPT
 - [6] DOCUMENT 6: PERSONAL DIARY ENTRY
 - [1] DOCUMENT 1: CITY DEMOGRAPHIC REPORT
-- [8] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.7059,0.9
-Why did Sofia Okafor move from Texas to Millbrook to start her engineering firm?,"The documents indicate Sofia has a Texas PE license and founded her firm in Millbrook in 2018, but do not explain the reason for relocating.",I don't have enough information to answer that question.,mix,0.0,0.7
+- [8] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.7059,0.9,0.8
+Why did Sofia Okafor move from Texas to Millbrook to start her engineering firm?,"The documents indicate Sofia has a Texas PE license and founded her firm in Millbrook in 2018, but do not explain the reason for relocating.",I don't have enough information to answer that question.,mix,0.0,0.7,0.6
 What architectural projects has Miguel Vasquez (Elena's husband) worked on in Millbrook?,"Miguel Vasquez is identified as an architect and Elena's husband, but no specific projects in Millbrook are mentioned in the documents.","### Architectural Projects of Miguel Vasquez
 
 Based on the provided context, we can find information about Miguel Vasquez's professional history and projects in Millbrook through his wife, Dr. Elena Vasquez's, profile.
@@ -661,7 +661,7 @@ However, we can find some information about his work in the context of the commu
 ### References
 
 - [1] DOCUMENT 2: BIOGRAPHICAL DOSSIERS
-- [2] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.825,0.9
+- [2] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.825,0.9,0.6
 What does Sofia Okafor's PE license enable her to do professionally?,Sofia's PE (Professional Engineer) license #89472 enables her to practice engineering and stamp engineering documents in Texas (she also has a California PE license #67821).,"### What Sofia Okafor's PE License Enables Her to Do Professionally
 
 Sofia Okafor's PE license, specifically her Professional Engineer (PE) license #89472, issued by the Texas Board of Professional Engineers, enables her to:
@@ -677,7 +677,7 @@ By obtaining her PE license, Sofia Okafor has demonstrated her expertise and com
 ### References
 
 *   [3] DOCUMENT 10: TECHNICAL ENGINEERING REPORT
-*   [4] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",mix,0.8864,0.9
+*   [4] DOCUMENT 10: TECHNICAL ENGINEERING REPORT",mix,0.8864,0.9,0.8
 "In the medical record, what does 'attending physician' refer to, and how does this differ from meeting attendance mentioned elsewhere?","Attending physician refers to Dr. Kwame Okafor's role as the supervising doctor responsible for patient care, not meeting attendance. This is standard medical terminology.","### Attending Physician vs. Meeting Attendance
 
 #### Attending Physician
@@ -704,7 +704,7 @@ The key differences between attending physician and meeting attendance are:
 * **Context**: The attending physician is typically mentioned in medical records or hospital settings, whereas meeting attendance is mentioned in non-medical contexts, such as community events or business meetings.
 * **Implication**: The attending physician implies a high level of expertise and responsibility, whereas meeting attendance implies a more general participation in a gathering.
 
-By understanding these differences, you can better navigate the various contexts in which these terms are used and appreciate the nuances of language in different settings.",mix,1.0,0.7
+By understanding these differences, you can better navigate the various contexts in which these terms are used and appreciate the nuances of language in different settings.",mix,1.0,0.7,1.0
 What type of 'code-switching' is mentioned in the documents?,"Linguistic code-switching - the practice of alternating between languages within conversations, as shown in the bakery conversation transcript.","### Code-Switching in the Documents
 
 According to the context, code-switching is mentioned in the conversation between Ahmed Al-Rashid and Sofia Okafor's son Emmanuel's friend Diego Vasquez at the library.
@@ -719,9 +719,9 @@ However, more explicitly, code-switching is mentioned when Marcus Chen switches 
 
 ### References
 
-- [8] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.5294,0.9
-"How are Carmen Vasquez and Emmanuel Okafor connected, and trace the path of their relationship through their families' professional connections?",Carmen Vasquez (daughter of Dr. Elena Vasquez) is friends with Emmanuel Okafor (son of Dr. Kwame Okafor). Their mothers work together at Millbrook General Hospital - Elena as Hospital Director and Kwame as a pediatrician.,Error: Query returned no response,mix,0.0,0.7
-"What connections exist between the Chen family and the bridge project, considering both professional and personal relationships?","Marcus Chen (city councilman) works professionally with Sofia Okafor on the bridge project. His daughter Lily Chen is friends with Carmen Vasquez, whose mother (Dr. Elena Vasquez) has concerns about bridge impact on hospital access. Lily also helps Isabella Romano with studies, connecting to another affected family.",Error: Query returned no response,mix,0.0,0.7
+- [8] DOCUMENT 8: CONVERSATION TRANSCRIPT",mix,0.5294,0.9,0.4
+"How are Carmen Vasquez and Emmanuel Okafor connected, and trace the path of their relationship through their families' professional connections?",Carmen Vasquez (daughter of Dr. Elena Vasquez) is friends with Emmanuel Okafor (son of Dr. Kwame Okafor). Their mothers work together at Millbrook General Hospital - Elena as Hospital Director and Kwame as a pediatrician.,Error: Query returned no response,mix,0.0,0.7,0.2
+"What connections exist between the Chen family and the bridge project, considering both professional and personal relationships?","Marcus Chen (city councilman) works professionally with Sofia Okafor on the bridge project. His daughter Lily Chen is friends with Carmen Vasquez, whose mother (Dr. Elena Vasquez) has concerns about bridge impact on hospital access. Lily also helps Isabella Romano with studies, connecting to another affected family.",Error: Query returned no response,mix,0.0,0.7,0.2
 "How many degrees of separation exist between Ahmed Al-Rashid and Dr. Kwame Okafor, and what is the path?",Multiple paths exist: Direct: Al-Rashid → community meetings → hospital discussions → Dr. Okafor Through children: Al-Rashid → community connections → Emmanuel Okafor → Dr. Okafor (father) Through Isabella: Al-Rashid → Isabella Romano (who knows about Emmanuel's hospital visit) → Dr. Okafor,"### Degrees of Separation Between Ahmed Al-Rashid and Dr. Kwame Okafor
 
 There are 2 degrees of separation between Ahmed Al-Rashid and Dr. Kwame Okafor.
@@ -746,7 +746,7 @@ There are 2 degrees of separation between Ahmed Al-Rashid and Dr. Kwame Okafor.
 
 ### References
 
-### References",mix,0.36,0.9
+### References",mix,0.36,0.9,0.4
 "What languages does Dr. Elena Vasquez speak, and how do her language skills impact her role in the community?","Dr. Vasquez speaks Spanish (native), English (fluent), and Portuguese (conversational). Her bilingual abilities help in medical care and community meetings, as noted in Carmen's academic comments about tutoring Spanish-speaking students.","### Languages Spoken by Dr. Elena Vasquez
 
 According to the provided biographical dossier (Document 2: Biographical Dossiers), Dr. Elena Vasquez speaks the following languages:
@@ -767,7 +767,7 @@ As the hospital director, Dr. Vasquez's language skills contribute to her role i
 
 ### References
 
-* [2] Document Title Two: Biographical Dossiers",mix,0.8036,0.9
+* [2] Document Title Two: Biographical Dossiers",mix,0.8036,0.9,1.0
 "In the bakery conversation transcript, identify all instances of code-switching and explain what languages are being mixed.","Multiple instances: Ahmed: Arabic ('أهلاً وسهلاً' - welcome) to English Dr. Vasquez: Spanish ('Gracias,' 'Para los pacientes cardíacos') mixed with English Marcus: English to Mandarin ('你明白吗？') Isabella: Italian ('Scusi,' 'questi ponti vengono e vanno') to Spanish/English Ahmed: Arabic ('المجتمع يجب أن يعرف') translated to English","### Instances of Code-Switching in the Bakery Conversation Transcript
 
 There are several instances of code-switching in the bakery conversation transcript. Here are the identified instances:
@@ -789,8 +789,8 @@ There are several instances of code-switching in the bakery conversation transcr
 In the identified instances of code-switching, the languages being mixed are:
 
 - **English and basic Mandarin**: Carmen switches between these two languages, using a basic Mandarin phrase to ask if Isabella understands the medical concerns.
-- **English is not directly involved in the rest of the identified instances.**",mix,0.3649,0.9
-"According to the engineering report, what are the specific technical reasons Bridge 7 needs immediate attention, and how do these relate to the timeline concerns expressed in the city council meeting?","Technical reasons include 15.3cm pylon displacement, 65% load capacity, micro-cracking, and 18% natural frequency reduction. These support the council's concern about the 8-14 month failure timeline and need for immediate $2.3M intervention.",Error: Query returned no response,mix,0.0,0.7
+- **English is not directly involved in the rest of the identified instances.**",mix,0.3649,0.9,0.8
+"According to the engineering report, what are the specific technical reasons Bridge 7 needs immediate attention, and how do these relate to the timeline concerns expressed in the city council meeting?","Technical reasons include 15.3cm pylon displacement, 65% load capacity, micro-cracking, and 18% natural frequency reduction. These support the council's concern about the 8-14 month failure timeline and need for immediate $2.3M intervention.",Error: Query returned no response,mix,0.0,0.7,0.2
 "What medical considerations are mentioned regarding the bridge construction, and which healthcare professionals are involved in planning?",Main concerns are increased emergency response times (+4.7 minutes) affecting cardiac patients. Dr. Elena Vasquez (Hospital Director) and Rebecca Martinez (Emergency Nurse Manager) are involved in planning alternative routes and weekly progress reviews.,"### Medical Considerations Regarding the Bridge Construction
 
 According to the information provided, the bridge construction poses medical considerations primarily due to potential disruptions in emergency vehicle access to the hospital. The main concerns are:
@@ -811,4 +811,4 @@ The following healthcare professionals are mentioned as being involved in the pl
 *   [1] DOCUMENT 8: CONVERSATION TRANSCRIPT
 *   [2] DOCUMENT 3: MILLBROOK CITY COUNCIL MEETING MINUTES
 *   [3] DOCUMENT 4: MEDICAL RECORD EXCERPT
-*   [4] DOCUMENT 5: ACADEMIC TRANSCRIPT",mix,0.9677,0.9
+*   [4] DOCUMENT 5: ACADEMIC TRANSCRIPT",mix,0.9677,0.9,0.8

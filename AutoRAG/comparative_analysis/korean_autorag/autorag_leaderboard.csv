@@ -1,0 +1,4 @@
+Rank,Retrieval Mode,Answer Correctness,Faithfulness,LLM Judge,Combined Score,Num Queries
+1,BM25,0.1786,0.9282,0.8182,0.6417,22
+2,HYBRID,0.1736,0.9041,0.8364,0.638,22
+3,VECTOR,0.165,0.9203,0.8091,0.6315,22
