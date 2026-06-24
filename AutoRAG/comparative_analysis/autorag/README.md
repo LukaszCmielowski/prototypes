@@ -31,28 +31,26 @@ Set `RUN_EXPERIMENT = False` in section 2 to reload the latest saved run without
 
 ## Files
 
-### Notebooks
+### Notebooks (ai4rag GAM experiments)
 
 | File | Purpose |
 |------|---------|
 | `ai4rag_baseline_experiment.ipynb` | GAM experiment, baseline branch (`move-autorag-components-code-to-ai4rag`) |
 | `ai4rag_pr75_experiment.ipynb` | GAM experiment, PR #75 branch (`fix-prompts`) + baseline comparison |
-| `rhoai_autorag_evaluation.ipynb` | Legacy: LLM-as-a-Judge on RHOAI `autorag_evals/` exports |
 
 ### Code
 
 | File | Purpose |
 |------|---------|
 | `experiment_utils.py` | GAM config, extract/save/load runs, leaderboard, LLM judge |
-| `build_experiment_notebooks.py` | Regenerate experiment notebooks |
 | `compare_prompts.py` | Print PR #75 vs baseline prompt diff |
 
 ### Data
 
 | Path | Purpose |
 |------|---------|
-| `autorag_evals/evaluation_results_*.txt` | RHOAI per-question eval JSON (legacy notebook) |
 | `results/` | Persisted baseline / PR #75 runs (see `results/README.md`) |
+| `rhoai/` | Legacy RHOAI evaluation pipeline (see `rhoai/README.md`) |
 
 ## Results layout
 
@@ -83,7 +81,7 @@ GAM explores different retrieval configs each run; pattern labels are not compar
 | Run prompt A/B | baseline notebook → PR #75 notebook |
 | Reload saved run | `RUN_EXPERIMENT = False`, run from section 4 |
 | See prompt changes | `python3 compare_prompts.py` |
-| Legacy RHOAI LLMaJ | `rhoai_autorag_evaluation.ipynb` |
+| Legacy RHOAI LLMaJ | `rhoai/rhoai_autorag_evaluation.ipynb` |
 
 ## Prerequisites
 
