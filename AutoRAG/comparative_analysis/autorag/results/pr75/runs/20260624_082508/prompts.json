@@ -1,0 +1,13 @@
+{
+  "best_pattern_id": "Pattern4",
+  "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n",
+  "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+  "context_template_text": "Document {doc_number}:\n{document}\n",
+  "pr75_features": {
+    "strong_grounding": true,
+    "mandatory_citations": true,
+    "english_enforcement": true,
+    "numbered_documents": true
+  },
+  "pr75_feature_count": 4
+}

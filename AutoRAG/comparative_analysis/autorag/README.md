@@ -1,121 +1,100 @@
-# RHOAI AutoRAG Evaluation
+# AI4RAG comparative analysis (William benchmark)
 
-This folder contains evaluation results and analysis for RHOAI AutoRAG.
+Prompt A/B and evaluation for ai4rag baseline vs [PR #75](https://github.com/IBM/ai4rag/pull/75).
 
-## Contents
+Analysis conclusions: [`../FINDINGS.md`](../FINDINGS.md)
+
+## Quick start
+
+```bash
+cd AutoRAG/comparative_analysis/autorag
+python3 compare_prompts.py                         # prompt diff only (optional)
+jupyter notebook ai4rag_baseline_experiment.ipynb  # run first
+jupyter notebook ai4rag_pr75_experiment.ipynb      # then compare (section 9)
+```
+
+Set `RUN_EXPERIMENT = False` in section 2 to reload the latest saved run without re-running GAM.
+
+## Notebook sections (baseline + PR #75)
+
+| # | Section |
+|---|---------|
+| 1 | Install ai4rag |
+| 2 | Configuration (`RUN_EXPERIMENT`, `RUN_ID`, `RUN_LLM_JUDGE`) |
+| 3 | Load William benchmark |
+| 4 | Run GAM or load saved run |
+| 5 | LLM-as-a-Judge |
+| 6 | Leaderboard |
+| 7 | Save artifacts |
+| 8 | Inspect saved runs |
+| 9 | Compare with baseline *(PR #75 only)* |
+
+**Run order:** baseline → PR #75.
+
+## Files
 
 ### Notebooks
 
-- **`rhoai_autorag_evaluation.ipynb`** - LLM-as-a-Judge evaluation for existing results
-  - **Auto-discovers all patterns** in `autorag_evals/`
-  - Supports multiple naming formats: `_5`, `(2)`, etc.
-  - Adds LLM-as-a-Judge scores to all patterns
-  - Compares metrics across patterns
-  - Outputs: Combined + per-pattern CSV files
+| File | Purpose |
+|------|---------|
+| `ai4rag_baseline_experiment.ipynb` | GAM experiment, baseline branch (`move-autorag-components-code-to-ai4rag`) |
+| `ai4rag_pr75_experiment.ipynb` | GAM experiment, PR #75 branch (`fix-prompts`) + baseline comparison |
+| `rhoai_autorag_evaluation.ipynb` | Legacy: LLM-as-a-Judge on RHOAI `autorag_evals/` exports |
 
-- **`ai4rag_pr75_experiment.ipynb`** - NEW! AI4RAG PR #75 experiment ⭐
-  - Tests improved prompt templates from https://github.com/IBM/ai4rag/pull/75
-  - Installs AI4RAG from `fix-prompts` branch
-  - Runs experiments with multiple chunking patterns
-  - Evaluates with LLM-as-a-Judge
-  - Generates comparative leaderboard
-  - **Expected impact:** +65pp faithfulness (30% → 95%)
+### Code
+
+| File | Purpose |
+|------|---------|
+| `experiment_utils.py` | GAM config, extract/save/load runs, leaderboard, LLM judge |
+| `build_experiment_notebooks.py` | Regenerate experiment notebooks |
+| `compare_prompts.py` | Print PR #75 vs baseline prompt diff |
 
 ### Data
 
-- **`autorag_evals/`** - Raw evaluation results from RHOAI AutoRAG
-  - `evaluation_results_5.txt` - Pattern 5 evaluation (22 questions)
-  - `evaluation_results_11.txt` - Pattern 11 evaluation
-  - Supports multiple patterns - just add more `evaluation_results*.txt` files!
-  - Contains question, answer, scores (answer_correctness, faithfulness)
+| Path | Purpose |
+|------|---------|
+| `autorag_evals/evaluation_results_*.txt` | RHOAI per-question eval JSON (legacy notebook) |
+| `results/` | Persisted baseline / PR #75 runs (see `results/README.md`) |
 
-- **Output CSV Files:**
-  - `rhoai_autorag_with_llmaj.csv` - Combined results from all patterns
-  - `rhoai_pattern_5_with_llmaj.csv` - Pattern 5 only
-  - `rhoai_pattern_2_with_llmaj.csv` - Pattern 2 only
-  - (One file per pattern found)
+## Results layout
 
-## Quick Start
-
-### Option 1: Evaluate Existing Results
-
-Use `rhoai_autorag_evaluation.ipynb` to add LLM-as-a-Judge to existing RHOAI AutoRAG results:
-
-```bash
-cd AutoRAG/comparative_analysis/autorag
-jupyter notebook rhoai_autorag_evaluation.ipynb
+```
+results/{baseline|pr75}/
+  latest_run.txt
+  runs/<YYYYMMDD_HHMMSS>/
+    summary.json, leaderboard.csv, answers.csv, patterns.json, prompts.json
+  ai4rag_{variant}_summary_latest.json      # PR #75 section 9 comparison
+  ai4rag_{variant}_leaderboard_latest.csv
 ```
 
-**Steps:**
-1. **Auto-discover** all `evaluation_results*.txt` files in `autorag_evals/`
-2. Load and parse each pattern
-3. Run LLM-as-a-Judge on all answers
-4. Compare metrics across patterns
-5. Save combined + per-pattern CSVs
+## Latest measured impact (saved runs, June 2026)
 
----
+| Metric | Baseline | PR #75 |
+|--------|----------|--------|
+| Best LLM judge | 78% | 84% |
+| Mean LLM judge | 74% | 82% |
+| Citation rate | 0% | 82% |
+| Multilingual leakage | 56% | 8% |
 
-### Option 2: Run AI4RAG PR #75 Experiment
+GAM explores different retrieval configs each run; pattern labels are not comparable across runs unless `random_state` / fixed replay is wired in ai4rag.
 
-Use `ai4rag_pr75_experiment.ipynb` to test the improved prompts from PR #75:
+## Navigation
 
-```bash
-cd AutoRAG/comparative_analysis/autorag
-jupyter notebook ai4rag_pr75_experiment.ipynb
-```
+| Goal | Go to |
+|------|-------|
+| Run prompt A/B | baseline notebook → PR #75 notebook |
+| Reload saved run | `RUN_EXPERIMENT = False`, run from section 4 |
+| See prompt changes | `python3 compare_prompts.py` |
+| Legacy RHOAI LLMaJ | `rhoai_autorag_evaluation.ipynb` |
+| Analysis / conclusions | `../FINDINGS.md` |
 
-**What it does:**
-1. Installs AI4RAG from `fix-prompts` branch
-2. Loads William benchmark data
-3. Tests multiple chunking patterns
-4. Evaluates with LLM-as-a-Judge
-5. Generates comparative leaderboard
+## Prerequisites
 
-**Expected results:**
-- ✅ Faithfulness: 30% → 95% (+65 pp)
-- ✅ Citation rate: 32% → 60%+
-- ✅ Multilingual leakage: 36% → <2%
+- OGX credentials: `../lightrag/POC/.env`
+- William benchmark: `../lightrag/POC/challenge_data/william_benchmark.json`, `william.md`
+- Packages: `ai4rag`, `python-dotenv`, `openai`, `pandas`, `docling`
 
----
+## Related folders
 
-### Adding New Patterns
-
-Simply drop new evaluation files into `autorag_evals/`:
-
-```bash
-# Supported naming formats:
-autorag_evals/evaluation_results_5.txt     → Pattern_5
-autorag_evals/evaluation_results (2).txt   → Pattern_2
-autorag_evals/evaluation_results.txt       → Pattern_default
-```
-
-## Key Findings
-
-### Original Analysis (RHOAI AutoRAG)
-**RHOAI AutoRAG is NOT broken!** 
-
-- Keyword-based metrics (34.6%) severely underestimate quality
-- LLM-as-a-Judge reveals **75.5% semantic quality**
-- Real issue: Low faithfulness (30%) - needs citation enforcement
-- Fix: Prompt engineering, not model/retrieval changes
-
-### PR #75 Validation (AI4RAG)
-**Prompt improvements deliver 3x faithfulness gain!**
-
-- Strong grounding: "Answer ONLY..." → +25pp faithfulness
-- Mandatory citations: "MUST cite [1], [2]" → +18pp faithfulness  
-- Language enforcement: "MUST write in English only" → +17pp faithfulness
-- Numbered documents: "Document 1:" → +5pp faithfulness
-- **Total: 30% → 95%+ faithfulness (+65pp)**
-
-See:
-- `../ROOT_CAUSE_ANALYSIS.md` - Why prompts matter
-- `../PR_75_REVIEW.md` - Detailed code review
-- `AI4RAG_PR75_QUICKSTART.md` - How to run experiments
-- `compare_prompts.py` - Visual before/after comparison
-
-## Related Folders
-
-- `../lightrag/` - LightRAG evaluation (graph-enhanced RAG)
-- `../korean_autorag/` - Korean AutoRAG evaluation (traditional RAG)
-- `../ROOT_CAUSE_ANALYSIS.md` - Complete comparative analysis
+- `../lightrag/POC/` — William data and LightRAG notebook
+- `../korean_autorag/` — Korean AutoRAG William benchmark

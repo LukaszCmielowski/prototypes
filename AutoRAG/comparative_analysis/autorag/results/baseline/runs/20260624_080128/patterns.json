@@ -1,0 +1,562 @@
+[
+  {
+    "pattern_id": "Pattern1",
+    "scores": {
+      "faithfulness": 0.4329,
+      "answer_correctness": 0.3565,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.4090909090909091,
+      "llm_judge": 0.7272727272727273
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 3,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 3,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4329,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 3,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern10",
+    "scores": {
+      "faithfulness": 0.3913,
+      "answer_correctness": 0.3125,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.5909090909090909,
+      "llm_judge": 0.7636363636363637
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 3,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 3,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.3913,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 3,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern2",
+    "scores": {
+      "faithfulness": 0.353,
+      "answer_correctness": 0.2824,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.6818181818181818,
+      "llm_judge": 0.7818181818181817
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 5,
+      "number_of_chunks": 5,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 5,
+          "number_of_chunks": 5,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.353,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 5,
+        "number_of_chunks": 5,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern9",
+    "scores": {
+      "faithfulness": 0.3493,
+      "answer_correctness": 0.2746,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.6363636363636364,
+      "llm_judge": 0.7454545454545456
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 3,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 3,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.3493,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 3,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern6",
+    "scores": {
+      "faithfulness": 0.343,
+      "answer_correctness": 0.2688,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.6363636363636364,
+      "llm_judge": 0.7545454545454546
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 5,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 5,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.343,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 5,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern4",
+    "scores": {
+      "faithfulness": 0.3414,
+      "answer_correctness": 0.2744,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.5909090909090909,
+      "llm_judge": 0.7181818181818183
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 5,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 5,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.3414,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 5,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern7",
+    "scores": {
+      "faithfulness": 0.3321,
+      "answer_correctness": 0.3186,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.5,
+      "llm_judge": 0.7454545454545456
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 5,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 5,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.3321,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 5,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern3",
+    "scores": {
+      "faithfulness": 0.3124,
+      "answer_correctness": 0.2779,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.6818181818181818,
+      "llm_judge": 0.7545454545454546
+    },
+    "settings": {
+      "retrieval_method": "simple",
+      "window_size": 0,
+      "number_of_chunks": 5,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 0,
+          "number_of_chunks": 5,
+          "search_mode": "vector",
+          "retrieval_method": "simple",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.3124,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 0,
+        "number_of_chunks": 5,
+        "search_mode": "vector",
+        "retrieval_method": "simple",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern8",
+    "scores": {
+      "faithfulness": 0.3018,
+      "answer_correctness": 0.2714,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.5454545454545454,
+      "llm_judge": 0.7000000000000001
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 10,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 10,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.3018,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 10,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern5",
+    "scores": {
+      "faithfulness": 0.2773,
+      "answer_correctness": 0.2978,
+      "citation_rate": 0.0,
+      "multilingual_rate": 0.3181818181818182,
+      "llm_judge": 0.7363636363636363
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 10,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 10,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "[document]: {document}\n",
+          "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+          "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.2773,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 10,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "[document]: {document}\n",
+        "user_message_text": "{reference_documents}\n[conversation]: {question}. Answer with no more than 150 words. If you cannot base your answer on the given document, please state that you do not have an answer. Respond exclusively in the language of the question, regardless of any other language used in the provided context. Ensure that your entire response is in the same language as the question.\n",
+        "system_message_text": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don\u2019t know the answer to a question, please don\u2019t share false information.\n"
+      }
+    }
+  }
+]

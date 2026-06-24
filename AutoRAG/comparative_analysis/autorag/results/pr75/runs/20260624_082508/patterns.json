@@ -1,0 +1,506 @@
+[
+  {
+    "pattern_id": "Pattern4",
+    "scores": {
+      "faithfulness": 0.552,
+      "answer_correctness": 0.6216,
+      "citation_rate": 0.7272727272727273,
+      "multilingual_rate": 0.09090909090909091,
+      "llm_judge": 0.8272727272727273
+    },
+    "settings": {
+      "retrieval_method": "simple",
+      "window_size": 0,
+      "number_of_chunks": 3,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 0,
+          "number_of_chunks": 3,
+          "search_mode": "vector",
+          "retrieval_method": "simple",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.552,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 0,
+        "number_of_chunks": 3,
+        "search_mode": "vector",
+        "retrieval_method": "simple",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern3",
+    "scores": {
+      "faithfulness": 0.4738,
+      "answer_correctness": 0.5929,
+      "citation_rate": 0.8181818181818182,
+      "multilingual_rate": 0.09090909090909091,
+      "llm_judge": 0.8
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 3,
+      "number_of_chunks": 5,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 3,
+          "number_of_chunks": 5,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4738,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 3,
+        "number_of_chunks": 5,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern8",
+    "scores": {
+      "faithfulness": 0.4683,
+      "answer_correctness": 0.6071,
+      "citation_rate": 0.8636363636363636,
+      "multilingual_rate": 0.045454545454545456,
+      "llm_judge": 0.8363636363636364
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 5,
+      "number_of_chunks": 3,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 5,
+          "number_of_chunks": 3,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4683,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 5,
+        "number_of_chunks": 3,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern2",
+    "scores": {
+      "faithfulness": 0.4606,
+      "answer_correctness": 0.6255,
+      "citation_rate": 0.8181818181818182,
+      "multilingual_rate": 0.045454545454545456,
+      "llm_judge": 0.8363636363636364
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 5,
+      "number_of_chunks": 10,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 5,
+          "number_of_chunks": 10,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4606,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 5,
+        "number_of_chunks": 10,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern5",
+    "scores": {
+      "faithfulness": 0.4539,
+      "answer_correctness": 0.6214,
+      "citation_rate": 0.8181818181818182,
+      "multilingual_rate": 0.09090909090909091,
+      "llm_judge": 0.8090909090909091
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 3,
+      "number_of_chunks": 10,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 3,
+          "number_of_chunks": 10,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4539,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 3,
+        "number_of_chunks": 10,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern7",
+    "scores": {
+      "faithfulness": 0.45,
+      "answer_correctness": 0.6165,
+      "citation_rate": 0.8636363636363636,
+      "multilingual_rate": 0.09090909090909091,
+      "llm_judge": 0.8272727272727273
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 10,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 10,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.45,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 10,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern6",
+    "scores": {
+      "faithfulness": 0.4454,
+      "answer_correctness": 0.625,
+      "citation_rate": 0.7727272727272727,
+      "multilingual_rate": 0.09090909090909091,
+      "llm_judge": 0.8181818181818182
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 3,
+      "number_of_chunks": 3,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 3,
+          "number_of_chunks": 3,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4454,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 3,
+        "number_of_chunks": 3,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern9",
+    "scores": {
+      "faithfulness": 0.4416,
+      "answer_correctness": 0.6142,
+      "citation_rate": 0.8636363636363636,
+      "multilingual_rate": 0.045454545454545456,
+      "llm_judge": 0.8090909090909091
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 1,
+      "number_of_chunks": 3,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 1,
+          "number_of_chunks": 3,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4416,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 1,
+        "number_of_chunks": 3,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  },
+  {
+    "pattern_id": "Pattern1",
+    "scores": {
+      "faithfulness": 0.4189,
+      "answer_correctness": 0.6216,
+      "citation_rate": 0.8636363636363636,
+      "multilingual_rate": 0.09090909090909091,
+      "llm_judge": 0.8181818181818182
+    },
+    "settings": {
+      "retrieval_method": "window",
+      "window_size": 3,
+      "number_of_chunks": 10,
+      "search_mode": "vector",
+      "chunking_method": "N/A",
+      "chunk_size": "N/A",
+      "chunk_overlap": "N/A",
+      "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+      "rag_params": {
+        "retrieval": {
+          "window_size": 3,
+          "number_of_chunks": 10,
+          "search_mode": "vector",
+          "retrieval_method": "window",
+          "ranker_strategy": null,
+          "ranker_k": null,
+          "ranker_alpha": null
+        },
+        "generation": {
+          "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+          "context_template_text": "Document {doc_number}:\n{document}\n",
+          "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+          "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+        }
+      }
+    },
+    "final_score": 0.4189,
+    "num_answers": 22,
+    "rag_params": {
+      "retrieval": {
+        "window_size": 3,
+        "number_of_chunks": 10,
+        "search_mode": "vector",
+        "retrieval_method": "window",
+        "ranker_strategy": null,
+        "ranker_k": null,
+        "ranker_alpha": null
+      },
+      "generation": {
+        "model_id": "vllm-inference-gpu-llama/redhataillama-31-8b-instruct",
+        "context_template_text": "Document {doc_number}:\n{document}\n",
+        "user_message_text": "Answer ONLY using information from the documents below. Do not use outside knowledge. If the documents do not contain the answer, say you do not have enough information.\nYou MUST cite sources using [1], [2], etc. matching the document numbers for every factual claim.\n\nDocuments:\n{reference_documents}\n\nQuestion: {question}\n\nAnswer (max 150 words, with citations):\nYou MUST write your entire answer in English only. Do NOT use any other language, even if the question or documents are in another language. Every word of your answer must be in English.\n",
+        "system_message_text": "You are a retrieval-augmented assistant. Answer using ONLY the provided documents. You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.\n"
+      }
+    }
+  }
+]
