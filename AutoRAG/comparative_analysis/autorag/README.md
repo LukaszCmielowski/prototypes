@@ -2,8 +2,6 @@
 
 Prompt A/B and evaluation for ai4rag baseline vs [PR #75](https://github.com/IBM/ai4rag/pull/75).
 
-Analysis conclusions: [`../FINDINGS.md`](../FINDINGS.md)
-
 ## Quick start
 
 ```bash
@@ -86,7 +84,6 @@ GAM explores different retrieval configs each run; pattern labels are not compar
 | Reload saved run | `RUN_EXPERIMENT = False`, run from section 4 |
 | See prompt changes | `python3 compare_prompts.py` |
 | Legacy RHOAI LLMaJ | `rhoai_autorag_evaluation.ipynb` |
-| Analysis / conclusions | `../FINDINGS.md` |
 
 ## Prerequisites
 
