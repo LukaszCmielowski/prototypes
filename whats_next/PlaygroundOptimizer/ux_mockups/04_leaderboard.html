@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 · See the winners</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><i>RH</i> OpenShift AI</div>
+      <div class="sec">Screens</div>
+      <a href="index.html">The idea</a>
+      <a href="01_playground_entry.html">1 · Try &amp; tweak</a>
+      <a href="02_optimize_setup.html">2 · Ask AI to find better</a>
+      <a href="03_running.html">3 · Waiting</a>
+      <a href="04_leaderboard.html" class="on">4 · See the winners</a>
+      <a href="05_apply_save.html">5 · Save your agent</a>
+      <div class="foot">Mock</div>
+    </nav>
+
+    <div class="shell">
+      <div class="top">
+        <h1>Here’s what worked best</h1>
+        <div class="grow"></div>
+        <a href="02_optimize_setup.html" class="btn btn-ghost">Try again</a>
+      </div>
+
+      <div class="wrap">
+        <div class="steps">
+          <span class="done">1 · What for?</span>
+          <span class="done">2 · Working…</span>
+          <span class="now">3 · Pick a winner</span>
+        </div>
+
+        <div class="hero" style="margin-bottom:1rem;">
+          <h2 style="font-size:20px;">Your best setup scored <span style="color:var(--good);">83%</span></h2>
+          <p>That’s <strong style="color:var(--text);">+21 points</strong> better than what you had before (62%). Higher % = better answers on the practice questions.</p>
+        </div>
+
+        <div class="card">
+          <h3>Ranked results</h3>
+          <p class="sub">Pick the one you like. You can still chat with it before saving.</p>
+
+          <div class="rank-list">
+            <div class="rank win">
+              <div class="badge g">1</div>
+              <div>
+                <h4>Granite · short &amp; precise</h4>
+                <p>Low creativity · code tools · fastest of the top scores</p>
+              </div>
+              <div style="text-align:right;">
+                <div class="score"><b>83%</b><small>quality</small></div>
+                <a href="05_apply_save.html" class="btn btn-main" style="margin-top:0.5rem; padding:0.4rem 0.8rem; font-size:13px;">Use this</a>
+              </div>
+            </div>
+
+            <div class="rank">
+              <div class="badge s">2</div>
+              <div>
+                <h4>Llama · patient tutor</h4>
+                <p>Medium creativity · all tools · a bit slower, still strong</p>
+              </div>
+              <div style="text-align:right;">
+                <div class="score"><b style="color:var(--text);">79%</b><small>quality</small></div>
+                <a href="05_apply_save.html" class="btn btn-ghost" style="margin-top:0.5rem; padding:0.4rem 0.8rem; font-size:13px;">Use this</a>
+              </div>
+            </div>
+
+            <div class="rank">
+              <div class="badge b">3</div>
+              <div>
+                <h4>Granite · no extra tools</h4>
+                <p>Simple setup · good if you want fewer moving parts</p>
+              </div>
+              <div class="score"><b style="color:var(--text);">71%</b><small>quality</small></div>
+            </div>
+
+            <div class="rank">
+              <div class="badge">—</div>
+              <div>
+                <h4>Your old settings</h4>
+                <p>What you started with in the Playground</p>
+              </div>
+              <div class="score"><b style="color:var(--muted);">62%</b><small>quality</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          Tip: #1 is usually the right pick. Choose #2 if you prefer a more talkative tutor style.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

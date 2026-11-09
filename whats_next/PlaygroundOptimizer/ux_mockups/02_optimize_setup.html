@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 · Ask AI to find better</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><i>RH</i> OpenShift AI</div>
+      <div class="sec">Screens</div>
+      <a href="index.html">The idea</a>
+      <a href="01_playground_entry.html">1 · Try &amp; tweak</a>
+      <a href="02_optimize_setup.html" class="on">2 · Ask AI to find better</a>
+      <a href="03_running.html">3 · Waiting</a>
+      <a href="04_leaderboard.html">4 · See the winners</a>
+      <a href="05_apply_save.html">5 · Save your agent</a>
+      <div class="foot">Mock</div>
+    </nav>
+
+    <div class="shell">
+      <div class="top">
+        <h1>Find better settings</h1>
+        <div class="grow"></div>
+        <a href="01_playground_entry.html" class="btn btn-ghost">Cancel</a>
+      </div>
+
+      <div class="wrap">
+        <div class="steps">
+          <span class="now">1 · What for?</span>
+          <span>2 · Working…</span>
+          <span>3 · Pick a winner</span>
+        </div>
+
+        <div class="card">
+          <h3>What should this agent be good at?</h3>
+          <p class="sub">One short sentence is enough.</p>
+          <div class="field">
+            <label>In plain words</label>
+            <input type="text" value="Help people with Python coding questions">
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>How will we know it’s good?</h3>
+          <p class="sub">We need a few example questions (with good answers) to score each try.</p>
+          <div class="choice">
+            <label class="pick">
+              <strong>Create examples for me</strong>
+              <small>We’ll invent ~20 practice questions from your description above. Fastest path.</small>
+            </label>
+            <label>
+              <strong>I’ll upload my own</strong>
+              <small>A simple list of questions and the answers you expect.</small>
+            </label>
+          </div>
+          <div class="note">You can always upload real examples later for a more accurate ranking.</div>
+        </div>
+
+        <div class="card">
+          <h3>What are we allowed to change?</h3>
+          <p class="sub">Leave everything on unless you want to lock something.</p>
+          <div class="toggles">
+            <div class="row">
+              <div>
+                <strong>Try different AI models</strong>
+                <small>Compare a few models available in your project</small>
+              </div>
+              <div class="switch on"></div>
+            </div>
+            <div class="row">
+              <div>
+                <strong>Try different instructions</strong>
+                <small>How the agent is told to behave</small>
+              </div>
+              <div class="switch on"></div>
+            </div>
+            <div class="row">
+              <div>
+                <strong>Try different creativity levels</strong>
+                <small>From very precise to more free-form</small>
+              </div>
+              <div class="switch on"></div>
+            </div>
+            <div class="row">
+              <div>
+                <strong>Try with / without extra tools</strong>
+                <small>Tools let the agent look things up or take actions</small>
+              </div>
+              <div class="switch on"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>How thorough?</h3>
+          <p class="sub">More tries = better chance of a great result, but takes longer.</p>
+          <div class="choice">
+            <label>
+              <strong>Quick look</strong>
+              <small>~10 minutes · fewer combinations</small>
+            </label>
+            <label class="pick">
+              <strong>Balanced (recommended)</strong>
+              <small>~20 minutes · good for most people</small>
+            </label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a href="03_running.html" class="btn btn-big">Start finding better settings</a>
+        </div>
+        <p class="foot-note">We’ll always include your current settings in the ranking, so you can see if anything actually improved.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

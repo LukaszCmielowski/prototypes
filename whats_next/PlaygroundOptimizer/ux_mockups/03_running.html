@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 · Waiting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><i>RH</i> OpenShift AI</div>
+      <div class="sec">Screens</div>
+      <a href="index.html">The idea</a>
+      <a href="01_playground_entry.html">1 · Try &amp; tweak</a>
+      <a href="02_optimize_setup.html">2 · Ask AI to find better</a>
+      <a href="03_running.html" class="on">3 · Waiting</a>
+      <a href="04_leaderboard.html">4 · See the winners</a>
+      <a href="05_apply_save.html">5 · Save your agent</a>
+      <div class="foot">Mock</div>
+    </nav>
+
+    <div class="shell">
+      <div class="top">
+        <h1>Finding better settings…</h1>
+        <div class="grow"></div>
+        <button class="btn btn-ghost">Stop</button>
+      </div>
+
+      <div class="wrap">
+        <div class="steps">
+          <span class="done">1 · What for?</span>
+          <span class="now">2 · Working…</span>
+          <span>3 · Pick a winner</span>
+        </div>
+
+        <div class="card">
+          <h3>We’re trying different combinations</h3>
+          <p class="sub">Each try answers your practice questions and gets a score. You can leave this page open.</p>
+          <div class="bar"><i style="width:58%;"></i></div>
+          <p style="margin:0; color:var(--muted); font-size:14px;">About halfway · roughly 8 minutes left</p>
+
+          <div class="stats">
+            <div class="stat"><b>14</b><span>of 24 tries done</span></div>
+            <div class="stat"><b style="color:var(--good);">81%</b><span>best score so far</span></div>
+            <div class="stat"><b>62%</b><span>your current settings</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Leading right now</h3>
+          <p class="sub">This can still change before we finish.</p>
+          <div class="rank-list">
+            <div class="rank win">
+              <div class="badge g">1</div>
+              <div>
+                <h4>Granite · short &amp; precise instructions</h4>
+                <p>Creativity low · tools for code only</p>
+              </div>
+              <div class="score"><b>81%</b><small>so far</small></div>
+            </div>
+            <div class="rank">
+              <div class="badge s">2</div>
+              <div>
+                <h4>Llama · step-by-step tutor style</h4>
+                <p>Creativity medium · all tools</p>
+              </div>
+              <div class="score"><b style="color:var(--text);">74%</b><small>so far</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a href="04_leaderboard.html" class="btn btn-main">Skip to final results →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

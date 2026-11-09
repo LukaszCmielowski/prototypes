@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 · Try &amp; tweak</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="nav">
+      <div class="brand"><i>RH</i> OpenShift AI</div>
+      <div class="sec">Screens</div>
+      <a href="index.html">The idea</a>
+      <a href="01_playground_entry.html" class="on">1 · Try &amp; tweak</a>
+      <a href="02_optimize_setup.html">2 · Ask AI to find better</a>
+      <a href="03_running.html">3 · Waiting</a>
+      <a href="04_leaderboard.html">4 · See the winners</a>
+      <a href="05_apply_save.html">5 · Save your agent</a>
+      <div class="foot">Mock</div>
+    </nav>
+
+    <div class="shell">
+      <div class="top">
+        <h1>Playground</h1>
+        <span class="pill">My project</span>
+        <div class="grow"></div>
+      </div>
+
+      <div class="split">
+        <div class="chat">
+          <div class="me">Explain binary search and show a short Python example.</div>
+          <div class="bot">
+            <div class="who">Current settings · just now</div>
+            Binary search finds a value in a sorted list by checking the middle and cutting the list in half each time…
+            <div class="code">def binary_search(arr, target):
+    # …example code…</div>
+          </div>
+          <div style="margin-top:auto; background:#fff; border:1px solid var(--line); border-radius:8px; padding:0.7rem 0.85rem; display:flex; gap:0.5rem;">
+            <input style="flex:1; border:none; outline:none; font:inherit;" placeholder="Type a message to try your agent…" readonly>
+            <button class="btn btn-main">Send</button>
+          </div>
+        </div>
+
+        <aside class="side">
+          <h2>Your settings</h2>
+          <div>
+            <label>Which AI model?</label>
+            <select><option>QLM 3.1</option></select>
+          </div>
+          <div>
+            <label>Instructions for the AI</label>
+            <textarea readonly>You are a helpful coding assistant.</textarea>
+          </div>
+          <div class="kv"><span>Creativity</span><span>Low (0.2)</span></div>
+          <div class="kv"><span>Extra tools</span><span>On</span></div>
+          <div class="kv"><span>Document search</span><span>Off</span></div>
+
+          <div class="note">
+            Not sure these are the best settings? Let us try many combinations and tell you which scores highest.
+          </div>
+
+          <a href="02_optimize_setup.html" class="btn btn-big">Find better settings</a>
+          <button class="btn btn-ghost" style="width:100%;">Save as agent</button>
+        </aside>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
