@@ -23,10 +23,18 @@ Today, users tweak settings, chat a few times, and save when the agent feels goo
 3. **Compare results.** Always include the current setup. Show what changed, how answers scored, and examples that still failed. Results guide the next alternatives.
 4. **Confirm and save.** Check the best alternatives on fresh examples, apply the preferred setup, optionally chat, and **Save as agent**.
 
-```text
-Goal + examples → Try settings → Score answers → Compare → Save as agent
-                       ↑              │
-                       └─ Next tries ─┘
+```mermaid
+flowchart LR
+    A[Choose goal<br/>and examples] --> B[Try current settings<br/>and alternatives]
+    B --> C[Evaluate answers<br/>with Eval Hub]
+    C --> D[Compare results<br/>and confirm improvement]
+    D --> E[Apply preferred settings<br/>and save as agent]
+    C -->|Recommend next tries<br/>within budget| B
+
+    classDef step fill:#eef4ff,stroke:#6285bd,color:#172b4d;
+    classDef outcome fill:#e9f6ee,stroke:#4c9568,color:#173d28;
+    class A,B,C,D step;
+    class E outcome;
 ```
 
 **Example:** a support assistant answers questions from a policy document. Compare models, instructions, and creativity while keeping the document source fixed. Show which setup gives more relevant, document-supported answers and where it still struggles.
